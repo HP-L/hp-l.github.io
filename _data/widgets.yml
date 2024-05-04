@@ -1,0 +1,61 @@
+toc:
+  layout: toc
+  list_number: true # 是否显示序号
+  min_depth: 2 # 建议不要低于 2 即从 H2 标签开始解析（H1标签用于文章大标题）
+  max_depth: 5 # 5 代表最多解析到 H5 标签
+  fallback: recent # Use a backup widget when toc does not exist.
+  collapse: true # true / false / auto (始终折叠/不折叠/自动折叠)
+
+recent:
+  layout: recent
+  rss: /atom.xml # npm i hexo-generator-feed
+  limit: 5 # Count of posts
+
+# linklist:
+#   layout: linklist
+#   columns: 1 
+#   items:
+#     - icon: '<img src="/headimg/Planck.jpg" width="300" height="300">' # 或者 icons.yml 中设置的 icon 名称
+#       title: 关于
+#       url: /about/
+
+welcome:
+  layout: markdown
+  title: 欢迎来到本站
+  linklist: # 与 linklist 组件写法相同
+    columns: 1
+    items:
+      - icon: <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"></path><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"></path></svg>
+        title: About
+        url: /about
+      - icon: <img src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" alt="SVG image">
+        title: 主站链接
+        url: https://hp-l.github.io
+      - icon: <img src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" alt="SVG image">
+        title: 副站链接
+        url: https://hp-l.gitee.io
+  content: |
+    <h4 style="text-align: center;">《一 言》</h4>
+    <!-- class =“hitokoto ” 是一言的默认选择器--><p class="hitokoto" id="yiyancon"></p> <script type="text/javascript" src="https://international.v1.hitokoto.cn?encode=js&amp;charset=utf-8&amp;&amp;c=j&amp;c=k&amp;c=l"></script>
+  # src: ./123.md # 可以设置外部 md 文件链接
+
+tagcloud:
+  layout: tagcloud
+  title: 标签云
+  # 标签云配置
+  min_font: 10
+  max_font: 18
+  amount: 100
+  orderby: name
+  order: 1 # 1, sac 升序；-1, desc 降序
+  color: false # 使用颜色
+  start_color:  # 开始的颜色。您可使用十六进位值（'#b700ff'），rgba（rgba(183, 0, 255, 1)），hsla（hsla(283, 100%, 50%, 1)）或 颜色关键字。此变量仅在 color 参数开启时才有用。
+  end_color:  # 结束的颜色。您可使用十六进位值（'#b700ff'），rgba（rgba(183, 0, 255, 1)），hsla（hsla(283, 100%, 50%, 1)）或 颜色关键字。此变量仅在 color 参数开启时才有用。
+  show_count: true # 显示每个标签的文章总数
+
+# timeline:
+#   layout: timeline
+#   title: 近期动态
+#   api: https://api.github.com/repos/HP-L/blog_comments/issues?per_page=3 # 若你想限制数量，在api链接后面加上?per_page=1指限制为1条
+#   user: # 是否过滤只显示某个人发布的内容，如果要筛选多人，用英文逗号隔开
+#   hide: # title,footer # 隐藏标题或底部 # 此功能需要 Stellar v1.13.0
