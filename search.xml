@@ -909,9 +909,9 @@
       
         <tags>
             
-            <tag> mosfet </tag>
-            
             <tag> 机器之脉络 </tag>
+            
+            <tag> mosfet </tag>
             
         </tags>
       
@@ -1414,9 +1414,9 @@
             
             <tag> ESP32 </tag>
             
-            <tag> micropython </tag>
-            
             <tag> 机器之魂魄 </tag>
+            
+            <tag> micropython </tag>
             
         </tags>
       
