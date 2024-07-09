@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Image2RGB565 tool</title>
+      <link href="/2024/07/09/115544/"/>
+      <url>/2024/07/09/115544/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="写在前面"><a class="markdownIt-Anchor" href="#写在前面"></a> 写在前面</h1><p>一个小工具</p><style>/* 样式用于将标签样式化为按钮 */.custom-button {  display: inline-block;  padding: 10px 20px;  font-size: 16px;  font-weight: bold;  color: #fff;  background-color: #007bff;  border: none;  border-radius: 5px;  cursor: pointer;}/* 隐藏文件选择输入框 */.input-file {  display: none;}</style><script>function handleFileSelect(event) {  var file = event.target.files[0];  if (!file) {    alert('Please select an image file.');    return;  }  var reader = new FileReader();  reader.onload = function(event) {    var img = new Image();    img.onload = function() {      var canvas = document.createElement('canvas');      var ctx = canvas.getContext('2d');      canvas.width = img.width;      canvas.height = img.height;      ctx.drawImage(img, 0, 0);      var imageData = ctx.getImageData(0, 0, img.width, img.height);      var data = imageData.data;      var rgb565Array = [];      for (var i = 0; i < data.length; i += 4) {        var r = data[i];        var g = data[i + 1];        var b = data[i + 2];        // Convert RGB888 to RGB565        var r5 = (r >> 3) & 0x1F;        var g6 = (g >> 2) & 0x3F;        var b5 = (b >> 3) & 0x1F;        var rgb565 = (r5 << 11) | (g6 << 5) | b5;        rgb565Array.push(rgb565);      }      var width = img.width;      var height = img.height;      // Generate C array output      var cArray = 'const uint16_t image[' + height + '][' + width + '] = {\n';      for (var row = 0; row < height; row++) {        cArray += '  {';        for (var col = 0; col < width; col++) {          var index = row * width + col;          cArray += '0x' + rgb565Array[index].toString(16);          if (col < width - 1) {            cArray += ', ';          }        }        cArray += '}';        if (row < height - 1) {          cArray += ',\n';        } else {          cArray += '\n';        }      }      cArray += '};';      // Save to text file      var blob = new Blob([cArray], { type: 'text/plain' });      var url = URL.createObjectURL(blob);      var a = document.createElement('a');      a.href = url;      a.download = 'image_data.c';      document.body.appendChild(a);      a.click();      document.body.removeChild(a);      URL.revokeObjectURL(url);    };    img.src = event.target.result;  };  reader.readAsDataURL(file);}</script>  <!-- 使用label来包裹input --><p><label for="fileInput" class="custom-button">Choose File</label><br /><input type="file" id="fileInput" class="input-file" accept="image/*" onchange="handleFileSelect(event)"></p><!-- Category：理论：理论知识技能，技术应用：应用笔记，实操折腾：折腾折腾折腾折腾！(其实属于应用，但就是玩！)方法：方法论（经验谈），如工程方法工具：针对具体工具的介绍、使用方法、分析适用场景等；使用工具如何如何解决具体问题，应该放在「应用」里作品：自己的作品（成品）、个人项目日志等杂谈：生活碎碎念自然科学：物理，化学，数学其他：没法分类的东西Tags细分领域：机器之脉络(硬件),机器之魂魄(嵌入式软件,机器学习，算法等),机器之骨骼(结构),形式：日志具体内容：个人作品、方法论、随笔语言：python C C# Java Html micropython 微信小程序IDE：Arduino CUBEIDE Vscode自然科学：代数 几何 概率 黑洞 白矮星 四维空间...IC OR IDE : STM32 ESP32 ESP8266 C51 树莓派 RK3399 野火开发版 MIQI模组：ws2812b系统：Linux Windows macOS openwrt Docker   termux游戏：MC博客：hexo 主题 魔改折腾系类：黑苹果，整服务器，termux -->]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> RGB565 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>薛定谔的猫</title>
       <link href="/2024/07/08/143915/"/>
       <url>/2024/07/08/143915/</url>
@@ -909,9 +934,9 @@
       
         <tags>
             
-            <tag> 机器之脉络 </tag>
-            
             <tag> mosfet </tag>
+            
+            <tag> 机器之脉络 </tag>
             
         </tags>
       
