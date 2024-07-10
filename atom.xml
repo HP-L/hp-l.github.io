@@ -15,11 +15,38 @@
     <atom:link href="https://hp-l.github.io/atom.xml" rel="self" type="application/rss+xml"/>
     
     <description>硬件</description>
-    <pubDate>Tue, 09 Jul 2024 10:03:53 GMT</pubDate>
+    <pubDate>Wed, 10 Jul 2024 07:59:17 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
-      <title>Image2RGB565 tool</title>
+      <title>kindle 越狱+插件安装</title>
+      <link>https://hp-l.github.io/2024/07/10/143551/</link>
+      <guid>https://hp-l.github.io/2024/07/10/143551/</guid>
+      <pubDate>Wed, 10 Jul 2024 06:35:51 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://hp-l.github.io/categories/%E6%8A%98%E8%85%BE/">折腾</category>
+      
+      
+      <category domain="https://hp-l.github.io/tags/kindle/">kindle</category>
+      
+      
+      <comments>https://hp-l.github.io/2024/07/10/143551/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Image转RGB565工具</title>
       <link>https://hp-l.github.io/2024/07/09/115544/</link>
       <guid>https://hp-l.github.io/2024/07/09/115544/</guid>
       <pubDate>Tue, 09 Jul 2024 03:55:44 GMT</pubDate>
@@ -42,33 +69,6 @@
       
       
       <comments>https://hp-l.github.io/2024/07/09/115544/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>薛定谔的猫</title>
-      <link>https://hp-l.github.io/2024/07/08/143915/</link>
-      <guid>https://hp-l.github.io/2024/07/08/143915/</guid>
-      <pubDate>Mon, 08 Jul 2024 06:39:15 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E8%87%AA%E7%84%B6%E7%A7%91%E5%AD%A6/">自然科学</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/">测试文章</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/07/08/143915/#disqus_thread</comments>
       
     </item>
     
@@ -386,9 +386,9 @@
       <category domain="https://hp-l.github.io/categories/%E5%BA%94%E7%94%A8/">应用</category>
       
       
-      <category domain="https://hp-l.github.io/tags/C/">C++</category>
-      
       <category domain="https://hp-l.github.io/tags/arduino/">arduino</category>
+      
+      <category domain="https://hp-l.github.io/tags/C/">C++</category>
       
       
       <comments>https://hp-l.github.io/2024/03/14/082156/#disqus_thread</comments>
