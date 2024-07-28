@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>注册机出现cannot retrieve MAC addre</title>
+      <link href="/2024/07/28/090828/"/>
+      <url>/2024/07/28/090828/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="first_down"><p><div class="tag-plugin paper"><div class="content underline"><div class="title"><<<写在前面>>></div><div class="body"><div class="line"><p>Keyshot注册机破解时出现<code>cannot retrieve MAC addre</code>，网上搜了一圈设置MAC地址的办法都无法解决。添加成功设备管理器的网卡设置已经出现MAC地址了也还是不行。</p></div></div><div class="footer"><div class="author-date"><span class="author">子书承宇</span></div></div></div></div></p></div><p>手上一台win11 pc安装keyshot时出现<code>cannot retrieve MAC addre</code>，用手机有线提供以太网则不会出现问题，最终解决办法如下：</p><ol><li><code>win</code> + <code>R</code> 输入 <code>hdwwiz</code></li><li>点击下一步直到出现<mark class="tag-plugin colorful mark" color="red">安装我手动从列表选择的的硬件(高级)</mark><br />，找到<mark class="tag-plugin colorful mark" color="red">网络适配器</mark></li><li>左侧厂商选择<mark class="tag-plugin colorful mark" color="red">Microsoft</mark>，右侧型号选择<mark class="tag-plugin colorful mark" color="red">Microsoft_KM-TEST环回适配器</mark></li><li>开始安装。重新破解成功不会出现报错</li></ol><p>上网搜了一下这个Microsoft_KM-TEST环回适配器，AI 给出了答案</p><blockquote><p>Microsoft_KM-TEST环回适配器的作用<br />Microsoft_KM-TEST环回适配器（Loopback Adapter）是一种虚拟网络适配器，主要用于在计算机系统中模拟网络连接。它的作用是使计算机可以与自身进行通信，而无需实际的物理网络连接。环回适配器通常用于以下场景：</p><ul><li>网络应用程序测试：通过将网络应用程序配置为使用环回适配器作为目标地址，可以在没有真实网络连接的情况下测试和调试应用程序的功能和性能。</li><li>网络配置测试：使用环回适配器具于测试网络配置，确保计算机的网络配置正确无误。</li><li>软件开发和测试：在开发和测试软件时，环回适配器可以模拟网络环境，帮助开发者在没有真实网络设备的情况下进行测试。</li><li>网络安全：环回适配器可以用于测试和评估计算机的安全性，例如模拟攻击、漏洞扫描等。</li><li>虚拟化环境：在虚拟化环境中，环回适配器可以用作虚拟机之间或虚拟机与物理机之间的内部通信通道，使得虚拟机能够通过该适配器进行内部网络通信，而无需物理网卡的支持。</li><li>网络故障排除：环回适配器也可以在本地计算机上用于诊断和排除网络问题。通过将网络流量通过环回适配器进行循环发送和接收，可以检查网络配置、路由、防火墙设置等是否正常工作.</li></ul></blockquote><!-- <div id="first_down"><p><div class="tag-plugin paper"><div class="content underline"><div class="title"><<<之后的事>>></div><div class="body"><div class="line"><p>没有之后的事</p></div></div><div class="footer"><div class="author-date"><span class="author">子书承宇</span></div></div></div></div></p></div> --><!-- ## _还没写完.._ --><!-- Category：理论：理论知识技能，技术应用：应用笔记，实操折腾：折腾折腾折腾折腾！(其实属于应用，但就是玩！)方法：方法论（经验谈），如工程方法工具：针对具体工具的介绍、使用方法、分析适用场景等；使用工具如何如何解决具体问题，应该放在「应用」里作品：自己的作品（成品）、个人项目日志等杂谈：生活碎碎念自然科学：物理，化学，数学其他：没法分类的东西Tags细分领域：机器之脉络(硬件),机器之魂魄(嵌入式软件,机器学习，算法等),机器之骨骼(结构),形式：日志具体内容：个人作品、方法论、随笔语言：python C C# Java Html micropython 微信小程序IDE：Arduino CUBEIDE Vscode自然科学：代数 几何 概率 黑洞 白矮星 四维空间...IC OR IDE : STM32 ESP32 ESP8266 C51 树莓派 RK3399 野火开发版 MIQI模组：ws2812b系统：Linux Windows macOS openwrt Docker   termux游戏：MC博客：hexo 主题 魔改折腾系类：黑苹果，整服务器，termux -->]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 注册机 </tag>
+            
+            <tag> 破解 </tag>
+            
+            <tag> mac地址 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【转载】STM32串口ISP攻略</title>
       <link href="/2024/07/25/094523/"/>
       <url>/2024/07/25/094523/</url>

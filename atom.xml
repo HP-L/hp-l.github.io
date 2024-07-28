@@ -15,8 +15,39 @@
     <atom:link href="https://hp-l.github.io/atom.xml" rel="self" type="application/rss+xml"/>
     
     <description>硬件</description>
-    <pubDate>Thu, 25 Jul 2024 01:48:31 GMT</pubDate>
+    <pubDate>Sun, 28 Jul 2024 03:30:07 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>注册机出现cannot retrieve MAC addre</title>
+      <link>https://hp-l.github.io/2024/07/28/090828/</link>
+      <guid>https://hp-l.github.io/2024/07/28/090828/</guid>
+      <pubDate>Sun, 28 Jul 2024 01:08:28 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://hp-l.github.io/categories/%E5%B7%A5%E5%85%B7/">工具</category>
+      
+      
+      <category domain="https://hp-l.github.io/tags/%E6%B3%A8%E5%86%8C%E6%9C%BA/">注册机</category>
+      
+      <category domain="https://hp-l.github.io/tags/%E7%A0%B4%E8%A7%A3/">破解</category>
+      
+      <category domain="https://hp-l.github.io/tags/mac%E5%9C%B0%E5%9D%80/">mac地址</category>
+      
+      
+      <comments>https://hp-l.github.io/2024/07/28/090828/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>【转载】STM32串口ISP攻略</title>
@@ -564,35 +595,6 @@
       
       
       <comments>https://hp-l.github.io/2024/02/29/185959/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>雷池防火墙安装</title>
-      <link>https://hp-l.github.io/2024/02/29/161936/</link>
-      <guid>https://hp-l.github.io/2024/02/29/161936/</guid>
-      <pubDate>Thu, 29 Feb 2024 08:19:36 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E5%B7%A5%E5%85%B7/">工具</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</category>
-      
-      <category domain="https://hp-l.github.io/tags/%E9%98%B2%E7%81%AB%E5%A2%99/">防火墙</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/02/29/161936/#disqus_thread</comments>
       
     </item>
     
