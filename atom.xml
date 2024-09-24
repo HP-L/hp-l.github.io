@@ -15,8 +15,51 @@
     <atom:link href="https://hp-l.github.io/atom.xml" rel="self" type="application/rss+xml"/>
     
     <description>硬件</description>
-    <pubDate>Mon, 23 Sep 2024 01:22:49 GMT</pubDate>
+    <pubDate>Tue, 24 Sep 2024 08:06:13 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>博客添加音乐播放器</title>
+      <link>https://hp-l.github.io/2024/09/24/160432/</link>
+      <guid>https://hp-l.github.io/2024/09/24/160432/</guid>
+      <pubDate>Tue, 24 Sep 2024 08:04:32 GMT</pubDate>
+      
+        
+        
+          
+          
+      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
+          
+        
+      
+      
+      
+      
+      <category domain="https://hp-l.github.io/categories/%E7%90%86%E8%AE%BA/">理论</category>
+      
+      <category domain="https://hp-l.github.io/categories/%E7%90%86%E8%AE%BA/%E5%BA%94%E7%94%A8/">应用</category>
+      
+      <category domain="https://hp-l.github.io/categories/%E7%90%86%E8%AE%BA/%E5%BA%94%E7%94%A8/%E6%8A%98%E8%85%BE/">折腾</category>
+      
+      <category domain="https://hp-l.github.io/categories/%E7%90%86%E8%AE%BA/%E5%BA%94%E7%94%A8/%E6%8A%98%E8%85%BE/%E6%96%B9%E6%B3%95/">方法</category>
+      
+      <category domain="https://hp-l.github.io/categories/%E7%90%86%E8%AE%BA/%E5%BA%94%E7%94%A8/%E6%8A%98%E8%85%BE/%E6%96%B9%E6%B3%95/%E5%B7%A5%E5%85%B7/">工具</category>
+      
+      <category domain="https://hp-l.github.io/categories/%E7%90%86%E8%AE%BA/%E5%BA%94%E7%94%A8/%E6%8A%98%E8%85%BE/%E6%96%B9%E6%B3%95/%E5%B7%A5%E5%85%B7/%E4%BD%9C%E5%93%81/">作品</category>
+      
+      <category domain="https://hp-l.github.io/categories/%E7%90%86%E8%AE%BA/%E5%BA%94%E7%94%A8/%E6%8A%98%E8%85%BE/%E6%96%B9%E6%B3%95/%E5%B7%A5%E5%85%B7/%E4%BD%9C%E5%93%81/%E6%9D%82%E8%B0%88/">杂谈</category>
+      
+      <category domain="https://hp-l.github.io/categories/%E7%90%86%E8%AE%BA/%E5%BA%94%E7%94%A8/%E6%8A%98%E8%85%BE/%E6%96%B9%E6%B3%95/%E5%B7%A5%E5%85%B7/%E4%BD%9C%E5%93%81/%E6%9D%82%E8%B0%88/%E8%87%AA%E7%84%B6%E7%A7%91%E5%AD%A6/">自然科学</category>
+      
+      <category domain="https://hp-l.github.io/categories/%E7%90%86%E8%AE%BA/%E5%BA%94%E7%94%A8/%E6%8A%98%E8%85%BE/%E6%96%B9%E6%B3%95/%E5%B7%A5%E5%85%B7/%E4%BD%9C%E5%93%81/%E6%9D%82%E8%B0%88/%E8%87%AA%E7%84%B6%E7%A7%91%E5%AD%A6/%E5%85%B6%E4%BB%96/">其他</category>
+      
+      
+      <category domain="https://hp-l.github.io/tags/%E6%A0%87%E7%AD%BE/">标签</category>
+      
+      
+      <comments>https://hp-l.github.io/2024/09/24/160432/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>i5-8279U黑苹果配置记录</title>
@@ -566,35 +609,6 @@
       
       
       <comments>https://hp-l.github.io/2024/03/02/221707/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>SCT2650电源设计</title>
-      <link>https://hp-l.github.io/2024/03/01/091632/</link>
-      <guid>https://hp-l.github.io/2024/03/01/091632/</guid>
-      <pubDate>Fri, 01 Mar 2024 01:16:32 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E5%BA%94%E7%94%A8/">应用</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E4%B9%8B%E8%84%89%E7%BB%9C/">机器之脉络</category>
-      
-      <category domain="https://hp-l.github.io/tags/DCDC/">DCDC</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/03/01/091632/#disqus_thread</comments>
       
     </item>
     

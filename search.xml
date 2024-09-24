@@ -4,6 +4,47 @@
   
     
     <entry>
+      <title>博客添加音乐播放器</title>
+      <link href="/2024/09/24/160432/"/>
+      <url>/2024/09/24/160432/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="first_down"><p><div class="tag-plugin paper"><div class="content underline"><div class="title"><<<写在前面>>></div><div class="body"><div class="line"><p>正文写在前面</p></div></div><div class="footer"><div class="author-date"><span class="author">子书承宇</span></div></div></div></div></p></div><p>在footer-&gt;content下面添加，注意缩进</p><pre><code><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://zhuanlan.zhihu.com/p/538567487 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;aplayer&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> ap = <span class="keyword">new</span> <span class="title class_">APlayer</span></span></span><br><span class="line"><span class="language-javascript">    (&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">element</span>: <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;aplayer&quot;</span>),</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">fixed</span>: <span class="literal">true</span>,                <span class="comment">//是否附着页面底部，否为false</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">autoplay</span>: <span class="literal">true</span>,             <span class="comment">//是否自动播放，否为false,移动端不能生效</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">volume</span>: <span class="number">0.6</span>,                <span class="comment">//初始音量（0~1）</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">order</span>: <span class="string">&#x27;list&#x27;</span>,            <span class="comment">//音频循环顺序（&#x27;list&#x27;：顺序, &#x27;random&#x27;：随机）</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">preload</span>: <span class="string">&#x27;auto&#x27;</span>,            <span class="comment">//预加载（&#x27;none&#x27;：不预加载, &#x27;metadata&#x27;：元数据, &#x27;auto&#x27;：自动）</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">listFolded</span>: <span class="literal">true</span>,          <span class="comment">//列表默认折叠，开启为true</span></span></span><br><span class="line"><span class="language-javascript">    <span class="attr">audio</span>: [</span></span><br><span class="line"><span class="language-javascript">        &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">title</span>: <span class="string">&quot;Born a Stranger&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">author</span>: <span class="string">&quot;Kan R. Gao.&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">url</span>: <span class="string">&quot;/headimg/music/BornAStranger.mp3&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">pic</span>: <span class="string">&quot;/headimg/music/BornAStranger.webp&quot;</span></span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    ]</span></span><br><span class="line"><span class="language-javascript">    &#125;);</span></span><br><span class="line"><span class="language-javascript">    ap.<span class="title function_">init</span>();</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></code></pre><div id="first_down"><p><div class="tag-plugin paper"><div class="content underline"><div class="title"><<<之后的事>>></div><div class="body"><div class="line"><p>正文之后的事</p></div></div><div class="footer"><div class="author-date"><span class="author">子书承宇</span></div></div></div></div></p></div><!-- ## _还没写完.._ --><!-- Category：理论：理论知识技能，技术应用：应用笔记，实操折腾：折腾折腾折腾折腾！(其实属于应用，但就是玩！)方法：方法论（经验谈），如工程方法工具：针对具体工具的介绍、使用方法、分析适用场景等；使用工具如何如何解决具体问题，应该放在「应用」里作品：自己的作品（成品）、个人项目日志等杂谈：生活碎碎念自然科学：物理，化学，数学其他：没法分类的东西Tags细分领域：机器之脉络(硬件),机器之魂魄(嵌入式软件,机器学习，算法等),机器之骨骼(结构),形式：日志具体内容：个人作品、方法论、随笔语言：python C C# Java Html micropython 微信小程序IDE：Arduino CUBEIDE Vscode自然科学：代数 几何 概率 黑洞 白矮星 四维空间...IC OR IDE : STM32 ESP32 ESP8266 C51 树莓派 RK3399 野火开发版 MIQI模组：ws2812b系统：Linux Windows macOS openwrt Docker   termux游戏：MC博客：hexo 主题 魔改折腾系类：黑苹果，整服务器，termux -->]]></content>
+      
+      
+      <categories>
+          
+          <category> 理论 </category>
+          
+          <category> 应用 </category>
+          
+          <category> 折腾 </category>
+          
+          <category> 方法 </category>
+          
+          <category> 工具 </category>
+          
+          <category> 作品 </category>
+          
+          <category> 杂谈 </category>
+          
+          <category> 自然科学 </category>
+          
+          <category> 其他 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 标签 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>i5-8279U黑苹果配置记录</title>
       <link href="/2024/09/10/220243/"/>
       <url>/2024/09/10/220243/</url>
@@ -1044,9 +1085,9 @@
       
         <tags>
             
-            <tag> 机器之脉络 </tag>
-            
             <tag> mosfet </tag>
+            
+            <tag> 机器之脉络 </tag>
             
         </tags>
       
