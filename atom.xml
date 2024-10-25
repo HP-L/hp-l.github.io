@@ -3,19 +3,19 @@
   xmlns:atom="http://www.w3.org/2005/Atom"
   xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>子书承宇</title>
+    <title>子书沐晨</title>
     <link>https://hp-l.github.io/</link>
     
     <image>
       <url>https://hp-l.github.io/icon.png</url>
-      <title>子书承宇</title>
+      <title>子书沐晨</title>
       <link>https://hp-l.github.io/</link>
     </image>
     
     <atom:link href="https://hp-l.github.io/atom.xml" rel="self" type="application/rss+xml"/>
     
     <description>硬件</description>
-    <pubDate>Wed, 23 Oct 2024 09:47:40 GMT</pubDate>
+    <pubDate>Fri, 25 Oct 2024 05:15:01 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
