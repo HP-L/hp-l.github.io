@@ -26,7 +26,7 @@
       if (String(snum).length === 1) {
           snum = "0" + snum;
       }
-      document.getElementById("timeDate").innerHTML = "本站安全运行&nbsp" + years + "年 " + remainingDays + "天";
+      document.getElementById("timeDate").innerHTML = "本站安全运行&nbsp" + years + "&nbsp年&nbsp" + remainingDays + "&nbsp天&nbsp";
       document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
   }
 
