@@ -12,7 +12,7 @@ const util = {
 
 
     // https://xingwangzhe.fun/posts/56845/#more
-    var encodedValidDomain = 'aHAtbC5naXRodWIuaW8='; // base64加密后的域名  
+    var encodedValidDomain = 'emlzaHUuaXMtY29vbC5kZXY='; // base64加密后的域名  
     var encodedredirectUrl = 'aHR0cHM6Ly96aXNodS5pcy1jb29sLmRldi8='; // base64加密后的链接，包含协议头  
     var decodedValidDomain = atob(encodedValidDomain);  
     var redirectUrl = atob(encodedredirectUrl);  
