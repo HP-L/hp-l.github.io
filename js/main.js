@@ -10,6 +10,47 @@ const util = {
     const hour = minute * 60
     const day = hour * 24
 
+
+    // https://xingwangzhe.fun/posts/56845/#more
+    var encodedValidDomain = 'aHAtbC5naXRodWIuaW8='; // base64加密后的域名  
+    var encodedredirectUrl = 'aHR0cHM6Ly96aXNodS5pcy1jb29sLmRldi8='; // base64加密后的链接，包含协议头  
+    var decodedValidDomain = atob(encodedValidDomain);  
+    var redirectUrl = atob(encodedredirectUrl);  
+    var hostname = document.location.hostname;  
+  
+    // 创建提示信息的div  
+    function showWarningMessage(message, delay) {  
+        var messageDiv = document.createElement('div');  
+        messageDiv.style.position = 'fixed';  
+        messageDiv.style.top = '50%';  
+        messageDiv.style.left = '50%';  
+        messageDiv.style.transform = 'translate(-50%, -50%)';  
+        messageDiv.style.padding = '20px';  
+        messageDiv.style.backgroundColor = 'red';  
+        messageDiv.style.color = 'white';  
+        messageDiv.style.zIndex = '9999';  
+        messageDiv.style.borderRadius = '10px'; // 添加这一行设置圆角，这里圆角半径为10px，可根据需要修改
+        messageDiv.style.fontWeight = 'bold'; // 添加这一行使字体加粗
+        messageDiv.style.opacity = '0.2'; // 添加这一行设置透明度，这里透明度值为0.8，可根据需要修改
+        messageDiv.innerText = message;  
+  
+        document.body.appendChild(messageDiv);  
+  
+        // 设置延时后移除提示信息并跳转  
+        setTimeout(function() {  
+            document.body.removeChild(messageDiv);  
+            window.location.replace(redirectUrl);  
+        }, delay);  
+    }  
+     if (hostname.includes('localhost') || hostname.includes('127.0.0.1')) {  
+         return; // 退出函数，不执行后续代码  
+     }  
+  
+    if (hostname !== decodedValidDomain) {  
+        // 显示提示信息，并在6秒后自动跳转  
+        showWarningMessage("⚠️ 警告：源站提醒您，当前浏览的页面非官方页面，可能存在有害信息！您将被自动跳转至官方页面。", 6000);  
+    }  
+
     let result
     if (more) {
       const dayCount = dateDiff / day
