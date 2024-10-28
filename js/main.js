@@ -17,8 +17,8 @@ const util = {
     var decodedValidDomain = atob(encodedValidDomain);  
     var redirectUrl = atob(encodedredirectUrl);  
     var hostname = document.location.hostname;
-    console.log (hostname);  
-    setTimeout(1000*60)
+    console.log(hostname);
+    setTimeout(1000*30);
   
     // 创建提示信息的div  
     function showWarningMessage(message, delay) {  
