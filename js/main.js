@@ -16,7 +16,9 @@ const util = {
     var encodedredirectUrl = 'aHR0cHM6Ly96aXNodS5pcy1jb29sLmRldg=='; // base64加密后的链接，包含协议头  
     var decodedValidDomain = atob(encodedValidDomain);  
     var redirectUrl = atob(encodedredirectUrl);  
-    var hostname = document.location.hostname;  
+    var hostname = document.location.hostname;
+    console.log (hostname);  
+    setTimeout(1000*60)
   
     // 创建提示信息的div  
     function showWarningMessage(message, delay) {  
