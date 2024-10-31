@@ -1,602 +1,565 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"
-  xmlns:atom="http://www.w3.org/2005/Atom"
-  xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>子书沐晨</title>
-    <link>https://hp-l.github.io/</link>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>子书沐晨</title>
+  <icon>https://hp-l.github.io/headimg/icon1.png</icon>
+  
+  <link href="https://hp-l.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://hp-l.github.io/"/>
+  <updated>2024-10-31T01:41:02.811Z</updated>
+  <id>https://hp-l.github.io/</id>
+  
+  <author>
+    <name>子书沐晨</name>
     
-    <image>
-      <url>https://hp-l.github.io/icon.png</url>
-      <title>子书沐晨</title>
-      <link>https://hp-l.github.io/</link>
-    </image>
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>初识博弈论</title>
+    <link href="https://hp-l.github.io/2024/10/29/081414/"/>
+    <id>https://hp-l.github.io/2024/10/29/081414/</id>
+    <published>2024-10-29T00:14:14.000Z</published>
+    <updated>2024-10-31T01:41:02.811Z</updated>
     
-    <atom:link href="https://hp-l.github.io/atom.xml" rel="self" type="application/rss+xml"/>
     
-    <description>硬件</description>
-    <pubDate>Thu, 31 Oct 2024 01:41:02 GMT</pubDate>
-    <generator>http://hexo.io/</generator>
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
     
-    <item>
-      <title>初识博弈论</title>
-      <link>https://hp-l.github.io/2024/10/29/081414/</link>
-      <guid>https://hp-l.github.io/2024/10/29/081414/</guid>
-      <pubDate>Tue, 29 Oct 2024 00:14:14 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E7%A4%BE%E4%BC%9A%E7%A7%91%E5%AD%A6/">社会科学</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6/">经济学</category>
-      
-      <category domain="https://hp-l.github.io/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/">博弈论</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/10/29/081414/#disqus_thread</comments>
-      
-    </item>
     
-    <item>
-      <title>电子显微镜图像优化代码记录</title>
-      <link>https://hp-l.github.io/2024/10/23/163016/</link>
-      <guid>https://hp-l.github.io/2024/10/23/163016/</guid>
-      <pubDate>Wed, 23 Oct 2024 08:30:16 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E5%BA%94%E7%94%A8/">应用</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/OpenCV/">OpenCV</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/10/23/163016/#disqus_thread</comments>
-      
-    </item>
     
-    <item>
-      <title>OC引导的一些优化</title>
-      <link>https://hp-l.github.io/2024/10/21/110234/</link>
-      <guid>https://hp-l.github.io/2024/10/21/110234/</guid>
-      <pubDate>Mon, 21 Oct 2024 03:02:34 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E6%8A%98%E8%85%BE/">折腾</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/opencore/">opencore</category>
-      
-      <category domain="https://hp-l.github.io/tags/boot/">boot</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/10/21/110234/#disqus_thread</comments>
-      
-    </item>
+    <category term="社会科学" scheme="https://hp-l.github.io/categories/%E7%A4%BE%E4%BC%9A%E7%A7%91%E5%AD%A6/"/>
     
-    <item>
-      <title>DCDC电路学习笔记</title>
-      <link>https://hp-l.github.io/2024/09/25/163349/</link>
-      <guid>https://hp-l.github.io/2024/09/25/163349/</guid>
-      <pubDate>Wed, 25 Sep 2024 08:33:49 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E7%90%86%E8%AE%BA/">理论</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/BUCK/">BUCK</category>
-      
-      <category domain="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E4%B9%8B%E8%84%89%E7%BB%9C/">机器之脉络</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/09/25/163349/#disqus_thread</comments>
-      
-    </item>
     
-    <item>
-      <title>i5-8279U黑苹果配置记录</title>
-      <link>https://hp-l.github.io/2024/09/10/220243/</link>
-      <guid>https://hp-l.github.io/2024/09/10/220243/</guid>
-      <pubDate>Tue, 10 Sep 2024 14:02:43 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E6%8A%98%E8%85%BE/">折腾</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/">黑苹果</category>
-      
-      <category domain="https://hp-l.github.io/tags/macOS/">macOS</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/09/10/220243/#disqus_thread</comments>
-      
-    </item>
+    <category term="经济学" scheme="https://hp-l.github.io/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
     
-    <item>
-      <title>注册机出现cannot retrieve MAC addre</title>
-      <link>https://hp-l.github.io/2024/07/28/090828/</link>
-      <guid>https://hp-l.github.io/2024/07/28/090828/</guid>
-      <pubDate>Sun, 28 Jul 2024 01:08:28 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E5%B7%A5%E5%85%B7/">工具</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/%E6%B3%A8%E5%86%8C%E6%9C%BA/">注册机</category>
-      
-      <category domain="https://hp-l.github.io/tags/%E7%A0%B4%E8%A7%A3/">破解</category>
-      
-      <category domain="https://hp-l.github.io/tags/mac%E5%9C%B0%E5%9D%80/">mac地址</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/07/28/090828/#disqus_thread</comments>
-      
-    </item>
+    <category term="博弈论" scheme="https://hp-l.github.io/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
     
-    <item>
-      <title>机器之眼的视神经--卷积算法</title>
-      <link>https://hp-l.github.io/2024/07/14/220529/</link>
-      <guid>https://hp-l.github.io/2024/07/14/220529/</guid>
-      <pubDate>Sun, 14 Jul 2024 14:05:29 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E7%90%86%E8%AE%BA/">理论</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/%E5%8D%B7%E7%A7%AF/">卷积</category>
-      
-      <category domain="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/">机器视觉</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/07/14/220529/#disqus_thread</comments>
-      
-    </item>
+  </entry>
+  
+  <entry>
+    <title>电子显微镜图像优化代码记录</title>
+    <link href="https://hp-l.github.io/2024/10/23/163016/"/>
+    <id>https://hp-l.github.io/2024/10/23/163016/</id>
+    <published>2024-10-23T08:30:16.000Z</published>
+    <updated>2024-10-31T01:40:57.894Z</updated>
     
-    <item>
-      <title>kindle 越狱+插件安装</title>
-      <link>https://hp-l.github.io/2024/07/10/143551/</link>
-      <guid>https://hp-l.github.io/2024/07/10/143551/</guid>
-      <pubDate>Wed, 10 Jul 2024 06:35:51 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E6%8A%98%E8%85%BE/">折腾</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/kindle/">kindle</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/07/10/143551/#disqus_thread</comments>
-      
-    </item>
     
-    <item>
-      <title>Image转RGB565工具</title>
-      <link>https://hp-l.github.io/2024/07/09/115544/</link>
-      <guid>https://hp-l.github.io/2024/07/09/115544/</guid>
-      <pubDate>Tue, 09 Jul 2024 03:55:44 GMT</pubDate>
+      
       
         
         
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
         
       
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E5%B7%A5%E5%85%B7/">工具</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/RGB565/">RGB565</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/07/09/115544/#disqus_thread</comments>
-      
-    </item>
     
-    <item>
-      <title>DIY PC机副屏</title>
-      <link>https://hp-l.github.io/2024/07/01/184130/</link>
-      <guid>https://hp-l.github.io/2024/07/01/184130/</guid>
-      <pubDate>Mon, 01 Jul 2024 10:41:30 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E4%BD%9C%E5%93%81/">作品</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/ESP8266/">ESP8266</category>
-      
-      <category domain="https://hp-l.github.io/tags/STM32/">STM32</category>
-      
-      <category domain="https://hp-l.github.io/tags/HAL/">HAL</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/07/01/184130/#disqus_thread</comments>
-      
-    </item>
     
-    <item>
-      <title>ADC上是否要加旁路电容</title>
-      <link>https://hp-l.github.io/2024/05/08/054333/</link>
-      <guid>https://hp-l.github.io/2024/05/08/054333/</guid>
-      <pubDate>Tue, 07 May 2024 21:43:33 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E5%BA%94%E7%94%A8/">应用</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/ADC/">ADC</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/05/08/054333/#disqus_thread</comments>
-      
-    </item>
     
-    <item>
-      <title>DIY 联网RGB万年历</title>
-      <link>https://hp-l.github.io/2024/05/04/152534/</link>
-      <guid>https://hp-l.github.io/2024/05/04/152534/</guid>
-      <pubDate>Sat, 04 May 2024 07:25:34 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E4%BD%9C%E5%93%81/">作品</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E4%B9%8B%E8%84%89%E7%BB%9C/">机器之脉络</category>
-      
-      <category domain="https://hp-l.github.io/tags/ws2812b/">ws2812b</category>
-      
-      <category domain="https://hp-l.github.io/tags/esp8266/">esp8266</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/05/04/152534/#disqus_thread</comments>
-      
-    </item>
+    <category term="应用" scheme="https://hp-l.github.io/categories/%E5%BA%94%E7%94%A8/"/>
     
-    <item>
-      <title>蒸汽核心能源卡诞生日</title>
-      <link>https://hp-l.github.io/2024/04/27/233524/</link>
-      <guid>https://hp-l.github.io/2024/04/27/233524/</guid>
-      <pubDate>Sat, 27 Apr 2024 15:35:24 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E4%BD%9C%E5%93%81/">作品</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E4%B9%8B%E8%84%89%E7%BB%9C/">机器之脉络</category>
-      
-      <category domain="https://hp-l.github.io/tags/bq24610/">bq24610</category>
-      
-      <category domain="https://hp-l.github.io/tags/PMIC/">PMIC</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/04/27/233524/#disqus_thread</comments>
-      
-    </item>
     
-    <item>
-      <title>kivy制作跨平台软件</title>
-      <link>https://hp-l.github.io/2024/04/24/131251/</link>
-      <guid>https://hp-l.github.io/2024/04/24/131251/</guid>
-      <pubDate>Wed, 24 Apr 2024 05:12:51 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E5%BA%94%E7%94%A8/">应用</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/python/">python</category>
-      
-      <category domain="https://hp-l.github.io/tags/kivy/">kivy</category>
-      
-      <category domain="https://hp-l.github.io/tags/%E5%A4%9A%E5%B9%B3%E5%8F%B0/">多平台</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/04/24/131251/#disqus_thread</comments>
-      
-    </item>
+    <category term="OpenCV" scheme="https://hp-l.github.io/tags/OpenCV/"/>
     
-    <item>
-      <title>beeware 参考</title>
-      <link>https://hp-l.github.io/2024/04/23/181716/</link>
-      <guid>https://hp-l.github.io/2024/04/23/181716/</guid>
-      <pubDate>Tue, 23 Apr 2024 10:17:16 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E5%B7%A5%E5%85%B7/">工具</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/python/">python</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/04/23/181716/#disqus_thread</comments>
-      
-    </item>
+  </entry>
+  
+  <entry>
+    <title>OC引导的一些优化</title>
+    <link href="https://hp-l.github.io/2024/10/21/110234/"/>
+    <id>https://hp-l.github.io/2024/10/21/110234/</id>
+    <published>2024-10-21T03:02:34.000Z</published>
+    <updated>2024-10-31T01:40:46.651Z</updated>
     
-    <item>
-      <title>【转载】BQ24610锂电池充电方案 PWM直流脉冲充电</title>
-      <link>https://hp-l.github.io/2024/04/09/091750/</link>
-      <guid>https://hp-l.github.io/2024/04/09/091750/</guid>
-      <pubDate>Tue, 09 Apr 2024 01:17:50 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E7%90%86%E8%AE%BA/">理论</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E4%B9%8B%E8%84%89%E7%BB%9C/">机器之脉络</category>
-      
-      <category domain="https://hp-l.github.io/tags/BQ24610/">BQ24610</category>
-      
-      <category domain="https://hp-l.github.io/tags/%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86/">电源管理</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/04/09/091750/#disqus_thread</comments>
-      
-    </item>
     
-    <item>
-      <title>STM32 HAL DHT11</title>
-      <link>https://hp-l.github.io/2024/03/22/201232/</link>
-      <guid>https://hp-l.github.io/2024/03/22/201232/</guid>
-      <pubDate>Fri, 22 Mar 2024 12:12:32 GMT</pubDate>
+      
       
         
         
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
         
       
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E5%BA%94%E7%94%A8/">应用</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/dht11/">dht11</category>
-      
-      <category domain="https://hp-l.github.io/tags/stm32/">stm32</category>
-      
-      <category domain="https://hp-l.github.io/tags/cubeide/">cubeide</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/03/22/201232/#disqus_thread</comments>
-      
-    </item>
     
-    <item>
-      <title>章节1-新鼹纪</title>
-      <link>https://hp-l.github.io/2024/03/21/133539/</link>
-      <guid>https://hp-l.github.io/2024/03/21/133539/</guid>
-      <pubDate>Thu, 21 Mar 2024 05:35:39 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E6%9D%82%E8%B0%88/">杂谈</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/%E7%A7%91%E5%B9%BB%E9%9A%8F%E6%83%B3/">科幻随想</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/03/21/133539/#disqus_thread</comments>
-      
-    </item>
     
-    <item>
-      <title>git图形化工具</title>
-      <link>https://hp-l.github.io/2024/03/20/192156/</link>
-      <guid>https://hp-l.github.io/2024/03/20/192156/</guid>
-      <pubDate>Wed, 20 Mar 2024 11:21:56 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E5%B7%A5%E5%85%B7/">工具</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/git/">git</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/03/20/192156/#disqus_thread</comments>
-      
-    </item>
     
-    <item>
-      <title>arduino使用TFT_eSPI库(ST7735)</title>
-      <link>https://hp-l.github.io/2024/03/14/082156/</link>
-      <guid>https://hp-l.github.io/2024/03/14/082156/</guid>
-      <pubDate>Thu, 14 Mar 2024 00:21:56 GMT</pubDate>
-      
-        
-        
-          
-          
-      <description>&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</description>
-          
-        
-      
-      
-      
-      
-      <category domain="https://hp-l.github.io/categories/%E5%BA%94%E7%94%A8/">应用</category>
-      
-      
-      <category domain="https://hp-l.github.io/tags/arduino/">arduino</category>
-      
-      <category domain="https://hp-l.github.io/tags/C/">C++</category>
-      
-      
-      <comments>https://hp-l.github.io/2024/03/14/082156/#disqus_thread</comments>
-      
-    </item>
+    <category term="折腾" scheme="https://hp-l.github.io/categories/%E6%8A%98%E8%85%BE/"/>
     
-  </channel>
-</rss>
+    
+    <category term="opencore" scheme="https://hp-l.github.io/tags/opencore/"/>
+    
+    <category term="boot" scheme="https://hp-l.github.io/tags/boot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DCDC电路学习笔记</title>
+    <link href="https://hp-l.github.io/2024/09/25/163349/"/>
+    <id>https://hp-l.github.io/2024/09/25/163349/</id>
+    <published>2024-09-25T08:33:49.000Z</published>
+    <updated>2024-10-31T01:35:46.416Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="理论" scheme="https://hp-l.github.io/categories/%E7%90%86%E8%AE%BA/"/>
+    
+    
+    <category term="BUCK" scheme="https://hp-l.github.io/tags/BUCK/"/>
+    
+    <category term="机器之脉络" scheme="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E4%B9%8B%E8%84%89%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>i5-8279U黑苹果配置记录</title>
+    <link href="https://hp-l.github.io/2024/09/10/220243/"/>
+    <id>https://hp-l.github.io/2024/09/10/220243/</id>
+    <published>2024-09-10T14:02:43.000Z</published>
+    <updated>2024-10-31T01:35:46.431Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://hp-l.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="黑苹果" scheme="https://hp-l.github.io/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/"/>
+    
+    <category term="macOS" scheme="https://hp-l.github.io/tags/macOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>注册机出现cannot retrieve MAC addre</title>
+    <link href="https://hp-l.github.io/2024/07/28/090828/"/>
+    <id>https://hp-l.github.io/2024/07/28/090828/</id>
+    <published>2024-07-28T01:08:28.000Z</published>
+    <updated>2024-10-31T01:35:46.440Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="工具" scheme="https://hp-l.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="注册机" scheme="https://hp-l.github.io/tags/%E6%B3%A8%E5%86%8C%E6%9C%BA/"/>
+    
+    <category term="破解" scheme="https://hp-l.github.io/tags/%E7%A0%B4%E8%A7%A3/"/>
+    
+    <category term="mac地址" scheme="https://hp-l.github.io/tags/mac%E5%9C%B0%E5%9D%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器之眼的视神经--卷积算法</title>
+    <link href="https://hp-l.github.io/2024/07/14/220529/"/>
+    <id>https://hp-l.github.io/2024/07/14/220529/</id>
+    <published>2024-07-14T14:05:29.000Z</published>
+    <updated>2024-10-31T01:35:46.442Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="理论" scheme="https://hp-l.github.io/categories/%E7%90%86%E8%AE%BA/"/>
+    
+    
+    <category term="卷积" scheme="https://hp-l.github.io/tags/%E5%8D%B7%E7%A7%AF/"/>
+    
+    <category term="机器视觉" scheme="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>kindle 越狱+插件安装</title>
+    <link href="https://hp-l.github.io/2024/07/10/143551/"/>
+    <id>https://hp-l.github.io/2024/07/10/143551/</id>
+    <published>2024-07-10T06:35:51.000Z</published>
+    <updated>2024-10-31T01:35:46.431Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="折腾" scheme="https://hp-l.github.io/categories/%E6%8A%98%E8%85%BE/"/>
+    
+    
+    <category term="kindle" scheme="https://hp-l.github.io/tags/kindle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Image转RGB565工具</title>
+    <link href="https://hp-l.github.io/2024/07/09/115544/"/>
+    <id>https://hp-l.github.io/2024/07/09/115544/</id>
+    <published>2024-07-09T03:55:44.000Z</published>
+    <updated>2024-07-10T11:49:38.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="工具" scheme="https://hp-l.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="RGB565" scheme="https://hp-l.github.io/tags/RGB565/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DIY PC机副屏</title>
+    <link href="https://hp-l.github.io/2024/07/01/184130/"/>
+    <id>https://hp-l.github.io/2024/07/01/184130/</id>
+    <published>2024-07-01T10:41:30.000Z</published>
+    <updated>2024-10-31T01:35:46.442Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="作品" scheme="https://hp-l.github.io/categories/%E4%BD%9C%E5%93%81/"/>
+    
+    
+    <category term="ESP8266" scheme="https://hp-l.github.io/tags/ESP8266/"/>
+    
+    <category term="STM32" scheme="https://hp-l.github.io/tags/STM32/"/>
+    
+    <category term="HAL" scheme="https://hp-l.github.io/tags/HAL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ADC上是否要加旁路电容</title>
+    <link href="https://hp-l.github.io/2024/05/08/054333/"/>
+    <id>https://hp-l.github.io/2024/05/08/054333/</id>
+    <published>2024-05-07T21:43:33.000Z</published>
+    <updated>2024-10-31T01:35:46.416Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="应用" scheme="https://hp-l.github.io/categories/%E5%BA%94%E7%94%A8/"/>
+    
+    
+    <category term="ADC" scheme="https://hp-l.github.io/tags/ADC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DIY 联网RGB万年历</title>
+    <link href="https://hp-l.github.io/2024/05/04/152534/"/>
+    <id>https://hp-l.github.io/2024/05/04/152534/</id>
+    <published>2024-05-04T07:25:34.000Z</published>
+    <updated>2024-10-31T01:35:46.438Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="作品" scheme="https://hp-l.github.io/categories/%E4%BD%9C%E5%93%81/"/>
+    
+    
+    <category term="机器之脉络" scheme="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E4%B9%8B%E8%84%89%E7%BB%9C/"/>
+    
+    <category term="ws2812b" scheme="https://hp-l.github.io/tags/ws2812b/"/>
+    
+    <category term="esp8266" scheme="https://hp-l.github.io/tags/esp8266/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>蒸汽核心能源卡诞生日</title>
+    <link href="https://hp-l.github.io/2024/04/27/233524/"/>
+    <id>https://hp-l.github.io/2024/04/27/233524/</id>
+    <published>2024-04-27T15:35:24.000Z</published>
+    <updated>2024-10-31T01:35:46.440Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="作品" scheme="https://hp-l.github.io/categories/%E4%BD%9C%E5%93%81/"/>
+    
+    
+    <category term="机器之脉络" scheme="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E4%B9%8B%E8%84%89%E7%BB%9C/"/>
+    
+    <category term="bq24610" scheme="https://hp-l.github.io/tags/bq24610/"/>
+    
+    <category term="PMIC" scheme="https://hp-l.github.io/tags/PMIC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>kivy制作跨平台软件</title>
+    <link href="https://hp-l.github.io/2024/04/24/131251/"/>
+    <id>https://hp-l.github.io/2024/04/24/131251/</id>
+    <published>2024-04-24T05:12:51.000Z</published>
+    <updated>2024-04-30T04:32:51.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="应用" scheme="https://hp-l.github.io/categories/%E5%BA%94%E7%94%A8/"/>
+    
+    
+    <category term="python" scheme="https://hp-l.github.io/tags/python/"/>
+    
+    <category term="kivy" scheme="https://hp-l.github.io/tags/kivy/"/>
+    
+    <category term="多平台" scheme="https://hp-l.github.io/tags/%E5%A4%9A%E5%B9%B3%E5%8F%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>beeware 参考</title>
+    <link href="https://hp-l.github.io/2024/04/23/181716/"/>
+    <id>https://hp-l.github.io/2024/04/23/181716/</id>
+    <published>2024-04-23T10:17:16.000Z</published>
+    <updated>2024-04-30T04:32:51.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="工具" scheme="https://hp-l.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="python" scheme="https://hp-l.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【转载】BQ24610锂电池充电方案 PWM直流脉冲充电</title>
+    <link href="https://hp-l.github.io/2024/04/09/091750/"/>
+    <id>https://hp-l.github.io/2024/04/09/091750/</id>
+    <published>2024-04-09T01:17:50.000Z</published>
+    <updated>2024-10-29T12:46:24.592Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="理论" scheme="https://hp-l.github.io/categories/%E7%90%86%E8%AE%BA/"/>
+    
+    
+    <category term="机器之脉络" scheme="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E4%B9%8B%E8%84%89%E7%BB%9C/"/>
+    
+    <category term="BQ24610" scheme="https://hp-l.github.io/tags/BQ24610/"/>
+    
+    <category term="电源管理" scheme="https://hp-l.github.io/tags/%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>STM32 HAL DHT11</title>
+    <link href="https://hp-l.github.io/2024/03/22/201232/"/>
+    <id>https://hp-l.github.io/2024/03/22/201232/</id>
+    <published>2024-03-22T12:12:32.000Z</published>
+    <updated>2024-04-30T04:32:51.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="应用" scheme="https://hp-l.github.io/categories/%E5%BA%94%E7%94%A8/"/>
+    
+    
+    <category term="dht11" scheme="https://hp-l.github.io/tags/dht11/"/>
+    
+    <category term="stm32" scheme="https://hp-l.github.io/tags/stm32/"/>
+    
+    <category term="cubeide" scheme="https://hp-l.github.io/tags/cubeide/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>章节1-新鼹纪</title>
+    <link href="https://hp-l.github.io/2024/03/21/133539/"/>
+    <id>https://hp-l.github.io/2024/03/21/133539/</id>
+    <published>2024-03-21T05:35:39.000Z</published>
+    <updated>2024-04-30T04:32:51.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="杂谈" scheme="https://hp-l.github.io/categories/%E6%9D%82%E8%B0%88/"/>
+    
+    
+    <category term="科幻随想" scheme="https://hp-l.github.io/tags/%E7%A7%91%E5%B9%BB%E9%9A%8F%E6%83%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git图形化工具</title>
+    <link href="https://hp-l.github.io/2024/03/20/192156/"/>
+    <id>https://hp-l.github.io/2024/03/20/192156/</id>
+    <published>2024-03-20T11:21:56.000Z</published>
+    <updated>2024-04-30T04:32:51.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="工具" scheme="https://hp-l.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="git" scheme="https://hp-l.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>arduino使用TFT_eSPI库(ST7735)</title>
+    <link href="https://hp-l.github.io/2024/03/14/082156/"/>
+    <id>https://hp-l.github.io/2024/03/14/082156/</id>
+    <published>2024-03-14T00:21:56.000Z</published>
+    <updated>2024-10-28T10:34:05.563Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="应用" scheme="https://hp-l.github.io/categories/%E5%BA%94%E7%94%A8/"/>
+    
+    
+    <category term="arduino" scheme="https://hp-l.github.io/tags/arduino/"/>
+    
+    <category term="C++" scheme="https://hp-l.github.io/tags/C/"/>
+    
+  </entry>
+  
+  
+<follow_challenge>
+    <feedId>74637585263306752</feedId>
+    <userId>73742188182712320</userId>
+</follow_challenge>
+
+</feed>
