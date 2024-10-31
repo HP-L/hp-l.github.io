@@ -142,14 +142,13 @@ img.onload = function () {
 }
 
 function stopp() {
-    if (staticx) {
         var child = document.getElementById("canvas_sakura");
         child.parentNode.removeChild(child);
         window.cancelAnimationFrame(stop);
         staticx = false;
-    } else {
+}
+function startt() {
         startSakura();
-    }
 }
 
 function change(flag) {
