@@ -138,18 +138,21 @@ window.onresize = function () {
     var canvasSnow = document.getElementById('canvas_snow');
 }
 img.onload = function () {
-    startSakura();
+    // startSakura();
 }
 
 function stopp() {
-    if (staticx) {
+    
         var child = document.getElementById("canvas_sakura");
         child.parentNode.removeChild(child);
         window.cancelAnimationFrame(stop);
         staticx = false;
-    } else {
+        
+}
+function startt() {
+    
         startSakura();
-    }
+        
 }
 
 function change(flag) {
@@ -162,3 +165,55 @@ function change(flag) {
 
 
 }
+
+
+const applySakuraTheme = (theme) => {
+    // light -> dark -> auto -> light -> ...
+    switch (theme) {
+      case 'true':
+        startt()
+        break
+      case 'false':
+        stopp()
+        break
+      default:
+        startt()
+    }
+}
+
+const switchThemeSakura = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = localStorage.getItem('theSakura.theme')
+    //console.log("theSakura is "+currentTheme)
+    let newTheme;
+    switch (currentTheme) {
+      case 'true':
+        newTheme = 'false'
+        break
+      case 'false':
+        newTheme = 'true'
+        break
+      default:
+        newTheme = 'true'
+    }
+    applySakuraTheme(newTheme)
+    localStorage.setItem('theSakura.theme', newTheme)
+    //console.log("newTheme is "+newTheme)
+
+}
+
+
+(() => {
+    
+    const theSakura = localStorage.getItem('theSakura.theme')
+
+    //console.log("theSakura is "+theSakura)
+
+    if (theSakura !== null) {
+      applySakuraTheme(theSakura)
+    }else if (theSakura === null){
+        applySakuraTheme(true)
+        localStorage.setItem('theSakura.theme', 'true')
+    }
+    
+  })()
