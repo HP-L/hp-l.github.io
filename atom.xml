@@ -7,7 +7,7 @@
   <link href="https://hp-l.github.io/atom.xml" rel="self"/>
   
   <link href="https://hp-l.github.io/"/>
-  <updated>2024-10-31T08:55:00.916Z</updated>
+  <updated>2024-11-01T04:14:26.584Z</updated>
   <id>https://hp-l.github.io/</id>
   
   <author>
@@ -19,12 +19,12 @@
   
   <entry>
     <title>WeekNote 2024 Week 44</title>
-    <link href="https://hp-l.github.io/2024/10/30/100624/"/>
-    <id>https://hp-l.github.io/2024/10/30/100624/</id>
-    <published>2024-10-30T02:06:24.000Z</published>
-    <updated>2024-10-31T08:55:00.916Z</updated>
+    <link href="https://hp-l.github.io/2024/11/01/110624/"/>
+    <id>https://hp-l.github.io/2024/11/01/110624/</id>
+    <published>2024-11-01T03:06:24.000Z</published>
+    <updated>2024-11-01T04:14:26.584Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="first_down"><p><div class="tag-plugin paper"><div class="content underline"><div class="title"><<<写在前面>>></div><div class="body"><div class="line"><p>岁月当歌，人生几何。一生的时间对于浩瀚宇宙来说只是沧海一粟，珍惜当下，每一群伙伴，每一个眼神，每一个瞬间，每一道风景。一周一记，记录岁月流逝的痕迹。</p></div></div><div class="footer"><div class="author-date"><span class="author">Phosphine</span><span class="date">二〇二四年十月三十一日『第四十四周』</span></div></div></div></div></p></div><div id="first_down"><p><p>啰嗦两句，在众多包括但不限于我友链页面朋友的影响下，于 2024-10-28 决定开始记录周记，后续周记以年份 + 本年第 N 周为标题，可在专栏 topic 页面查看。</p><h2 id="盆架子树"><a class="markdownIt-Anchor" href="#盆架子树"></a> 盆架子树</h2><p>终于，它的花期过了。盆架树（Alstonia rostrata C. E. C. Fisch.）是夹竹桃科鸡骨常山属常绿乔木。花香极具穿透力，戴上口罩也于事无补。实在是受不了它的花香，每晚回家走过的每一条街道，都能闻到。每天回家路上头晕晕的<span class="tag-plugin emoji"><img no-lazy="" class="inline" src="https://gcore.jsdelivr.net/gh/norevi/waline-blobcatemojis@1.0/blobs/blobcatdead.png"/></span>，我想大多数人都是这样吧。</p><div class="tag-plugin image"><div class="image-bg" style="padding:16px;"><img src="https://p9.itc.cn/images01/20210826/f8d77260d73a4633933c2f2b08c35b56.png" data-fancybox="true" style="width:400px;"/></div></div><h2 id="-swig4-"><a class="markdownIt-Anchor" href="#-swig4-"></a> <mark class="tag-plugin colorful mark" color="error">Error</mark></h2><p>快被这个 RK3288 的板子搞崩溃了啊啊。今年上半年从咸鱼淘来的小垃圾，性能平替树莓派3B-2G版本的小开发版。make install回车，然后就<mark class="tag-plugin colorful mark" color="error">Error</mark> <mark class="tag-plugin colorful mark" color="error">Error</mark>  还是 <mark class="tag-plugin colorful mark" color="error">Error</mark>  (╥﹏╥)，上一次这么痛苦的时候还是在上一次（其实忘了，属于是好了伤疤忘了疼），十几年前的芯片资料真的太少了，网上成品虽然能用，但 docker 无法部署，提示运行OCI失败，找不到设备<code>/dev/mqueue</code>，无法挂载，搜索好像说内核配置有问题。</p><div class="tag-plugin image"><div class="image-bg" style="padding:16px;"><img src="/headimg/weeknote/202444_2.png" data-fancybox="true" style="width:400px;"/></div></div><h2 id="插座哭了"><a class="markdownIt-Anchor" href="#插座哭了"></a> 插座哭了</h2><p>插座哭了，声音很大，突如其来，火光四溅，当时的我就背对着它。物业来看时说，可能是锡丝短接了插座，实在恐怖，试想如果没人看到，会不会引起火灾。</p><div class="tag-plugin image"><div class="image-bg" style="padding:16px;"><img src="/headimg/weeknote/202444_1.png" data-fancybox="true" style="width:400px;"/></div></div><h2 id="-swig10-"><a class="markdownIt-Anchor" href="#-swig10-"></a> <span class="tag-plugin emoji"><img no-lazy="" class="inline" src="https://gcore.jsdelivr.net/gh/norevi/waline-blobcatemojis@1.0/blobs/blobcatgooglytrash.png"/></span></h2><p>最近癫癫的，可能是看博弈论和经济学书籍的缘故吧，看到商店打特价就在想：嗯，这是一种价格歧视，社会福利上升，大家都付出了自己认为值得的成本；出地铁站时排队过刷卡机，又在想：长队伍通道不一定不好，人短队伍通道也许反而等你走到，开始排队的时候有，队伍可能比之前人多的队伍更多，随机选择可能得到个体利益最大化，整体最终达到一种纳什均衡…完了完了，大脑开始不听使唤了</p><h2 id="老旧坏机拯救计划"><a class="markdownIt-Anchor" href="#老旧坏机拯救计划"></a> 老旧坏机拯救计划</h2><p>手上的老手机又罢工了，拆开一查电池问题，换一个轻松点亮。换电池的时候索性全部拆开，看一看手机的五脏六腑，中间的图二就是主板，硅脂下面就是大脑（CPU）</p><div class="tag-plugin gallery grid-box" size="l" ratio="square"><div class="grid-cell"><img data-fancybox="gallery-1" src="/headimg/weeknote/202444_3.jpg" alt="我是图一"/><div class="image-meta"><span class="image-caption">我是图一</span></div></div><div class="grid-cell"><img data-fancybox="gallery-1" src="/headimg/weeknote/202444_4.jpg" alt="我是图二"/><div class="image-meta"><span class="image-caption">我是图二</span></div></div><div class="grid-cell"><img data-fancybox="gallery-1" src="/headimg/weeknote/202444_5.jpg" alt="我是图三"/><div class="image-meta"><span class="image-caption">我是图三</span></div></div></div></p></div>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="first_down"><p><div class="tag-plugin paper"><div class="content underline"><div class="title"><<<写在前面>>></div><div class="body"><div class="line"><p>岁月当歌，人生几何。一生的时间对于浩瀚宇宙来说只是沧海一粟，珍惜当下，每一群伙伴，每一个眼神，每一个瞬间，每一道风景。一周一记，记录岁月流逝的痕迹。</p></div></div><div class="footer"><div class="author-date"><span class="author">Phosphine</span><span class="date">二〇二四年十月三十一日『第四十四周』</span></div></div></div></div></p></div><div id="first_down"><p><p>在众多包括但不限于我友链页面朋友的影响下，于 2024-10-28 决定开始记录周记，后续周记以年份 + 本年第 N 周为标题，可在专栏 topic 页面查看。</p><h2 id="折腾小站"><a class="markdownIt-Anchor" href="#折腾小站"></a> 折腾小站</h2><p>给小站重新调整了下导航、更新了<a href="/about">about页面</a>，添加了些许页面。还为小站添加啦一年四季！折腾最久的就是雪花飘落本地记录，存储在<code>localStorage</code>，这样刷新后就不会重置啦。（在页面左下角小太阳右边的就是啦，一年四季的图标都不一样），还练习了下好久没碰的调色。</p><div class="tag-plugin image"><div class="image-bg"><img src="/headimg/weeknote/202444_6.jpg" alt="一年四季" data-fancybox="true"/></div><div class="image-meta"><span class="image-caption center">一年四季</span></div></div><div class="tag-plugin image"><div class="image-bg"><img src="/headimg/weeknote/202444_6.png" alt="调色" data-fancybox="true"/></div><div class="image-meta"><span class="image-caption center">调色</span></div></div><h2 id="盆架子树"><a class="markdownIt-Anchor" href="#盆架子树"></a> 盆架子树</h2><p>终于，它的花期过了。盆架树（Alstonia rostrata C. E. C. Fisch.）是夹竹桃科鸡骨常山属常绿乔木。花香极具穿透力，戴上口罩也于事无补。实在是受不了它的花香，每晚回家走过的每一条街道，都能闻到。每天回家路上头晕晕的<span class="tag-plugin emoji"><img no-lazy="" class="inline" src="https://gcore.jsdelivr.net/gh/norevi/waline-blobcatemojis@1.0/blobs/blobcatdead.png"/></span>，我想大多数人都是这样吧。</p><div class="tag-plugin image"><div class="image-bg" style="padding:16px;"><img src="https://p9.itc.cn/images01/20210826/f8d77260d73a4633933c2f2b08c35b56.png" alt="盆架子树" data-fancybox="true" style="width:400px;"/></div><div class="image-meta"><span class="image-caption center">盆架子树</span></div></div><h2 id="-swig6-"><a class="markdownIt-Anchor" href="#-swig6-"></a> <mark class="tag-plugin colorful mark" color="error">Error</mark></h2><p>快被这个 RK3288 的板子搞崩溃了啊啊。今年上半年从咸鱼淘来的小垃圾，性能平替树莓派3B-2G版本的小开发版。make install回车，然后 <mark class="tag-plugin colorful mark" color="error">Error</mark> <mark class="tag-plugin colorful mark" color="error">Error</mark>  还是 <mark class="tag-plugin colorful mark" color="error">Error</mark>  (╥﹏╥)，上一次这么痛苦的时候还是在上一次（其实忘了，属于是好了伤疤忘了疼），十几年前的芯片资料真的太少了，网上成品虽然能用，但 docker 无法部署，提示运行OCI失败，找不到设备<code>/dev/mqueue</code>，无法挂载，搜索好像说内核配置有问题。</p><div class="tag-plugin image"><div class="image-bg" style="padding:16px;"><img src="/headimg/weeknote/202444_2.png" data-fancybox="true" style="width:400px;"/></div></div><h2 id="插座哭了"><a class="markdownIt-Anchor" href="#插座哭了"></a> 插座哭了</h2><p>插座哭了，声音很大，突如其来，火光四溅，当时的我就背对着它。物业来看时说，可能是锡丝短接了插座，实在恐怖，试想如果没人看到，会不会引起火灾。</p><div class="tag-plugin image"><div class="image-bg" style="padding:16px;"><img src="/headimg/weeknote/202444_1.png" data-fancybox="true" style="width:400px;"/></div></div><h2 id="-swig12-"><a class="markdownIt-Anchor" href="#-swig12-"></a> <span class="tag-plugin emoji"><img no-lazy="" class="inline" src="https://gcore.jsdelivr.net/gh/norevi/waline-blobcatemojis@1.0/blobs/blobcatgooglytrash.png"/></span></h2><p>最近癫癫的，可能是看博弈论和经济学书籍的缘故吧，看到商店打特价就在想：嗯，这是一种价格歧视，社会福利上升，大家都付出了自己认为值得的成本；出地铁站时排队过刷卡机，又在想：长队伍通道不一定不好，人短队伍通道也许反而等你走到，开始排队的时候有，队伍可能比之前人多的队伍更多，随机选择可能得到个体利益最大化，整体最终达到一种纳什均衡…完了完了，大脑开始不听使唤了</p><h2 id="老旧坏机拯救计划"><a class="markdownIt-Anchor" href="#老旧坏机拯救计划"></a> 老旧坏机拯救计划</h2><p>手上的老手机又罢工了，拆开一查电池问题，换一个轻松点亮。换电池的时候索性全部拆开，看一看手机的五脏六腑，中间的图二就是主板，硅脂下面就是大脑（CPU）</p><div class="tag-plugin gallery grid-box" size="l" ratio="square"><div class="grid-cell"><img data-fancybox="gallery-1" src="/headimg/weeknote/202444_3.jpg" alt="我是图一"/><div class="image-meta"><span class="image-caption">我是图一</span></div></div><div class="grid-cell"><img data-fancybox="gallery-1" src="/headimg/weeknote/202444_4.jpg" alt="我是图二"/><div class="image-meta"><span class="image-caption">我是图二</span></div></div><div class="grid-cell"><img data-fancybox="gallery-1" src="/headimg/weeknote/202444_5.jpg" alt="我是图三"/><div class="image-meta"><span class="image-caption">我是图三</span></div></div></div></p></div>]]></content>
     
     
       
@@ -989,11 +989,11 @@
     <category term="应用" scheme="https://hp-l.github.io/categories/%E5%BA%94%E7%94%A8/"/>
     
     
+    <category term="机器之魂魄" scheme="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E4%B9%8B%E9%AD%82%E9%AD%84/"/>
+    
     <category term="ESP8266" scheme="https://hp-l.github.io/tags/ESP8266/"/>
     
     <category term="arduino" scheme="https://hp-l.github.io/tags/arduino/"/>
-    
-    <category term="机器之魂魄" scheme="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E4%B9%8B%E9%AD%82%E9%AD%84/"/>
     
     <category term="ws2812b" scheme="https://hp-l.github.io/tags/ws2812b/"/>
     
@@ -1532,9 +1532,9 @@
     
     <category term="STM32" scheme="https://hp-l.github.io/tags/STM32/"/>
     
-    <category term="CUBEIDE" scheme="https://hp-l.github.io/tags/CUBEIDE/"/>
-    
     <category term="C" scheme="https://hp-l.github.io/tags/C/"/>
+    
+    <category term="CUBEIDE" scheme="https://hp-l.github.io/tags/CUBEIDE/"/>
     
   </entry>
   

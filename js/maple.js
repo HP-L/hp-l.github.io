@@ -1,3 +1,4 @@
+//秋叶
 var stop, staticx;
 var img = new Image();
 sakura_img = "/js/maple.svg";
