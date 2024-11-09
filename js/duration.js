@@ -1,6 +1,6 @@
 !(function() {
   // 计时起始时间，自行修改
-  var start = new Date("2021/11/07 00:31:05");
+  var start = new Date("2020/1/26 00:31:05");
 
   function update() {
       var now = new Date();
@@ -26,8 +26,8 @@
       if (String(snum).length === 1) {
           snum = "0" + snum;
       }
-      document.getElementById("timeDate").innerHTML = "本站安全运行&nbsp" + years + "&nbsp年&nbsp" + remainingDays + "&nbsp天&nbsp";
-      document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+      document.getElementById("timeDate").innerHTML = "小站已历经&nbsp" + years + "&nbsp个春秋&nbsp" + remainingDays + "&nbsp个太阳日&nbsp";
+    //   document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
   }
 
   update();
