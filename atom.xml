@@ -1700,9 +1700,9 @@
     
     <category term="STM32" scheme="https://hp-l.github.io/tags/STM32/"/>
     
-    <category term="C" scheme="https://hp-l.github.io/tags/C/"/>
-    
     <category term="CUBEIDE" scheme="https://hp-l.github.io/tags/CUBEIDE/"/>
+    
+    <category term="C" scheme="https://hp-l.github.io/tags/C/"/>
     
   </entry>
   
