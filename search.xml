@@ -268,9 +268,9 @@
       
         <tags>
             
-            <tag> BUCK </tag>
-            
             <tag> 机器之脉络 </tag>
+            
+            <tag> BUCK </tag>
             
         </tags>
       
@@ -1548,9 +1548,9 @@
             
             <tag> STM32 </tag>
             
-            <tag> CUBEIDE </tag>
-            
             <tag> C </tag>
+            
+            <tag> CUBEIDE </tag>
             
         </tags>
       
