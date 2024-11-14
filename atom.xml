@@ -67,9 +67,9 @@
     <category term="社会科学" scheme="https://hp-l.github.io/categories/%E7%A4%BE%E4%BC%9A%E7%A7%91%E5%AD%A6/"/>
     
     
-    <category term="人文" scheme="https://hp-l.github.io/tags/%E4%BA%BA%E6%96%87/"/>
-    
     <category term="博弈论" scheme="https://hp-l.github.io/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
+    
+    <category term="人文" scheme="https://hp-l.github.io/tags/%E4%BA%BA%E6%96%87/"/>
     
   </entry>
   
@@ -343,9 +343,9 @@
     <category term="理论" scheme="https://hp-l.github.io/categories/%E7%90%86%E8%AE%BA/"/>
     
     
-    <category term="机器之脉络" scheme="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E4%B9%8B%E8%84%89%E7%BB%9C/"/>
-    
     <category term="BUCK" scheme="https://hp-l.github.io/tags/BUCK/"/>
+    
+    <category term="机器之脉络" scheme="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E4%B9%8B%E8%84%89%E7%BB%9C/"/>
     
   </entry>
   
