@@ -12,10 +12,10 @@
       // 计算剩余天数
       var remainingDays = Math.floor(days % 365);
       var hours = (now - start) / 1000 / 60 / 60 - (24 * (years * 365 + remainingDays));
-      var hnum = Math.floor(hours);
-      if (String(hnum).length === 1) {
-          hnum = "0" + hnum;
-      }
+      var hnum = Math.floor(hours) / 2;
+      // if (String(hnum).length === 1) {
+      //   hnum = "0" + hnum;
+      // }
       var minutes = (now - start) / 1000 / 60 - (24 * 60 * (years * 365 + remainingDays)) - (60 * hnum);
       var mnum = Math.floor(minutes);
       if (String(mnum).length === 1) {
@@ -26,8 +26,8 @@
       if (String(snum).length === 1) {
           snum = "0" + snum;
       }
-      document.getElementById("timeDate").innerHTML = "小站已历经&nbsp" + years + "&nbsp个春秋&nbsp" + remainingDays + "&nbsp个太阳日&nbsp";
-    //   document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+      document.getElementById("timeDate").innerHTML = "小站已历经&nbsp" + years + "&nbsp个春秋&nbsp" + remainingDays + "&nbsp个昼夜&nbsp";
+      document.getElementById("times").innerHTML = hnum + "个时辰&nbsp" ;//+ mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
   }
 
   update();
