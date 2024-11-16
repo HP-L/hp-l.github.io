@@ -26,7 +26,7 @@
       if (String(snum).length === 1) {
           snum = "0" + snum;
       }
-      document.getElementById("timeDate").innerHTML = "小站已历经&nbsp" + years + "&nbsp个春秋&nbsp" + remainingDays + "&nbsp个昼夜&nbsp";
+      document.getElementById("timeDate").innerHTML = "小站已历经&nbsp" + years + "&nbsp个春秋&nbsp·&nbsp" + remainingDays + "&nbsp个昼夜&nbsp·";
       document.getElementById("times").innerHTML = hnum + "个时辰&nbsp" ;//+ mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
   }
 
