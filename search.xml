@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>常见的开源证书</title>
+      <link href="/2024/11/20/161650/"/>
+      <url>/2024/11/20/161650/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="first_down"><p><div class="tag-plugin paper"><div class="content underline"><div class="title"><<<写在前面>>></div><div class="body"><div class="line"><p>最近网络上发生了些事，忽然意识到我对许可证不是特别了解，于是重新搜索学习了一番，找到了些最常用到的列了出来。</p></div></div><div class="footer"><div class="author-date"><span class="author">Phosphine</span><span class="date">二〇二四年十一月二十日</span></div></div></div></div></p></div><h2 id="几种许可证对比"><a class="markdownIt-Anchor" href="#几种许可证对比"></a> 几种许可证对比</h2><blockquote><p>需要注意的是，在实际使用这些开源许可证时，<strong>务必详细研读官方文档以及可能涉及的法律建议，确保合规地应用于具体的项目和内容中。</strong></p></blockquote><p>以下是站长将常见开源许可证相关特性整理到表格中的内容：</p><div class="tag-plugin image"><div class="image-bg"><img src="1.png" alt="开源许可证对比" data-fancybox="true"/><a class="image-download blur" style="opacity:0" target="_blank" download="开源许可证对比" href="1.png"><svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3734"><path d="M561.00682908 685.55838913a111.03077546 111.03077546 0 0 1-106.8895062 0L256.23182837 487.72885783a55.96309219 55.96309219 0 0 1 79.13181253-79.18777574L450.70357448 523.88101491V181.55477937a55.96309219 55.96309219 0 0 1 111.92618438 0v344.06109173l117.07478902-117.07478901a55.96309219 55.96309219 0 0 1 79.13181252 79.18777574zM282.81429711 797.1487951h447.70473912a55.96309219 55.96309219 0 0 1 0 111.92618438H282.81429711a55.96309219 55.96309219 0 0 1 0-111.92618438z" p-id="3735"></path></svg></a></div><div class="image-meta"><span class="image-caption center">开源许可证对比</span></div></div><h2 id="工具"><a class="markdownIt-Anchor" href="#工具"></a> 工具</h2><p>选择开源协议的网站：</p><div class="tag-plugin link dis-select"><a class="link-card plain" title="选择一个开源软件协议" href="https://choosealicense.cc/" target="_blank" rel="external nofollow noopener noreferrer" cardlink autofill=""><div class="left"><span class="title">选择一个开源软件协议</span><span class="cap link footnote">https://choosealicense.cc/</span></div><div class="right"><div class="lazy img" data-bg="https://choosealicense.cc/favicon.ico"></div></div></a></div><h2 id="常见许可证及其详细信息"><a class="markdownIt-Anchor" href="#常见许可证及其详细信息"></a> 常见许可证及其详细信息</h2><blockquote><p>需要注意的是，在实际使用这些开源许可证时，<strong>务必详细研读官方文档以及可能涉及的法律建议，确保合规地应用于具体的项目和内容中。</strong></p></blockquote><p>以下是AI总结的一些常见开源许可证：</p><h3 id="宽松型开源许可证"><a class="markdownIt-Anchor" href="#宽松型开源许可证"></a> 宽松型开源许可证</h3><ul><li><strong><a target="_blank" rel="noopener" href="https://mit-license.org/">MIT License</a></strong>：是最为宽松的许可证之一。允许他人自由地使用、复制、修改、合并、发布、分发、再许可和/或销售软件的副本，只需在软件的所有副本或重要部分中包含原始的版权声明和许可声明即可。许多知名的开源项目如 Node.js、jQuery 等都采用了 MIT License.</li><li><strong><a target="_blank" rel="noopener" href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License 2.0</a></strong>：类似于 MIT License，但包含关于专利权的额外条款，即贡献者放弃对其贡献提出专利权诉讼的权利，在自由使用、修改和分发代码的基础上，提供了关于专利权的额外保护，被广泛应用于许多大型开源项目，如 Apache Hadoop、Apache Spark 等.</li><li><strong><a target="_blank" rel="noopener" href="https://choosealicense.com/licenses/bsd-2-clause/">BSD 2-Clause “Simplified” License</a></strong>：允许使用者自由地使用、修改和重新发布代码，并且可以将其用于商业目的，只需保留版权声明和许可证声明即可，在伯克利软件发布版等项目中常被使用.</li></ul><h3 id="弱著佐权型开源许可证"><a class="markdownIt-Anchor" href="#弱著佐权型开源许可证"></a> 弱著佐权型开源许可证</h3><ul><li><strong><a target="_blank" rel="noopener" href="https://www.mozilla.org/en-US/MPL/2.0/">Mozilla Public License (MPL)</a></strong>：由 Netscape 的 Mozilla 小组设计，在一定程度上平衡了开发者对源代码的需求和利用源代码获得的利益。如果项目依赖了采用 MPL 许可证的开源组件，项目本身虽不会被“传染”为开源，但针对使用的开源组件包括对其的修改则需要开源出来.</li><li><strong><a target="_blank" rel="noopener" href="https://www.gnu.org/licenses/lgpl-3.0.html#license-text">GNU Lesser General Public License (LGPL)</a></strong>：是 GNU 通用公共许可证的一个变体，旧称 GNU Library General Public License，相比 GPL 较为宽松。适用于一些库或框架类的开源项目，允许开发者将 LGPL 许可的代码链接到非开源的项目中使用，但如果对 LGPL 许可的代码进行了修改，则需要将修改后的代码开源.</li></ul><h3 id="强著佐权型开源许可证"><a class="markdownIt-Anchor" href="#强著佐权型开源许可证"></a> 强著佐权型开源许可证</h3><ul><li><strong><a target="_blank" rel="noopener" href="https://www.gnu.org/licenses/gpl-3.0.en.html#license-text">GNU General Public License (GPL)</a></strong>：具有很强的“传染性”，要求使用、修改或分发其代码的任何人都必须以相同的许可证发布他们的代码，这确保了软件的自由性和开源性得以传承，但也可能限制了与非 GPL 软件的集成，常用于一些具有强烈开源理念的项目，如 Linux 内核等.</li><li><strong><a target="_blank" rel="noopener" href="https://www.gnu.org/licenses/agpl-3.0.html#license-text">GNU Affero General Public License (AGPL)</a></strong>：是 GPL 的一个补充协议，在 GPL 的基础上增加了一项要求，即通过网络与软件进行交互的用户有权获得源代码的副本，进一步强调了开源和共享的原则，适用于一些基于网络服务的开源项目.</li></ul><h3 id="其他开源许可证"><a class="markdownIt-Anchor" href="#其他开源许可证"></a> 其他开源许可证</h3><ul><li><strong><a target="_blank" rel="noopener" href="https://www.boost.org/users/license.html">Boost Software License 1.0</a></strong>：允许使用者自由地使用、修改和分发软件，只需保留版权声明和许可声明。与 MIT License 类似，但在一些细节上略有不同，例如对于软件的分发方式和再许可的条件等方面有更具体的规定，常用于一些 C++ 相关的开源项目.</li><li><strong><a target="_blank" rel="noopener" href="https://choosealicense.cc/licenses/unlicense/">The Unlicense</a></strong>：这是一种将软件置于公共领域的许可证，意味着放弃了对软件的所有版权和相关权利，使用者可以不受任何限制地使用、修改、分发和再许可软件，甚至可以将其用于商业目的而无需保留任何版权声明或致谢信息等，为开源软件提供了一种极端自由的许可方式.</li><li><strong><a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/1.0/">CC0-1.0</a>、<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc/4.0/">CC-BY-4.0</a>、<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-SA-4.0</a></strong>：这几个证书主要用于非软件的开放内容，如数据集、视频、文档等。CC0-1.0 是将作品完全置于公共领域，无任何权利保留；CC-BY-4.0 允许他人对作品进行自由传播、修改和再创作，但需署名原作者；CC-BY-SA-4.0 则在署名的基础上，还要求衍生作品需采用相同的许可证进行发布.</li><li><strong><a target="_blank" rel="noopener" href="https://openfontlicense.org/open-font-license-official-text/">SIL Open Font License 1.1</a></strong>：专门用于字体的开源许可证，保证字体的开放性，允许在其他作品中自由使用、修改和再分发字体，但需遵循一定的条件，如保留字体的版权声明和许可证信息等.</li></ul><!-- ## _还没写完.._ --><div id="first_down"><p><div class="tag-plugin paper"><div class="content underline"><div class="title"><<<文末闲语>>></div><div class="body"><div class="line"><p>小站使用的是CC-BY-SA-4.0，开始接触博客的时候hexo主题都会配置说明使用的许可协议，当时也没太在意，但是现在看来，还是挺重要的。最后，希望开源社区越来越好。</p></div></div><div class="footer"><div class="author-date"><span class="author">Phosphine</span></div></div></div></div></p></div><!-- Category：理论：理论知识技能，技术应用：应用笔记，实操折腾：折腾折腾折腾折腾！(其实属于应用，但就是玩！)方法：方法论（经验谈），如工程方法工具：针对具体工具的介绍、使用方法、分析适用场景等；使用工具如何如何解决具体问题，应该放在「应用」里作品：自己的作品（成品）、个人项目日志等杂谈：生活碎碎念自然科学：物理，化学，数学其他：没法分类的东西Tags细分领域：机器之脉络(硬件),机器之魂魄(嵌入式软件,机器学习，算法等),机器之骨骼(结构),形式：日志具体内容：个人作品、方法论、随笔语言：python C C# Java Html micropython 微信小程序IDE：Arduino CUBEIDE Vscode自然科学：代数 几何 概率 黑洞 白矮星 四维空间...IC OR IDE : STM32 ESP32 ESP8266 C51 树莓派 RK3399 野火开发版 MIQI模组：ws2812b系统：Linux Windows macOS openwrt Docker   termux游戏：MC博客：hexo 主题 魔改折腾系类：黑苹果，整服务器，termux -->]]></content>
+      
+      
+      <categories>
+          
+          <category> 方法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 标签 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>MOSFET「场效应管」</title>
       <link href="/2024/11/18/103546/"/>
       <url>/2024/11/18/103546/</url>
@@ -1667,9 +1692,9 @@
             
             <tag> STM32 </tag>
             
-            <tag> CUBEIDE </tag>
-            
             <tag> C </tag>
+            
+            <tag> CUBEIDE </tag>
             
         </tags>
       
