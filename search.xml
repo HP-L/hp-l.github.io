@@ -164,9 +164,9 @@
       
         <tags>
             
-            <tag> 人文 </tag>
-            
             <tag> 博弈论 </tag>
+            
+            <tag> 人文 </tag>
             
         </tags>
       
@@ -412,9 +412,9 @@
       
         <tags>
             
-            <tag> BUCK </tag>
-            
             <tag> 机器之脉络 </tag>
+            
+            <tag> BUCK </tag>
             
         </tags>
       
@@ -1195,11 +1195,11 @@
       
         <tags>
             
-            <tag> 机器之魂魄 </tag>
-            
             <tag> ESP8266 </tag>
             
             <tag> arduino </tag>
+            
+            <tag> 机器之魂魄 </tag>
             
             <tag> ws2812b </tag>
             
