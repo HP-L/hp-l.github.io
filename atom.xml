@@ -1929,9 +1929,9 @@
     
     <category term="STM32" scheme="https://hp-l.github.io/tags/STM32/"/>
     
-    <category term="C" scheme="https://hp-l.github.io/tags/C/"/>
-    
     <category term="CUBEIDE" scheme="https://hp-l.github.io/tags/CUBEIDE/"/>
+    
+    <category term="C" scheme="https://hp-l.github.io/tags/C/"/>
     
   </entry>
   
@@ -2163,9 +2163,9 @@
     
     <category term="ESP32" scheme="https://hp-l.github.io/tags/ESP32/"/>
     
-    <category term="机器之魂魄" scheme="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E4%B9%8B%E9%AD%82%E9%AD%84/"/>
-    
     <category term="micropython" scheme="https://hp-l.github.io/tags/micropython/"/>
+    
+    <category term="机器之魂魄" scheme="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E4%B9%8B%E9%AD%82%E9%AD%84/"/>
     
   </entry>
   
