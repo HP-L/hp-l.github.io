@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>子书承宇</title>
-  <icon>https://blog.haysc.tech/images/apple-touch-icon.png</icon>
   
   <subtitle>记录学习生活的琐事，或技术文章</subtitle>
   <link href="https://hp-l.github.io/atom.xml" rel="self"/>
@@ -1899,9 +1898,9 @@
     <category term="折腾" scheme="https://hp-l.github.io/categories/%E6%8A%98%E8%85%BE/"/>
     
     
-    <category term="material" scheme="https://hp-l.github.io/tags/material/"/>
-    
     <category term="hexo" scheme="https://hp-l.github.io/tags/hexo/"/>
+    
+    <category term="material" scheme="https://hp-l.github.io/tags/material/"/>
     
   </entry>
   
@@ -1930,9 +1929,9 @@
     
     <category term="STM32" scheme="https://hp-l.github.io/tags/STM32/"/>
     
-    <category term="CUBEIDE" scheme="https://hp-l.github.io/tags/CUBEIDE/"/>
-    
     <category term="C" scheme="https://hp-l.github.io/tags/C/"/>
+    
+    <category term="CUBEIDE" scheme="https://hp-l.github.io/tags/CUBEIDE/"/>
     
   </entry>
   
@@ -2164,9 +2163,9 @@
     
     <category term="ESP32" scheme="https://hp-l.github.io/tags/ESP32/"/>
     
-    <category term="micropython" scheme="https://hp-l.github.io/tags/micropython/"/>
-    
     <category term="机器之魂魄" scheme="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E4%B9%8B%E9%AD%82%E9%AD%84/"/>
+    
+    <category term="micropython" scheme="https://hp-l.github.io/tags/micropython/"/>
     
   </entry>
   

@@ -1721,9 +1721,9 @@
       
         <tags>
             
-            <tag> material </tag>
-            
             <tag> hexo </tag>
+            
+            <tag> material </tag>
             
         </tags>
       
@@ -1750,9 +1750,9 @@
             
             <tag> STM32 </tag>
             
-            <tag> CUBEIDE </tag>
-            
             <tag> C </tag>
+            
+            <tag> CUBEIDE </tag>
             
         </tags>
       
@@ -1968,9 +1968,9 @@
             
             <tag> ESP32 </tag>
             
-            <tag> micropython </tag>
-            
             <tag> 机器之魂魄 </tag>
+            
+            <tag> micropython </tag>
             
         </tags>
       
