@@ -6,7 +6,7 @@
   <link href="https://hp-l.github.io/atom.xml" rel="self"/>
   
   <link href="https://hp-l.github.io/"/>
-  <updated>2024-12-03T03:20:27.194Z</updated>
+  <updated>2024-12-03T01:44:46.097Z</updated>
   <id>https://hp-l.github.io/</id>
   
   <author>
@@ -15,31 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>WeekNote 2024-49</title>
-    <link href="https://hp-l.github.io/2024/12/03/164452/"/>
-    <id>https://hp-l.github.io/2024/12/03/164452/</id>
-    <published>2024-12-03T08:44:52.000Z</published>
-    <updated>2024-12-03T03:20:27.194Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="first_down"><p><div class="tag-plugin paper"><div class="content underline"><div class="title"><<<写在前面>>></div><div class="body"><div class="line"><p>来自远方的风比远方更远，小雪已过，来迟的冬天终于还是来了，这样的天气，冷的刚刚好。</p></div></div><div class="footer"><div class="author-date"><span class="author">Phosphine</span><span class="date">二〇二四年十一月二十七日『第四十七周』</span></div></div></div></div></p></div><h2 id="小记"><a class="markdownIt-Anchor" href="#小记"></a> 小记</h2><p>周一的天空是云山蓝的(#2f90b9)，风很轻，天上没有一丝云。晚上回家，刚出地铁站，一股寒意扑面而来，不由得抬头看了一眼天空，漆黑的夜色点缀着十来颗星。看着夜空的星图，熟悉又陌生。！那是猎户座，几百光年外的蓝巨星（参宿七、参宿四</p><div class="tag-plugin image"><div class="image-bg"><img src="/headimg/weeknote/202448/1.jpeg" alt="来自朋友的摄影" data-fancybox="true"/></div><div class="image-meta"><span class="image-caption center">来自朋友的摄影</span></div></div>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html"></summary>
-        
-      
-    
-    
-    
-    <category term="WeekNote" scheme="https://hp-l.github.io/categories/WeekNote/"/>
-    
-    
-  </entry>
   
   <entry>
     <title>WeekNote 2024-48</title>
@@ -280,9 +255,9 @@
     <category term="社会科学" scheme="https://hp-l.github.io/categories/%E7%A4%BE%E4%BC%9A%E7%A7%91%E5%AD%A6/"/>
     
     
-    <category term="人文" scheme="https://hp-l.github.io/tags/%E4%BA%BA%E6%96%87/"/>
-    
     <category term="博弈论" scheme="https://hp-l.github.io/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
+    
+    <category term="人文" scheme="https://hp-l.github.io/tags/%E4%BA%BA%E6%96%87/"/>
     
   </entry>
   
@@ -1954,9 +1929,9 @@
     
     <category term="STM32" scheme="https://hp-l.github.io/tags/STM32/"/>
     
-    <category term="C" scheme="https://hp-l.github.io/tags/C/"/>
-    
     <category term="CUBEIDE" scheme="https://hp-l.github.io/tags/CUBEIDE/"/>
+    
+    <category term="C" scheme="https://hp-l.github.io/tags/C/"/>
     
   </entry>
   
