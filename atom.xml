@@ -6,7 +6,7 @@
   <link href="https://hp-l.github.io/atom.xml" rel="self"/>
   
   <link href="https://hp-l.github.io/"/>
-  <updated>2024-12-03T01:44:46.097Z</updated>
+  <updated>2024-12-03T05:41:01.389Z</updated>
   <id>https://hp-l.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决安卓端 Kindle APP无法与 Kindle 硬件同步</title>
+    <link href="https://hp-l.github.io/2024/12/03/125011/"/>
+    <id>https://hp-l.github.io/2024/12/03/125011/</id>
+    <published>2024-12-03T04:50:11.000Z</published>
+    <updated>2024-12-03T05:41:01.389Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="first_down"><p><div class="tag-plugin paper"><div class="content underline"><div class="title"><<<写在前面>>></div><div class="body"><div class="line"><p>在 18 年前后入手 Kindle 8，官方价 558 ，高中经常用，大学积了 4 年灰…最近这半年来又开始用起来了，路上看看书什么的。</p></div></div><div class="footer"><div class="author-date"><span class="author">Phosphine</span><span class="date">二〇二四年??月??日</span></div></div></div></div></p></div><p>亚马逊 Kindle 业务退出了中国市场，随之带来了很多问题，我的国行 Kindle 无法享用云端存储和同步功能了，不得不转移到美区账户。</p><p>转美区账户也简单，网上有教程，这里也不再赘述，Kindle 最好用的功能之一就是多端同步，忘记带 Kindle 或者不方便带时可以用手机无缝衔接，非常方便。但因为退出中国市场之后手机 App 没办法同步了，一加应用商城下载的登录自己账号没有问题，但是无法同步；国际版的 App 账号密码一输入就返回到主界面，根本没有登录成功。</p><p>后来我发现了一个问题，他的商城界面自动链接到了中国亚马逊官网，这就有点问题了，通过连接节点登录理论上会记录节点 IP 进而进行定位，但他的逻辑好像不是这样，我回想起同步 Kindle8 硬件的时候有个操作是将语言设置为英文，于是我便试了试将手机的语言设置成英文，果然再开启 App 的时候商城自动选择了亚马逊官网而不是中国亚马逊官网，接着登录账号就直接同步了！传书成功。</p><div class="tag-plugin image"><div class="image-bg" style="padding:16px;"><img src="/headimg/weeknote/202449/1.jpeg" alt="kindle" data-fancybox="true" style="width:200px;"/></div><div class="image-meta"><span class="image-caption center">kindle</span></div></div><h2 id="正文"><a class="markdownIt-Anchor" href="#正文"></a> <s>正文</s></h2><ol><li>将设备语言更换成英文</li><li>打开 Kindle App 登录账号</li><li>耐心等待登录即可</li><li>同步成功后返回设置界面调回中文</li></ol><!-- ## _还没写完.._ --><div id="first_down"><p><div class="tag-plugin paper"><div class="content underline"><div class="title"><<<文末闲语>>></div><div class="body"><div class="line"><p>这小半年来只读了几本书，感触最大的就是读得太慢了，还是需要提升一下阅读速度，觉得离一分钟 500 字还差得远，而且读的时候部分人物场景的描述也没有细读，有诸多细节会被忽略，路漫漫其修远兮，慢慢走吧～</p></div></div><div class="footer"><div class="author-date"><span class="author">Phosphine</span></div></div></div></div></p></div><!-- Category：理论：理论知识技能，技术应用：应用笔记，实操折腾：折腾折腾折腾折腾！(其实属于应用，但就是玩！)方法：方法论（经验谈），如工程方法工具：针对具体工具的介绍、使用方法、分析适用场景等；使用工具如何如何解决具体问题，应该放在「应用」里作品：自己的作品（成品）、个人项目日志等杂谈：生活碎碎念自然科学：物理，化学，数学其他：没法分类的东西Tags细分领域：机器之脉络(硬件),机器之魂魄(嵌入式软件,机器学习，算法等),机器之骨骼(结构),形式：日志具体内容：个人作品、方法论、随笔语言：python C C# Java Html micropython 微信小程序IDE：Arduino CUBEIDE Vscode自然科学：代数 几何 概率 黑洞 白矮星 四维空间...IC OR IDE : STM32 ESP32 ESP8266 C51 树莓派 RK3399 野火开发版 MIQI模组：ws2812b系统：Linux Windows macOS openwrt Docker   termux游戏：MC博客：hexo 主题 魔改折腾系类：黑苹果，整服务器，termux -->]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    <category term="应用" scheme="https://hp-l.github.io/categories/%E5%BA%94%E7%94%A8/"/>
+    
+    
+    <category term="Kindle" scheme="https://hp-l.github.io/tags/Kindle/"/>
+    
+    <category term="Amazon" scheme="https://hp-l.github.io/tags/Amazon/"/>
+    
+  </entry>
   
   <entry>
     <title>WeekNote 2024-48</title>
@@ -2163,9 +2192,9 @@
     
     <category term="ESP32" scheme="https://hp-l.github.io/tags/ESP32/"/>
     
-    <category term="机器之魂魄" scheme="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E4%B9%8B%E9%AD%82%E9%AD%84/"/>
-    
     <category term="micropython" scheme="https://hp-l.github.io/tags/micropython/"/>
+    
+    <category term="机器之魂魄" scheme="https://hp-l.github.io/tags/%E6%9C%BA%E5%99%A8%E4%B9%8B%E9%AD%82%E9%AD%84/"/>
     
   </entry>
   
