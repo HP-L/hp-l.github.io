@@ -1,4 +1,4 @@
-<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>(window.webpackJsonp=window.webpackJsonp||[]).push([[0],[function(t,e,i){"use strict";(function(t,n){i.d(e,"e",function(){return r}),i.d(e,"g",function(){return o}),i.d(e,"f",function(){return a}),i.d(e,"c",function(){return l}),i.d(e,"a",function(){return h}),i.d(e,"b",function(){return c}),i.d(e,"d",function(){return u});
+<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script>(window.webpackJsonp=window.webpackJsonp||[]).push([[0],[function(t,e,i){"use strict";(function(t,n){i.d(e,"e",function(){return r}),i.d(e,"g",function(){return o}),i.d(e,"f",function(){return a}),i.d(e,"c",function(){return l}),i.d(e,"a",function(){return h}),i.d(e,"b",function(){return c}),i.d(e,"d",function(){return u});
 /*!
  * VERSION: 2.0.2
  * DATE: 2018-08-27
