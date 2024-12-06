@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>WeekNote 2024-49</title>
+      <link href="/2024/12/06/164452/"/>
+      <url>/2024/12/06/164452/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="first_down"><p><div class="tag-plugin paper"><div class="content underline"><div class="title"><<<写在前面>>></div><div class="body"><div class="line"><p>来自远方的风比远方更远，小雪已过，来迟的冬天终于还是来了，这样的天气，冷的刚刚好。</p></div></div><div class="footer"><div class="author-date"><span class="author">Phosphine</span><span class="date">二〇二四年十一月二十七日『第四十七周』</span></div></div></div></div></p></div><h2 id="小记"><a class="markdownIt-Anchor" href="#小记"></a> 小记</h2><p>周一的天空是云山蓝的(#2f90b9)，风很轻，天上没有一丝云。晚上回家，刚出地铁站，一股寒意扑面而来，不由得抬头看了一眼天空，漆黑的夜色点缀着十来颗星。看着夜空的星图，熟悉又陌生。！那是猎户座，百光年外的蓝巨星（参宿七）发出的光芒。思绪立刻回到了奋力拼搏的高三，黎明十分，洗漱完后带上眼镜看向天空，七颗北斗星印在深邃的画布上我盯着它许久，那是我第一次看见星图，第一次看见北斗七星。那一年，一连好几天都有，他就那样高高的挂着。奶奶说七星会随着最亮的勺柄转动。这几天我起床后都会去看看，看它是不是真的在转动。</p><div class="tag-plugin image"><div class="image-bg"><img src="/headimg/weeknote/202449/4.png" alt="猎户座" data-fancybox="true"/></div><div class="image-meta"><span class="image-caption center">猎户座</span></div></div><p>又是平凡的一个工作日，下了公交过了繁忙的十字路口，转过围墙，一簇阳光从楼与树见散落，丁达尔告诉我们，光波的波长稍大于雾气微粒就会发生散射，微粒越接近光波长效应越明显。这就是我们小学二年级熟知的丁达尔效应。走过光柱，感受日光带来的温暖。</p><p><s>&lt;img src=&quot;./images/没拍照片.jpg&quot;/&gt;</s></p><h2 id="心脏拼接"><a class="markdownIt-Anchor" href="#心脏拼接"></a> 「心脏」拼接</h2><p>板子终于回来了，焊接的时候发现，立创的板子预热后有股清香，不知道是不是加了什么新材料，也有可能是我那低温锡膏的味道。曾经设想过很多，但从没实践过，希望能一切顺利吧~<br />我这个一拖再拖的性子回板都两三天了，还没焊接完。</p><p><s>不要问那个歪歪的大方块为啥歪，问就是画小了</s></p><div class="tag-plugin image"><div class="image-bg"><img src="/headimg/weeknote/202449/1.jpg" alt="第一条管道" data-fancybox="true"/></div><div class="image-meta"><span class="image-caption center">第一条管道</span></div></div><h2 id="又是折腾"><a class="markdownIt-Anchor" href="#又是折腾"></a> 又是折腾</h2><p>其实也不算折腾，搭建了一个MC服务器，内存着实有点不够用。需要用 Java17 才行，很久很久以前，用<a href="/2022/06/08/120705/">树莓派4搭建过MC服务器</a>，现在还需要搞个内网穿刺公网才能访问。</p><div class="tag-plugin image"><div class="image-bg"><img src="/headimg/weeknote/202449/1.png" alt="客户端" data-fancybox="true"/></div><div class="image-meta"><span class="image-caption center">客户端</span></div></div><div class="tag-plugin image"><div class="image-bg"><img src="/headimg/weeknote/202449/2.png" alt="服务端" data-fancybox="true"/></div><div class="image-meta"><span class="image-caption center">服务端</span></div></div><div class="tag-plugin image"><div class="image-bg"><img src="/headimg/weeknote/202449/3.png" alt="挖树的性能" data-fancybox="true"/></div><div class="image-meta"><span class="image-caption center">挖树的性能</span></div></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> WeekNote </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>初识法语键盘</title>
       <link href="/2024/12/05/225718/"/>
       <url>/2024/12/05/225718/</url>
@@ -516,9 +535,9 @@
       
         <tags>
             
-            <tag> BUCK </tag>
-            
             <tag> 机器之脉络 </tag>
+            
+            <tag> BUCK </tag>
             
         </tags>
       
@@ -950,9 +969,9 @@
       
         <tags>
             
-            <tag> C++ </tag>
-            
             <tag> arduino </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -1276,9 +1295,9 @@
             
             <tag> ESP8266 </tag>
             
-            <tag> C++ </tag>
-            
             <tag> arduino </tag>
+            
+            <tag> C++ </tag>
             
         </tags>
       
@@ -1303,11 +1322,11 @@
       
         <tags>
             
-            <tag> 机器之魂魄 </tag>
-            
             <tag> ESP8266 </tag>
             
             <tag> arduino </tag>
+            
+            <tag> 机器之魂魄 </tag>
             
             <tag> ws2812b </tag>
             
@@ -1480,7 +1499,7 @@
       <link href="/2022/06/08/120705/"/>
       <url>/2022/06/08/120705/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="java-安装"><a class="markdownIt-Anchor" href="#java-安装"></a> Java 安装</h2><p>安装java</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install default-jdk</span><br><span class="line">sudo apt install openjdk-8-jdk</span><br><span class="line">sudo apt install openjdk-11-jdk</span><br></pre></td></tr></table></figure><p>选择默认java版本，跟换成11</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --config java</span><br></pre></td></tr></table></figure><h2 id="服务器构建器下载及其安装"><a class="markdownIt-Anchor" href="#服务器构建器下载及其安装"></a> 服务器构建器下载及其安装</h2><p><a target="_blank" rel="noopener" href="https://files.minecraftforge.net/net/minecraftforge/forge/index_1.18.2.html">下载链接</a></p><p><a target="_blank" rel="noopener" href="https://files.minecraftforge.net/net/minecraftforge/forge/">所有版本</a></p><p>点击下载</p><p><img src="1.png" alt="1.png" /></p><p>或者：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://maven.minecraftforge.net/net/minecraftforge/forge/1.18.2-40.1.48/forge-1.18.2-40.1.48-installer.jar</span><br></pre></td></tr></table></figure><p>安装</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar forge-1.18.2-40.1.48-installer.jar -install</span><br></pre></td></tr></table></figure><p>会弹出图形界面，安装完成</p><h2 id="运行服务器"><a class="markdownIt-Anchor" href="#运行服务器"></a> 运行服务器</h2><p>cd 到安装目录，linux运行</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./run.sh</span><br></pre></td></tr></table></figure><p>配置eula.txt</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eula=true</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="java-安装"><a class="markdownIt-Anchor" href="#java-安装"></a> Java 安装</h2><p>安装java17，三个版本可以同时安装</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install default-jdk</span><br><span class="line">sudo apt install openjdk-8-jdk</span><br><span class="line">sudo apt install openjdk-11-jdk</span><br><span class="line">sudo apt install openjdk-17-jdk</span><br></pre></td></tr></table></figure><p>选择默认java版本，跟换成17</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --config java</span><br></pre></td></tr></table></figure><h2 id="服务器构建器下载及其安装"><a class="markdownIt-Anchor" href="#服务器构建器下载及其安装"></a> 服务器构建器下载及其安装</h2><p><a target="_blank" rel="noopener" href="https://files.minecraftforge.net/net/minecraftforge/forge/index_1.18.2.html">下载链接</a></p><p><a target="_blank" rel="noopener" href="https://files.minecraftforge.net/net/minecraftforge/forge/">所有版本</a></p><p>点击下载</p><p><img src="1.png" alt="1.png" /></p><p>或者：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://maven.minecraftforge.net/net/minecraftforge/forge/1.18.2-40.1.48/forge-1.18.2-40.1.48-installer.jar</span><br></pre></td></tr></table></figure><p>安装</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar forge-1.18.2-40.1.48-installer.jar -install</span><br></pre></td></tr></table></figure><p>会弹出图形界面，记住安装目录，选择服务器，安装完成。</p><h2 id="运行服务器"><a class="markdownIt-Anchor" href="#运行服务器"></a> 运行服务器</h2><p>cd 到forge安装目录，linux运行</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./run.sh</span><br></pre></td></tr></table></figure><p>没有 eula=true 会报错，新建或者直接编辑eula即可。</p><p>配置eula.txt，没有文件可以直接新建一个，在forge的安装目录的根目录直接写入即可。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eula=true</span><br></pre></td></tr></table></figure><h2 id="客户端使用"><a class="markdownIt-Anchor" href="#客户端使用"></a> 客户端使用</h2><p>如果是PCL2启动器需要先安装 forge mod，pcl2 进入 mod 查找点开下载文件，手动双击jar安装，这里选择客户端，安装完成后 PCL2 启动 forge 即可，启动后输入IP+端口号码，默认端口25565。</p>]]></content>
       
       
       <categories>
