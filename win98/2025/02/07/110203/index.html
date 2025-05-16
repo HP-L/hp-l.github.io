@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN,zh-tw,en,default">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+  <link rel="icon" href="/images/favicon.ico">
+
+  <!-- 98.css -->
+  <link rel="stylesheet" href="https://unpkg.com/98.css" />
+  <!-- hexo win98 CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  
+
+  
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="子書承宇" type="application/rss+xml">
+</head>
+
+
+<body class="windows-desktop" data-blog-title="子書承宇">
+
+  <!-- Hexo 渲染的初始内容，默认隐藏，仅供 JS fetch 读取 -->
+  <div id="initial-content-wrapper" style="display: none;">
+    <article class="win98-content" id="content-main">
+  <h1>搭建简易ollama服务的PHP聊天页面</h1>
+  
+    <p class="post-meta">发布于: 2025-02-07</p>
+  
+  <hr>
+  <div class="post-content">
+    <div id="first_down"><p>
+<!-- line left -->
+搜了一圈 github 没有发现基于 PHP 链接 ollama 的项目，大多用 webui （基于docker）或者浏览器插件搞定，于是任务抛给 deepseek，写了个基础页面出来。前面是安装教程后面是代码，我服务器是 php8.2 + brew httpd server。
+</p></div>
+<h2 id="安装-ollama"><a class="markdownIt-Anchor" href="#安装-ollama"></a> 安装 ollama</h2>
+<p><a target="_blank" rel="noopener" href="https://ollama.com/download">🔗ollama 下载</a></p>
+<p>双击安装</p>
+<h2 id="下载模型"><a class="markdownIt-Anchor" href="#下载模型"></a> 下载模型</h2>
+<p>macos 下只需shell 输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ollama run deepseek-r1:8b</span><br></pre></td></tr></table></figure>
+<p>就会自动下载模型，速度慢下来了可以用<code>Ctrl</code>+<code>C</code>中断然后重新 run 一次。</p>
+<h2 id="增加httpd-timeout-时间"><a class="markdownIt-Anchor" href="#增加httpd-timeout-时间"></a> 增加httpd timeout 时间</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/etc/httpd/extra/httpd-default.conf</span><br></pre></td></tr></table></figure>
+<p>找到超时设置Timeout 15，时长增加到600</p>
+<h2 id="php-code"><a class="markdownIt-Anchor" href="#php-code"></a> PHP code</h2>
+<p>那么压力给到本地deepseek，输出代码经过修正如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 处理AI对话请求</span></span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$_SERVER</span>[<span class="string">&#x27;REQUEST_METHOD&#x27;</span>] === <span class="string">&#x27;POST&#x27;</span> &amp;&amp; <span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;message&#x27;</span>])) &#123;</span><br><span class="line">    <span class="title function_ invoke__">header</span>(<span class="string">&#x27;Content-Type: application/json&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="variable">$userMessage</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;message&#x27;</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Ollama API配置</span></span><br><span class="line">    <span class="variable">$ollamaUrl</span> = <span class="string">&#x27;http://localhost:11434/api/generate&#x27;</span>;</span><br><span class="line">    <span class="variable">$requestData</span> = [</span><br><span class="line">        <span class="string">&#x27;model&#x27;</span> =&gt; <span class="string">&#x27;deepseek-r1:1.5b&#x27;</span>,</span><br><span class="line">        <span class="comment">// &#x27;model&#x27; =&gt; &#x27;deepseek-r1:8b&#x27;,</span></span><br><span class="line">        <span class="string">&#x27;prompt&#x27;</span> =&gt; <span class="variable">$userMessage</span>,</span><br><span class="line">        <span class="string">&#x27;stream&#x27;</span> =&gt; <span class="literal">false</span></span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 发起API请求</span></span><br><span class="line">    <span class="variable">$ch</span> = <span class="title function_ invoke__">curl_init</span>(<span class="variable">$ollamaUrl</span>);</span><br><span class="line">    <span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$ch</span>, CURLOPT_POST, <span class="number">1</span>);</span><br><span class="line">    <span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$ch</span>, CURLOPT_POSTFIELDS, <span class="title function_ invoke__">json_encode</span>(<span class="variable">$requestData</span>));</span><br><span class="line">    <span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$ch</span>, CURLOPT_RETURNTRANSFER, <span class="literal">true</span>);</span><br><span class="line">    <span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$ch</span>, CURLOPT_HTTPHEADER, [<span class="string">&#x27;Content-Type: application/json&#x27;</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置连接超时时间为 10 分钟（600 秒）</span></span><br><span class="line">    <span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$ch</span>, CURLOPT_CONNECTTIMEOUT, <span class="number">600</span>);</span><br><span class="line">    <span class="comment">// 设置执行超时时间为 10 分钟（600 秒）</span></span><br><span class="line">    <span class="title function_ invoke__">curl_setopt</span>(<span class="variable">$ch</span>, CURLOPT_TIMEOUT, <span class="number">600</span>);</span><br><span class="line"></span><br><span class="line">    <span class="variable">$response</span> = <span class="title function_ invoke__">curl_exec</span>(<span class="variable">$ch</span>);</span><br><span class="line">    <span class="variable">$httpCode</span> = <span class="title function_ invoke__">curl_getinfo</span>(<span class="variable">$ch</span>, CURLINFO_HTTP_CODE);</span><br><span class="line">    <span class="variable">$curlError</span> = <span class="title function_ invoke__">curl_error</span>(<span class="variable">$ch</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$httpCode</span> !== <span class="number">200</span>) &#123;</span><br><span class="line">        <span class="title function_ invoke__">error_log</span>(<span class="string">&quot;API请求失败: HTTP <span class="subst">$httpCode</span>, Curl错误信息: <span class="subst">$curlError</span>&quot;</span>);</span><br><span class="line">        <span class="keyword">echo</span> <span class="title function_ invoke__">json_encode</span>([<span class="string">&#x27;error&#x27;</span> =&gt; <span class="string">&quot;API请求失败: HTTP <span class="subst">$httpCode</span>, Curl错误信息: <span class="subst">$curlError</span>&quot;</span>]);</span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable">$responseData</span> = <span class="title function_ invoke__">json_decode</span>(<span class="variable">$response</span>, <span class="literal">true</span>);</span><br><span class="line">    <span class="variable">$responseText</span> = <span class="variable">$responseData</span>[<span class="string">&#x27;response&#x27;</span>] ?? <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="comment">// 处理 &lt;think&gt;&lt;/think&gt; 部分，用折叠框包裹</span></span><br><span class="line">    <span class="variable">$pattern</span> = <span class="string">&#x27;/&lt;think&gt;(.*?)&lt;\/think&gt;/is&#x27;</span>;</span><br><span class="line">    <span class="variable">$replacement</span> = <span class="string">&#x27;&lt;details&gt;&lt;summary&gt;思考过程&lt;/summary&gt;$1&lt;/details&gt;&#x27;</span>;</span><br><span class="line">    <span class="variable">$responseText</span> = <span class="title function_ invoke__">preg_replace</span>(<span class="variable">$pattern</span>, <span class="variable">$replacement</span>, <span class="variable">$responseText</span>);</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">json_encode</span>([<span class="string">&#x27;response&#x27;</span> =&gt; <span class="variable">$responseText</span>]);</span><br><span class="line">    <span class="keyword">exit</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">&quot;zh-CN&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">&quot;UTF-8&quot;</span>&gt;</span><br><span class="line">    &lt;title&gt;Ollama聊天界面&lt;/title&gt;</span><br><span class="line">    &lt;link href=<span class="string">&quot;https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span>&gt;</span><br><span class="line">    &lt;style&gt;</span><br><span class="line">        body &#123;</span><br><span class="line">            font-family: <span class="string">&#x27;Roboto&#x27;</span>, Arial, sans-serif;</span><br><span class="line">            max-width: <span class="number">800</span>px;</span><br><span class="line">            margin: <span class="number">0</span> auto;</span><br><span class="line">            padding: <span class="number">20</span>px;</span><br><span class="line">            background-color: <span class="comment">#F9F9F9;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .chat-container &#123;</span><br><span class="line">            background-color: white;</span><br><span class="line">            border-radius: <span class="number">8</span>px;</span><br><span class="line">            box-shadow: <span class="number">0</span> <span class="number">1</span>px <span class="number">3</span>px <span class="title function_ invoke__">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.12</span>), <span class="number">0</span> <span class="number">1</span>px <span class="number">2</span>px <span class="title function_ invoke__">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.24</span>);</span><br><span class="line">            padding: <span class="number">20</span>px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .chat-history &#123;</span><br><span class="line">            height: <span class="number">400</span>px;</span><br><span class="line">            overflow-y: auto;</span><br><span class="line">            border: <span class="number">1</span>px solid <span class="comment">#E0E0E0;</span></span><br><span class="line">            border-radius: <span class="number">4</span>px;</span><br><span class="line">            padding: <span class="number">10</span>px;</span><br><span class="line">            margin-bottom: <span class="number">20</span>px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .message &#123;</span><br><span class="line">            display: flex;</span><br><span class="line">            align-items: flex-start;</span><br><span class="line">            margin-bottom: <span class="number">15</span>px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .avatar &#123;</span><br><span class="line">            width: <span class="number">40</span>px;</span><br><span class="line">            height: <span class="number">40</span>px;</span><br><span class="line">            border-radius: <span class="number">50</span>%;</span><br><span class="line">            background-size: cover;</span><br><span class="line">            margin-right: <span class="number">10</span>px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .user-avatar &#123;</span><br><span class="line">            background-image: <span class="title function_ invoke__">url</span>(<span class="string">&#x27;user_avatar.png&#x27;</span>);</span><br><span class="line">            <span class="comment">/* 替换为用户头像的实际路径 */</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .ai-avatar &#123;</span><br><span class="line">            background-image: <span class="title function_ invoke__">url</span>(<span class="string">&#x27;ai_avatar.ico&#x27;</span>);</span><br><span class="line">            <span class="comment">/* 替换为AI头像的实际路径 */</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .message-content &#123;</span><br><span class="line">            margin: inherit;</span><br><span class="line">            padding: <span class="number">1</span>px <span class="number">30</span>px;</span><br><span class="line">            border-radius: <span class="number">18</span>px;</span><br><span class="line">            box-shadow: <span class="number">0</span> <span class="number">1</span>px <span class="number">2</span>px <span class="title function_ invoke__">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.1</span>);</span><br><span class="line">            max-width: <span class="number">80</span>%;</span><br><span class="line">            <span class="comment">/* 把这个值调大以增加聊天框宽度 */</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        .user-message .message-content &#123;</span><br><span class="line">            background-color: <span class="comment">#E3F2FD;</span></span><br><span class="line">            color: <span class="comment">#333;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .ai-message .message-content &#123;</span><br><span class="line">            background-color: <span class="comment">#F5F5F5;</span></span><br><span class="line">            color: <span class="comment">#333;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .input-container &#123;</span><br><span class="line">            display: flex;</span><br><span class="line">            gap: <span class="number">10</span>px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        input[type=<span class="string">&quot;text&quot;</span>] &#123;</span><br><span class="line">            flex: <span class="number">1</span>;</span><br><span class="line">            padding: <span class="number">10</span>px;</span><br><span class="line">            border: <span class="number">1</span>px solid <span class="comment">#E0E0E0;</span></span><br><span class="line">            border-radius: <span class="number">4</span>px;</span><br><span class="line">            font-size: <span class="number">16</span>px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        button &#123;</span><br><span class="line">            padding: <span class="number">10</span>px <span class="number">20</span>px;</span><br><span class="line">            background-color: <span class="comment">#4285F4;</span></span><br><span class="line">            color: white;</span><br><span class="line">            border: none;</span><br><span class="line">            border-radius: <span class="number">4</span>px;</span><br><span class="line">            cursor: pointer;</span><br><span class="line">            font-size: <span class="number">16</span>px;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        button:hover &#123;</span><br><span class="line">            background-color: <span class="comment">#357AE8;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .think &#123;</span><br><span class="line">            margin-top: <span class="number">14</span>px;</span><br><span class="line">            background: <span class="title function_ invoke__">rgba</span>(<span class="number">187</span>, <span class="number">85</span>, <span class="number">21</span>, <span class="number">0.2</span>);</span><br><span class="line">            <span class="comment">/* 使用 rgba 确保透明度可调整 */</span></span><br><span class="line">            border-radius: <span class="number">8</span>px;</span><br><span class="line">            <span class="comment">/* 添加圆角 */</span></span><br><span class="line">            padding: <span class="number">12</span>px;</span><br><span class="line">            <span class="comment">/* 添加内边距，让内容与边框有一定间隔 */</span></span><br><span class="line">            box-shadow: <span class="number">0</span> <span class="number">1</span>px <span class="number">3</span>px <span class="title function_ invoke__">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.12</span>), <span class="number">0</span> <span class="number">1</span>px <span class="number">2</span>px <span class="title function_ invoke__">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.24</span>);</span><br><span class="line">            <span class="comment">/* 添加轻微阴影 */</span></span><br><span class="line">            transition: all <span class="number">0.3</span>s cubic-<span class="title function_ invoke__">bezier</span>(<span class="number">.25</span>,<span class="number">.8</span>,<span class="number">.25</span>,<span class="number">1</span>);</span><br><span class="line">            <span class="comment">/* 添加过渡效果，使交互更平滑 */</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        .think:hover &#123;</span><br><span class="line">            box-shadow: <span class="number">0</span> <span class="number">3</span>px <span class="number">6</span>px <span class="title function_ invoke__">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.16</span>), <span class="number">0</span> <span class="number">3</span>px <span class="number">6</span>px <span class="title function_ invoke__">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.23</span>);</span><br><span class="line">            <span class="comment">/* 鼠标悬停时增加阴影深度 */</span></span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">    &lt;!-- 引入 marked.js 库 --&gt;</span><br><span class="line">    &lt;script src=<span class="string">&quot;https://cdn.bootcss.com/marked/0.8.1/marked.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span>=&quot;<span class="title">chat</span>-<span class="title">container</span>&quot;&gt;</span></span><br><span class="line"><span class="class">        &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">chat</span>-<span class="title">history</span>&quot; <span class="title">id</span>=&quot;<span class="title">chatHistory</span>&quot;&gt;</span></span><br><span class="line"><span class="class">            &lt;!-- 聊天记录将在这里显示 --&gt;</span></span><br><span class="line"><span class="class">        &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">        &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">input</span>-<span class="title">container</span>&quot;&gt;</span></span><br><span class="line"><span class="class">            &lt;<span class="title">input</span> <span class="title">type</span>=&quot;<span class="title">text</span>&quot; <span class="title">id</span>=&quot;<span class="title">userInput</span>&quot; <span class="title">placeholder</span>=&quot;输入你的消息...&quot;&gt;</span></span><br><span class="line"><span class="class">            &lt;<span class="title">button</span> <span class="title">onclick</span>=&quot;<span class="title">sendMessage</span>()&quot;&gt;发送&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line"><span class="class">        &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">    &lt;<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="class">        // 添加消息到聊天历史</span></span><br><span class="line"><span class="class">        <span class="title">function</span> <span class="title">addMessage</span>(<span class="title">message</span>, <span class="title">isUser</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">const</span> <span class="variable constant_">chatHistory</span> = document.<span class="title function_ invoke__">getElementById</span>(<span class="string">&#x27;chatHistory&#x27;</span>);</span><br><span class="line">            <span class="keyword">const</span> <span class="variable constant_">messageDiv</span> = document.<span class="title function_ invoke__">createElement</span>(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">            messageDiv.className = `message $&#123;isUser ? <span class="string">&#x27;user-message&#x27;</span>: <span class="string">&#x27;ai-message&#x27;</span>&#125;`;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">const</span> <span class="variable constant_">avatarDiv</span> = document.<span class="title function_ invoke__">createElement</span>(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">            avatarDiv.className = `avatar $&#123;isUser ? <span class="string">&#x27;user-avatar&#x27;</span>: <span class="string">&#x27;ai-avatar&#x27;</span>&#125;`;</span><br><span class="line">            messageDiv.<span class="title function_ invoke__">appendChild</span>(avatarDiv);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">const</span> <span class="variable constant_">contentDiv</span> = document.<span class="title function_ invoke__">createElement</span>(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">            contentDiv.className = <span class="string">&#x27;message-content&#x27;</span>;</span><br><span class="line">            <span class="comment">// 渲染 Markdown 文本</span></span><br><span class="line">            <span class="keyword">const</span> <span class="variable constant_">renderedMessage</span> = marked.<span class="title function_ invoke__">parse</span>(message);</span><br><span class="line">            contentDiv.innerHTML = renderedMessage;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 为 details 元素添加 think 类</span></span><br><span class="line">            <span class="keyword">const</span> <span class="variable constant_">detailsElements</span> = contentDiv.<span class="title function_ invoke__">querySelectorAll</span>(<span class="string">&#x27;details&#x27;</span>);</span><br><span class="line">            detailsElements.<span class="title function_ invoke__">forEach</span>((details) =&gt; &#123;</span><br><span class="line">                details.classList.<span class="title function_ invoke__">add</span>(<span class="string">&#x27;think&#x27;</span>);</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">            messageDiv.<span class="title function_ invoke__">appendChild</span>(contentDiv);</span><br><span class="line"></span><br><span class="line">            chatHistory.<span class="title function_ invoke__">appendChild</span>(messageDiv);</span><br><span class="line">            chatHistory.scrollTop = chatHistory.scrollHeight;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 处理发送消息</span></span><br><span class="line">        async <span class="function"><span class="keyword">function</span> <span class="title">sendMessage</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">const</span> <span class="variable constant_">userInput</span> = document.<span class="title function_ invoke__">getElementById</span>(<span class="string">&#x27;userInput&#x27;</span>);</span><br><span class="line">            <span class="keyword">const</span> <span class="variable constant_">message</span> = userInput.value.<span class="title function_ invoke__">trim</span>();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (!message) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 清空输入框</span></span><br><span class="line">            userInput.value = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 显示用户消息</span></span><br><span class="line">            <span class="title function_ invoke__">addMessage</span>(message, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 创建 AbortController 用于超时控制</span></span><br><span class="line">            <span class="keyword">const</span> <span class="variable constant_">controller</span> = <span class="keyword">new</span> <span class="title class_">AbortController</span>();</span><br><span class="line">            <span class="keyword">const</span> <span class="variable constant_">signal</span> = controller.signal;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 设置 10 分钟（600000 毫秒）的超时时间</span></span><br><span class="line">            <span class="keyword">const</span> <span class="variable constant_">timeoutId</span> = <span class="title function_ invoke__">setTimeout</span>(() =&gt; &#123;</span><br><span class="line">                controller.<span class="title function_ invoke__">abort</span>();</span><br><span class="line">            &#125;, <span class="number">600000</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">const</span> <span class="variable constant_">response</span> = await <span class="title function_ invoke__">fetch</span>(<span class="string">&#x27;index.php&#x27;</span>, &#123;</span><br><span class="line">                    <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">                    <span class="attr">headers</span>: &#123;</span><br><span class="line">                        <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span></span><br><span class="line">                    &#125;,</span><br><span class="line">                    <span class="attr">body</span>: `message=$&#123;<span class="title function_ invoke__">encodeURIComponent</span>(message)&#125;`,</span><br><span class="line">                    signal</span><br><span class="line">                &#125;);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 清除超时定时器</span></span><br><span class="line">                <span class="title function_ invoke__">clearTimeout</span>(timeoutId);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (!response.ok) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;请求失败&#x27;</span>);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">const</span> <span class="variable constant_">data</span> = await response.<span class="title function_ invoke__">json</span>();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (data.error) &#123;</span><br><span class="line">                    <span class="title function_ invoke__">addMessage</span>(`错误: $&#123;data.error&#125;`, <span class="literal">false</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="title function_ invoke__">addMessage</span>(data.response, <span class="literal">false</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">                <span class="keyword">if</span> (error.name === <span class="string">&#x27;AbortError&#x27;</span>) &#123;</span><br><span class="line">                    <span class="title function_ invoke__">addMessage</span>(<span class="string">&#x27;请求超时，请稍后重试&#x27;</span>, <span class="literal">false</span>);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="title function_ invoke__">addMessage</span>(`请求失败: $&#123;error.message&#125;`, <span class="literal">false</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 允许通过回车键发送消息</span></span><br><span class="line">        document.<span class="title function_ invoke__">getElementById</span>(<span class="string">&#x27;userInput&#x27;</span>).<span class="title function_ invoke__">addEventListener</span>(<span class="string">&#x27;keypress&#x27;</span>, (e) =&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (e.key === <span class="string">&#x27;Enter&#x27;</span>) &#123;</span><br><span class="line">                <span class="title function_ invoke__">sendMessage</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="效果"><a class="markdownIt-Anchor" href="#效果"></a> 效果</h3>
+<p>代码还有些问题，有较多地方有待优化。<br />
+如果网络不好断联了就会提示失败，本地运行问题不大。</p>
+<p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/02/003.png" alt="PHP 页面效果（未优化）" /></p>
+<!-- ## _还没写完.._ -->
+<!-- 
+Category：
+
+理论：理论知识技能，技术
+应用：应用笔记，实操
+折腾：折腾折腾折腾折腾！(其实属于应用，但就是玩！)
+方法：方法论（经验谈），如工程方法
+工具：针对具体工具的介绍、使用方法、分析适用场景等；使用工具如何如何解决具体问题，应该放在「应用」里
+作品：自己的作品（成品）、个人项目日志等
+杂谈：生活碎碎念
+自然科学：物理，化学，数学
+其他：没法分类的东西
+
+Tags
+
+细分领域：机器之脉络(硬件),机器之魂魄(嵌入式软件,机器学习，算法等),机器之骨骼(结构),
+形式：日志
+具体内容：个人作品、方法论、随笔
+语言：python C C# Java Html micropython 微信小程序
+IDE：Arduino CUBEIDE Vscode
+自然科学：代数 几何 概率 黑洞 白矮星 四维空间...
+IC OR IDE : STM32 ESP32 ESP8266 C51 树莓派 RK3399 野火开发版 MIQI
+模组：ws2812b
+系统：Linux Windows macOS openwrt Docker   termux
+游戏：MC
+博客：hexo 主题 魔改
+折腾系类：黑苹果，整服务器，termux
+
+ -->
+
+  </div>
+</article>
+
+  </div>
+
+  <!-- 桌面图标 -->
+  <div class="desktop-icons">
+      <!-- 我的电脑 (存档) -->
+      <a href="/archives/" class="desktop-icon" id="icon-mycomputer">
+        <img src="/images/icon_mycomputer.png" alt="我的电脑">
+        <span>我的电脑</span>
+      </a>
+      <!-- 我的文档 (关于) -->
+      <a href="/about/" class="desktop-icon" id="icon-mydocuments">
+        <img src="/images/icon_mydocuments.png" alt="我的文档">
+        <span>我的文档</span>
+      </a>
+      <!-- 网上邻居 (友链) -->
+      <a href="/links/" class="desktop-icon" id="icon-network">
+        <img src="/images/icon_network.png" alt="网上邻居">
+        <span>网上邻居</span>
+      </a>
+      <!-- 记事本 (留言板) -->
+      <a href="/guestbook/" class="desktop-icon" id="icon-guestbook">
+        <img src="/images/icon_notepad.png" alt="留言板">
+        <span>留言板</span>
+      </a>
+  </div>
+
+  <!-- 这个容器用来放置动态创建的窗口 -->
+  <div id="window-container"></div>
+
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+    
+    <script>
+      function initializeGitalkForWindow(targetContainerId, uniquePageId) {
+        console.log(`[Gitalk Global] Attempting init for container #${targetContainerId}, page ID: ${uniquePageId}`);
+        const containerElement = document.getElementById(targetContainerId);
+
+        if (!containerElement) {
+          console.error(`[Gitalk Global] Error: Container #${targetContainerId} not found.`);
+          return;
+        }
+        if (typeof Gitalk === 'undefined') {
+          console.error("[Gitalk Global] Error: Gitalk library not loaded.");
+          containerElement.innerHTML = '<p style="color:red;">错误：Gitalk 库未加载！</p>';
+          return;
+        }
+
+        // --- Prevent re-initialization on the same container ---
+        if (containerElement.dataset.gitalkInitialized === 'true') {
+             console.log(`[Gitalk Global] Info: Gitalk already initialized for #${targetContainerId}. Skipping.`);
+             return;
+        }
+
+
+        try {
+          const gitalkInstance = new Gitalk({
+            clientID: '0v0',
+            clientSecret: '0w0',
+            repo: 'leak.moe',
+            owner: 'moeleak',
+            admin: ["moeleak"],
+            id: uniquePageId,
+            language: 'zh-CN',
+            distractionFreeMode: false,
+            proxy: 'https://proxy-gitalk-api.netlify.app/github_access_token'
+          });
+
+          console.log(`[Gitalk Global] Instance created for #${targetContainerId}. Rendering...`);
+          gitalkInstance.render(targetContainerId);
+          containerElement.dataset.gitalkInitialized = 'true'; // Mark as initialized
+          console.log(`[Gitalk Global] Render command issued for #${targetContainerId}.`);
+
+        } catch (error) {
+          console.error(`[Gitalk Global] Error during Gitalk init/render for #${targetContainerId}:`, error);
+          containerElement.innerHTML = `<p style="color:red;">Gitalk 初始化/渲染出错: ${error.message}</p>`;
+        }
+      }
+    </script>
+  
+
+
+  <!-- 引入交互逻辑的 JS -->
+  <script src="/js/win98.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+        <!-- ECharts 图表容器 -->
+        
+        <script>
+            if(document.getElementById('heatmapChart')){
+                const heatmapChart = echarts.init(document.getElementById('heatmapChart'));
+                const containerWidth = document.getElementById('heatmapChart').offsetWidth;
+                const cellSize = Math.max(Math.floor(containerWidth / 60));
+                console.log(cellSize)
+                heatmapChart.setOption({
+                    tooltip: {
+                        position: 'top',
+                        formatter: params => `${params.value[0]}: ${params.value[1]} Articles`
+                    },
+                    visualMap: {
+                        min: 0,
+                        max: Math.max(...[["2025-01-01",1],["2025-01-15",1],["2025-01-21",1],["2025-01-30",1],["2025-02-07",1],["2025-02-22",1],["2025-02-28",1],["2025-03-04",1],["2025-05-04",1],["2025-05-06",1]].map(item => item[1])),
+                        calculable: false,
+                        orient: 'horizontal', // 横向布局
+                        right: '5%',
+                        bottom: '5%',
+                        inRange: { color: ['#FFEFD5', '#FFA07A', '#FF4500'] }
+                    },
+                    calendar: {
+                        top: '20%',
+                        left: 'center',
+                        range: new Date().getFullYear(),
+                        cellSize: cellSize, // 方格大小
+                        splitLine: { lineStyle: { color: '#E0E0E0', width: 1 } },
+                        itemStyle: { borderWidth: 1, borderColor: '#E0E0E0' },
+                        dayLabel: { firstDay: 1, fontSize: 12, color: '#333', show: false },
+                        monthLabel: { fontSize: 12, color: '#555' }
+                    },
+                    series: [{
+                        type: 'heatmap',
+                        coordinateSystem: 'calendar',
+                        data: [["2025-01-01",1],["2025-01-15",1],["2025-01-21",1],["2025-01-30",1],["2025-02-07",1],["2025-02-22",1],["2025-02-28",1],["2025-03-04",1],["2025-05-04",1],["2025-05-06",1]]
+                    }]
+                });
+            }
+        </script>
+    
+        
+        <script>
+            if(document.getElementById('monthlyChart')){
+                const monthlyChart = echarts.init(document.getElementById('monthlyChart'));
+                monthlyChart.setOption({
+                    xAxis: {
+                        type: 'category',
+                        data: ["2025-01","2025-02","2025-03","2025-05"],
+                        axisLabel: { fontSize: 12 }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        splitLine: { lineStyle: { type: 'dashed', color: '#ccc' } }
+                    },
+                    series: [{
+                        name: 'Articles',
+                        type: 'line',
+                        data: [4,3,1,2],
+                        smooth: true,
+                        lineStyle: { color: '#5470C6', width: 2 },
+                        itemStyle: { color: '#5470C6' },
+                        areaStyle: { color: 'rgba(84, 112, 198, 0.4)' },
+                        animationDuration: 1000
+                    }]
+                });
+            }
+        </script>
+    
+        
+        <script>
+            if(document.getElementById('tagsChart')){    
+                const tagsChart = echarts.init(document.getElementById('tagsChart'));
+                tagsChart.setOption({
+                    tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
+                    series: [{
+                        type: 'pie',
+                        radius: '60%',
+                        data: [],
+                        label: {
+                            position: 'outside',
+                            formatter: '{b} {c} ({d}%)',
+                            fontSize: 12
+                        },
+                        color: ['#5470C6', '#91CC75', '#FAC858', '#EE6666', '#73C0DE', '#3BA272', '#FC8452', '#9A60B4'],
+                        animationDuration: 1000
+                    }],
+                    legend: {
+                        bottom: '0',
+                        left: 'center',
+                        data: [].map(tag => tag.name),
+                        textStyle: { fontSize: 12 }
+                    }
+                });
+            }
+        </script>
+    
+        
+        <script>
+            if(document.getElementById('categoriesChart')){
+                const categoriesChart = echarts.init(document.getElementById('categoriesChart'));
+                categoriesChart.setOption({
+                    xAxis: {
+                        type: 'value',
+                        splitLine: { lineStyle: { type: 'dashed', color: '#ccc' } }
+                    },
+                    yAxis: {
+                        type: 'category',
+                        data: [].map(category => category.name).reverse(),
+                        axisLabel: { fontSize: 12 }
+                    },
+                    series: [{
+                        name: 'Category Count',
+                        type: 'bar',
+                        data: [].map(category => category.value).reverse(),
+                        label: {
+                            show: true,
+                            position: 'right',
+                            fontSize: 12
+                        },
+                        itemStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                                { offset: 0, color: '#91CC75' },
+                                { offset: 1, color: '#73C0DE' }
+                            ])
+                        },
+                        animationDuration: 1000
+                    }]
+                });
+            }
+        </script>
+    
+    </body>
+</html>
+
+

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN,zh-tw,en,default">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+  <link rel="icon" href="/images/favicon.ico">
+
+  <!-- 98.css -->
+  <link rel="stylesheet" href="https://unpkg.com/98.css" />
+  <!-- hexo win98 CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  
+
+  
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="子書承宇" type="application/rss+xml">
+</head>
+
+
+<body class="windows-desktop" data-blog-title="子書承宇">
+
+  <!-- Hexo 渲染的初始内容，默认隐藏，仅供 JS fetch 读取 -->
+  <div id="initial-content-wrapper" style="display: none;">
+    <article class="win98-content" id="content-main">
+  <h1>JTAG应用简述</h1>
+  
+    <p class="post-meta">发布于: 2025-03-04</p>
+  
+  <hr>
+  <div class="post-content">
+    <h2 id="外围电路应用"><a class="markdownIt-Anchor" href="#外围电路应用"></a> 外围电路应用</h2>
+<ul>
+<li>
+<p>1.1 TMS</p>
+<ul>
+<li>TMS是启动使能信号（标准PAGE-11），上拉。</li>
+</ul>
+</li>
+<li>
+<p>1.2 TCK</p>
+<ul>
+<li>TCK是时钟信号（标准PAGE-9），上升沿或下降沿有效，可以上拉也可下拉，根据具体的器件要求选择。</li>
+</ul>
+</li>
+<li>
+<p>1.3 TDI</p>
+<ul>
+<li>TDI是数据输入（标准PAGE-11），上拉。</li>
+</ul>
+</li>
+<li>
+<p>1.4 TDO</p>
+<ul>
+<li>TDO是数据输出（标准PAGE-12），三态输出，可以和TDI做级联，上拉或浮空。</li>
+</ul>
+</li>
+<li>
+<p>1.5 TRST</p>
+<ul>
+<li>TRST 是复位信号（标准PAGE-13），低电平为复位状态，上拉。</li>
+</ul>
+</li>
+</ul>
+<h2 id="接口信号"><a class="markdownIt-Anchor" href="#接口信号"></a> 接口信号</h2>
+<p>JTAG接口使用以下五个专用信号，每个支持该标准的芯片都必须提供这些信号：</p>
+<ol>
+<li><strong>TRST（测试复位）</strong>：这是一个测试复位输入信号，用于初始化并禁用测试接口。</li>
+<li><strong>TCK（测试时钟）</strong>：这是测试时钟输入信号，它独立于任何系统时钟来控制测试接口的时序。TCK由控制测试的设备提供脉冲信号，而不是由被测试设备提供。它可以以任何频率（最高可达几兆赫兹）产生脉冲，甚至可以以不同的速率产生脉冲。</li>
+<li><strong>TMS（测试模式选择）</strong>：这是测试模式选择输入信号，用于控制测试接口状态机的状态转换。</li>
+<li><strong>TDI（测试数据输入）</strong>：这是测试数据输入线，用于向JTAG寄存器（边界扫描寄存器、指令寄存器或其他数据寄存器）提供数据。</li>
+<li><strong>TDO（测试数据输出）</strong>：这是测试数据输出线，用于将JTAG寄存器中的数据以串行方式输出到控制测试的设备。它携带从边界扫描链（或其他JTAG寄存器）采样的值，并将这些值传输到串行测试电路中的下一个芯片。</li>
+</ol>
+<p>在一块包含多个支持JTAG芯片的电路板上，测试电路的常见连接方式是将TRST*、TCK和TMS信号并行连接到每个芯片上，并将一个芯片的TDO连接到下一个芯片的TDI，形成一个单环结构。这样，电路板就呈现出一个具有上述五个相同信号的单一测试接口。对于只有少数几个带有JTAG接口芯片的电路板，一种更简单的布置方式是为每个这样的芯片提供一个JTAG测试端口，并独立控制测试。</p>
+<h2 id="jtag功能边界扫描"><a class="markdownIt-Anchor" href="#jtag功能边界扫描"></a> JTAG功能——边界扫描</h2>
+<p><img src="%E6%8E%A5%E5%8F%A3%E7%A4%BA%E6%84%8F%E5%9B%BE" alt="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/03/jtag-arch-large.png" /></p>
+<p>JTAG总线可以连接多个设备，每个设备都有JTAG总线接口，每个设备都有自己的ID码和寄存器。可以通过总线相连，一次扫描多个设备。</p>
+<p>再来看每个芯片，内部扫描器连接所有的GPIO寄存器，可以控制GPIO电平状态，写入数据，读取数据。</p>
+<p>利用这个特性，我们可以主动拉高某个GPIO，然后读取其他GPIO的电平状态，如果其他GPIO电平发生了变化，则可以判断出GPIO是否连锡。通过一定的算法，可以实现对所有芯片的所有GPIO进行扫描，判断一批板子的连接情况。</p>
+<blockquote>
+<p>其实网上那些廉价盗版的JTAG调试器基本都没有这个功能，而且这种调试器硬件成本比其售价要低不少，自己动动手也能做一个功能非常简单的调试器。</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>想要深入了解内部工作原理的话，可以参考以下文章：<a target="_blank" rel="noopener" href="https://web.archive.org/web/20110713022446/http://www.inaccessnetworks.com/ian/projects/ianjtag/jtag-intro/jtag-intro.html">A Brief Introduction to the JTAG Boundary Scan Interface —— Nick Patavalis</a></p>
+</blockquote>
+<h2 id="jtag协议的状态机tap控制器"><a class="markdownIt-Anchor" href="#jtag协议的状态机tap控制器"></a> JTAG协议的状态机（TAP控制器）</h2>
+<p>JTAG协议工作的基本逻辑全依赖内部的TAP控制器（Test Access Port），其实就是一个状态机，通过TMS信号来切换不同的状态。</p>
+<p><img src="%E6%8E%A5%E5%8F%A3%E7%A4%BA%E6%84%8F%E5%9B%BE" alt="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/03/002.png" /></p>
+<h3 id="test-logic-reset-测试逻辑复位状态"><a class="markdownIt-Anchor" href="#test-logic-reset-测试逻辑复位状态"></a> Test-Logic-Reset 测试逻辑复位状态</h3>
+<ul>
+<li>处于这种状态下，测试逻辑被禁止以允许芯片正常操作，读 IDCODE 寄存器将禁止测试逻辑。</li>
+<li>无论 TAP 控制器处于何种状态，只要将 TMS 信号在 5 个连续的 TCK 信号的上升沿保持高电平，TAP 就将进入 Test-Logic-Reset 状态。如果 TMS 信号一直为高电平，那么 TAP 将保持在 Test-Logic-Reset 状态。另外，TRST 信号也可以强迫 TAP 进入 Test-Logic-Reset 状态。</li>
+<li>处于 Test-Logic-Reset 状态的 TAP，如果下一个 TCK 的上升沿时 TMS 信号处于低电平，那么 TAP 将被切换到 Run-Test-Idle 状态。</li>
+</ul>
+<h3 id="run-test-idle-运行测试空闲状态"><a class="markdownIt-Anchor" href="#run-test-idle-运行测试空闲状态"></a> Run-Test-Idle 运行测试空闲状态</h3>
+<ul>
+<li>Run-Test-Idle 是 TAP 控制器扫描操作空闲状态。如果 TMS 信号一直处于低电平，那么 TAP 将保持在 Run-Test-Idle 状态。</li>
+<li>当 TMS 信号在 TCK 上升沿处于高电平，TAP 控制器将进入 Select-DR-Scan 状态。</li>
+</ul>
+<h3 id="select-dr-scan-选择数据寄存器扫描状态"><a class="markdownIt-Anchor" href="#select-dr-scan-选择数据寄存器扫描状态"></a> Select-DR-Scan 选择数据寄存器扫描状态</h3>
+<ul>
+<li>Select-DR-Scan 是 TAP 控制器的一个临时状态，边界扫描寄存器 BSR 保持它们先前的状态。</li>
+<li>当 TMS 信号在下一个 TCK 上升沿处于低电平，TAP 控制器进入 Capture-DR 状态，一个边界扫描寄存器的扫描操作同时被初始化。</li>
+<li>如果 TMS 信号在下一个 TCK 上升沿处于高电平，TAP 控制器将进入 Select-IR-Scan 状态。</li>
+</ul>
+<h3 id="capture-dr-捕获数据寄存器状态"><a class="markdownIt-Anchor" href="#capture-dr-捕获数据寄存器状态"></a> Capture-DR 捕获数据寄存器状态</h3>
+<ul>
+<li>如果 TAP 控制器处于 Capture-DR 状态，且当前指令是 SAMPLE/PRELOAD 指令，那么边界扫描寄存器 BSR 在 TCK 信号的上升沿捕获输入管脚的数据。如果此时不是 SAMPLE/PRELOAD 指令，那么 BSR 保持它们先前的值。另外，BSR 的值被放入连接在 TDI 和 TDO 管脚之间的移位寄存器中。</li>
+<li>处于 Capture-DR 状态时，指令不会被改变。</li>
+<li>如果 TMS 信号在下一个 TCK 上升沿处于高电平，TAP 进入 Exit1-DR 状态。如果 TMS 信号在下一个 TCK 上升沿处于低电平，则 TAP 进入 Shift-DR 状态。</li>
+</ul>
+<h3 id="shift-dr-移位数据寄存器状态"><a class="markdownIt-Anchor" href="#shift-dr-移位数据寄存器状态"></a> Shift-DR 移位数据寄存器状态</h3>
+<ul>
+<li>在 Shift-DR 状态下，在每个 TCK 的上升沿，TDI - 移位寄存器 - TDO 串行通道向右移一位，TDI 的数据移入移位寄存器，移位寄存器最靠近 TDO 的位移到 TDO 管脚上。</li>
+<li>处于 Shift-DR 状态时，指令不会被改变。</li>
+<li>如果 TMS 信号在下一个 TCK 上升沿处于高电平，TAP 进入 Exit1-DR 状态。如果 TMS 信号处于低电平，则 TAP 一直进行移位操作。</li>
+</ul>
+<h3 id="exit1-dr-退出数据寄存器状态-1"><a class="markdownIt-Anchor" href="#exit1-dr-退出数据寄存器状态-1"></a> Exit1-DR 退出数据寄存器状态 1</h3>
+<ul>
+<li>Exit1-DR 是 TAP 控制器的一个临时状态。如果 TMS 信号在下一个 TCK 上升沿处于高电平，TAP 进入 Update-DR 状态；如果 TMS 信号在下一个 TCK 上升沿处于低电平，则 TAP 进入 Pause-DR 状态。</li>
+<li>处于 Exit1-DR 状态时，指令不会被改变。</li>
+</ul>
+<h3 id="pause-dr-暂停数据寄存器状态"><a class="markdownIt-Anchor" href="#pause-dr-暂停数据寄存器状态"></a> Pause-DR 暂停数据寄存器状态</h3>
+<ul>
+<li>Pause-DR 状态允许 TAP 控制器暂时停止 TDI - 移位寄存器 - TDO 串行通道的移位操作。</li>
+<li>处于 Pause-DR 状态时，指令不会被改变。</li>
+<li>如果 TMS 信号在下一个 TCK 上升沿处于高电平，TAP 进入 Exit2-DR 状态；如果 TMS 信号处于低电平，则 TAP 一直保持暂停状态。</li>
+</ul>
+<h3 id="exit2-dr-退出数据寄存器状态-2"><a class="markdownIt-Anchor" href="#exit2-dr-退出数据寄存器状态-2"></a> Exit2-DR 退出数据寄存器状态 2</h3>
+<ul>
+<li>Exit2-DR 也是 TAP 控制器的临时状态。如果 TMS 信号在下一个 TCK 上升沿处于高电平，TAP 进入 Update-DR 状态，结束扫描操作；如果 TMS 信号在下一个 TCK 上升沿处于低电平，则 TAP 重新进入 Shift-DR 状态。</li>
+<li>处于 Exit2-DR 状态时，指令不会被改变。</li>
+</ul>
+<h3 id="update-dr-更新数据寄存器状态"><a class="markdownIt-Anchor" href="#update-dr-更新数据寄存器状态"></a> Update-DR 更新数据寄存器状态</h3>
+<ul>
+<li>在正常情况下，边界扫描寄存器 BSR 的值是被锁存在并行输出管脚中，以免在 EXTEST 或 SAMPLE/PRELOAD 命令下执行移位操作时改变 BSR 的值。当处于 Update-DR 状态时选择的是 BSR 寄存器，那么移位寄存器中的值将在 TCK 的下降沿被锁存到 BSR 寄存器的并行输出管脚中去。</li>
+<li>处于 Update-DR 状态时，指令不会被改变。</li>
+<li>如果 TMS 信号在下一个 TCK 上升沿处于高电平，TAP 进入 Select-DR-Scan 状态；如果 TMS 信号在下一个 TCK 上升沿处于低电平，则 TAP 进入 Run-Test-Idle 状态。</li>
+</ul>
+<h3 id="select-ir-scan-选择指令寄存器扫描状态"><a class="markdownIt-Anchor" href="#select-ir-scan-选择指令寄存器扫描状态"></a> Select-IR-Scan 选择指令寄存器扫描状态</h3>
+<ul>
+<li>Select-IR-Scan 是 TAP 控制器的一个临时状态。</li>
+<li>如果 TMS 信号在下一个 TCK 上升沿处于低电平，TAP 控制器进入 Capture-IR 状态，一个对指令寄存器的扫描操作同时被初始化。</li>
+<li>如果 TMS 信号在下一个 TCK 上升沿处于高电平，TAP 控制器将进入 Test-Logic-Reset 状态。</li>
+<li>处于 Select-IR-Scan 状态时，指令不会被改变。</li>
+</ul>
+<h3 id="capture-ir-捕获指令寄存器状态"><a class="markdownIt-Anchor" href="#capture-ir-捕获指令寄存器状态"></a> Capture-IR 捕获指令寄存器状态</h3>
+<ul>
+<li>处于 Capture-IR 状态时，指令寄存器中的值被固定设置成 0b0000001，并将它放入连接在 TDI 与 TDO 之间的移位寄存器中。</li>
+<li>处于 Capture-IR 状态时，指令不会被改变。</li>
+<li>如果 TMS 信号在下一个 TCK 上升沿处于高电平，TAP 进入 Exit1-IR 状态；如果 TMS 信号在下一个 TCK 上升沿处于低电平，则 TAP 进入 Shift-IR 状态。</li>
+</ul>
+<h3 id="shift-ir-移位指令寄存器状态"><a class="markdownIt-Anchor" href="#shift-ir-移位指令寄存器状态"></a> Shift-IR 移位指令寄存器状态</h3>
+<ul>
+<li>在 Shift-IR 状态下，在每个 TCK 的上升沿，TDI - 移位寄存器 - TDO 串行通道向右移一位，JTAG 指令从 TDI 管脚上被逐位移入移位寄存器，而移位寄存器中的 0b0000001 则被逐位从 TDO 管脚移出。</li>
+<li>处于 Shift-IR 状态时，指令不会被改变。</li>
+<li>如果 TMS 信号在下一个 TCK 上升沿处于高电平，TAP 进入 Exit1-IR 状态；如果 TMS 信号处于低电平，则 TAP 一直进行移位操作。</li>
+</ul>
+<h3 id="exit1-ir-退出指令寄存器状态-1"><a class="markdownIt-Anchor" href="#exit1-ir-退出指令寄存器状态-1"></a> Exit1-IR 退出指令寄存器状态 1</h3>
+<ul>
+<li>Exit1-IR 是 TAP 控制器的一个临时状态。如果 TMS 信号在下一个 TCK 上升沿处于高电平，TAP 进入 Update-IR 状态；如果 TMS 信号在下一个 TCK 上升沿处于低电平，则 TAP 进入 Pause-IR 状态。</li>
+<li>处于 Exit1-IR 状态时，指令不会被改变。</li>
+</ul>
+<h3 id="pause-ir-暂停指令寄存器状态"><a class="markdownIt-Anchor" href="#pause-ir-暂停指令寄存器状态"></a> Pause-IR 暂停指令寄存器状态</h3>
+<ul>
+<li>Pause-IR 状态允许 TAP 控制器暂时停止 TDI - 移位寄存器 - TDO 串行通道的移位操作。</li>
+<li>处于 Pause-IR 状态时，指令不会被改变。</li>
+<li>如果 TMS 信号在下一个 TCK 上升沿处于高电平，TAP 进入 Exit2-IR 状态；如果 TMS 信号处于低电平，则 TAP 一直处于暂停状态。</li>
+</ul>
+<h3 id="exit2-ir-退出指令寄存器状态-2"><a class="markdownIt-Anchor" href="#exit2-ir-退出指令寄存器状态-2"></a> Exit2-IR 退出指令寄存器状态 2</h3>
+<ul>
+<li>Exit2-IR 也是 TAP 控制器的临时状态。如果 TMS 信号在下一个 TCK 上升沿处于高电平，TAP 进入 Update-IR 状态，结束扫描操作；如果 TMS 信号在下一个 TCK 上升沿处于低电平，则 TAP 重新进入 Shift-IR 状态。</li>
+<li>处于 Exit2-IR 状态时，指令不会被改变。</li>
+</ul>
+<h3 id="update-ir-更新指令寄存器状态"><a class="markdownIt-Anchor" href="#update-ir-更新指令寄存器状态"></a> Update-IR 更新指令寄存器状态</h3>
+<ul>
+<li>处于 Update-IR 状态时，移位寄存器中的值将在 TCK 的下降沿被锁存到指令寄存器中，一旦锁存成功，新的指令将成为当前的指令。</li>
+<li>如果 TMS 信号在下一个 TCK 上升沿处于高电平，TAP 进入 Select-DR-Scan 状态；如果 TMS 信号在下一个 TCK 上升沿处于低电平，则 TAP 进入 Run-Test-Idle 状态。</li>
+</ul>
+<h3 id="jtag-接口指令集"><a class="markdownIt-Anchor" href="#jtag-接口指令集"></a> JTAG 接口指令集</h3>
+<p>JTAG 接口指令集包含以下常用指令：</p>
+<h4 id="extest-指令"><a class="markdownIt-Anchor" href="#extest-指令"></a> EXTEST 指令</h4>
+<ul>
+<li>外部测试指令，必须全为 0，TAP 强制定义。该指令初始化外部电路测试，主要用于板级互连以及片外电路测试。</li>
+<li>EXTEST 指令在 Shift-DR 状态时将扫描寄存器 BSR 寄存器连接到 TDI 与 TDO 之间。在 Capture-DR 状态时，EXTEST 指令将输入管脚的状态在 TCK 的上升沿装入 BSR 中。EXTEST 指令从不使用移入 BSR 中的输入锁存器中的数据，而是直接从管脚上捕获数据。在 Update-DR 状态时，EXTEST 指令将锁存在并行输出寄存器单元中的数据在 TCK 的下降沿驱动到对应的输出管脚上去。</li>
+</ul>
+<h4 id="samplepreload-指令"><a class="markdownIt-Anchor" href="#samplepreload-指令"></a> SAMPLE/PRELOAD 指令</h4>
+<ul>
+<li>采样/预装载指令，TAP 强制定义。在 Capture-DR 状态下，SAMPLE/PRELOAD 指令提供一个从管脚到片上系统逻辑的数据流快照，快照在 TCK 的上升沿提取。</li>
+<li>在 Update-DR 状态时，SAMPLE/PRELOAD 指令将 BSR 寄存器单元中的数据锁存到并行输出寄存器单元中，然后由 EXTEST 指令将锁存在并行输出寄存器单元中的数据在 TCK 的下降沿驱动到对应的输出管脚上去。</li>
+</ul>
+<h4 id="bypass-指令"><a class="markdownIt-Anchor" href="#bypass-指令"></a> BYPASS 指令</h4>
+<ul>
+<li>旁路指令，必须全为 1，TAP 强制定义。BYPASS 指令通过在 TDI 和 TDO 之间放置一个 1 位的旁通寄存器，这样移位操作时只经过 1 位的旁通寄存器而不是很多位（与管脚数量相当）的边界扫描寄存器 BSR，从而使得对连接在同一 JTAG 链上主 CPU 之外的其他芯片进行测试时提高效率。</li>
+</ul>
+<h4 id="idcode-指令"><a class="markdownIt-Anchor" href="#idcode-指令"></a> IDCODE 指令</h4>
+<ul>
+<li>读取 CPU ID 号指令，TAP 强制定义。该指令将处理器的 ID 号寄存器连接到 TDI 和 TDO 之间。</li>
+</ul>
+<!-- ## _还没写完.._ -->
+<blockquote>
+<p>参考链接：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/whik1194/article/details/125984568">强大的JTAG边界扫描（1）：基本原理介绍「CSDN」</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42605300/article/details/121216605">JTAG接口电路上下拉 应用「CSDN」</a></li>
+<li><a target="_blank" rel="noopener" href="https://web.archive.org/web/20110713022446/http://www.inaccessnetworks.com/ian/projects/ianjtag/jtag-intro/jtag-intro.html">A Brief Introduction to the JTAG Boundary Scan Interface —— Nick Patavalis</a></li>
+</ol>
+</blockquote>
+<!-- 
+Category：
+
+理论：理论知识技能，技术
+应用：应用笔记，实操
+折腾：折腾折腾折腾折腾！(其实属于应用，但就是玩！)
+方法：方法论（经验谈），如工程方法
+工具：针对具体工具的介绍、使用方法、分析适用场景等；使用工具如何如何解决具体问题，应该放在「应用」里
+作品：自己的作品（成品）、个人项目日志等
+杂谈：生活碎碎念
+自然科学：物理，化学，数学
+其他：没法分类的东西
+
+Tags
+
+细分领域：机器之脉络(硬件),机器之魂魄(嵌入式软件,机器学习，算法等),机器之骨骼(结构),
+形式：日志
+具体内容：个人作品、方法论、随笔
+语言：python C C# Java Html micropython 微信小程序
+IDE：Arduino CUBEIDE Vscode
+自然科学：代数 几何 概率 黑洞 白矮星 四维空间...
+IC OR IDE : STM32 ESP32 ESP8266 C51 树莓派 RK3399 野火开发版 MIQI
+模组：ws2812b
+系统：Linux Windows macOS openwrt Docker   termux
+游戏：MC
+博客：hexo 主题 魔改
+折腾系类：黑苹果，整服务器，termux
+
+ -->
+
+  </div>
+</article>
+
+  </div>
+
+  <!-- 桌面图标 -->
+  <div class="desktop-icons">
+      <!-- 我的电脑 (存档) -->
+      <a href="/archives/" class="desktop-icon" id="icon-mycomputer">
+        <img src="/images/icon_mycomputer.png" alt="我的电脑">
+        <span>我的电脑</span>
+      </a>
+      <!-- 我的文档 (关于) -->
+      <a href="/about/" class="desktop-icon" id="icon-mydocuments">
+        <img src="/images/icon_mydocuments.png" alt="我的文档">
+        <span>我的文档</span>
+      </a>
+      <!-- 网上邻居 (友链) -->
+      <a href="/links/" class="desktop-icon" id="icon-network">
+        <img src="/images/icon_network.png" alt="网上邻居">
+        <span>网上邻居</span>
+      </a>
+      <!-- 记事本 (留言板) -->
+      <a href="/guestbook/" class="desktop-icon" id="icon-guestbook">
+        <img src="/images/icon_notepad.png" alt="留言板">
+        <span>留言板</span>
+      </a>
+  </div>
+
+  <!-- 这个容器用来放置动态创建的窗口 -->
+  <div id="window-container"></div>
+
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+    
+    <script>
+      function initializeGitalkForWindow(targetContainerId, uniquePageId) {
+        console.log(`[Gitalk Global] Attempting init for container #${targetContainerId}, page ID: ${uniquePageId}`);
+        const containerElement = document.getElementById(targetContainerId);
+
+        if (!containerElement) {
+          console.error(`[Gitalk Global] Error: Container #${targetContainerId} not found.`);
+          return;
+        }
+        if (typeof Gitalk === 'undefined') {
+          console.error("[Gitalk Global] Error: Gitalk library not loaded.");
+          containerElement.innerHTML = '<p style="color:red;">错误：Gitalk 库未加载！</p>';
+          return;
+        }
+
+        // --- Prevent re-initialization on the same container ---
+        if (containerElement.dataset.gitalkInitialized === 'true') {
+             console.log(`[Gitalk Global] Info: Gitalk already initialized for #${targetContainerId}. Skipping.`);
+             return;
+        }
+
+
+        try {
+          const gitalkInstance = new Gitalk({
+            clientID: '0v0',
+            clientSecret: '0w0',
+            repo: 'leak.moe',
+            owner: 'moeleak',
+            admin: ["moeleak"],
+            id: uniquePageId,
+            language: 'zh-CN',
+            distractionFreeMode: false,
+            proxy: 'https://proxy-gitalk-api.netlify.app/github_access_token'
+          });
+
+          console.log(`[Gitalk Global] Instance created for #${targetContainerId}. Rendering...`);
+          gitalkInstance.render(targetContainerId);
+          containerElement.dataset.gitalkInitialized = 'true'; // Mark as initialized
+          console.log(`[Gitalk Global] Render command issued for #${targetContainerId}.`);
+
+        } catch (error) {
+          console.error(`[Gitalk Global] Error during Gitalk init/render for #${targetContainerId}:`, error);
+          containerElement.innerHTML = `<p style="color:red;">Gitalk 初始化/渲染出错: ${error.message}</p>`;
+        }
+      }
+    </script>
+  
+
+
+  <!-- 引入交互逻辑的 JS -->
+  <script src="/js/win98.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+        <!-- ECharts 图表容器 -->
+        
+        <script>
+            if(document.getElementById('heatmapChart')){
+                const heatmapChart = echarts.init(document.getElementById('heatmapChart'));
+                const containerWidth = document.getElementById('heatmapChart').offsetWidth;
+                const cellSize = Math.max(Math.floor(containerWidth / 60));
+                console.log(cellSize)
+                heatmapChart.setOption({
+                    tooltip: {
+                        position: 'top',
+                        formatter: params => `${params.value[0]}: ${params.value[1]} Articles`
+                    },
+                    visualMap: {
+                        min: 0,
+                        max: Math.max(...[["2025-01-01",1],["2025-01-15",1],["2025-01-21",1],["2025-01-30",1],["2025-02-07",1],["2025-02-22",1],["2025-02-28",1],["2025-03-04",1],["2025-05-04",1],["2025-05-06",1]].map(item => item[1])),
+                        calculable: false,
+                        orient: 'horizontal', // 横向布局
+                        right: '5%',
+                        bottom: '5%',
+                        inRange: { color: ['#FFEFD5', '#FFA07A', '#FF4500'] }
+                    },
+                    calendar: {
+                        top: '20%',
+                        left: 'center',
+                        range: new Date().getFullYear(),
+                        cellSize: cellSize, // 方格大小
+                        splitLine: { lineStyle: { color: '#E0E0E0', width: 1 } },
+                        itemStyle: { borderWidth: 1, borderColor: '#E0E0E0' },
+                        dayLabel: { firstDay: 1, fontSize: 12, color: '#333', show: false },
+                        monthLabel: { fontSize: 12, color: '#555' }
+                    },
+                    series: [{
+                        type: 'heatmap',
+                        coordinateSystem: 'calendar',
+                        data: [["2025-01-01",1],["2025-01-15",1],["2025-01-21",1],["2025-01-30",1],["2025-02-07",1],["2025-02-22",1],["2025-02-28",1],["2025-03-04",1],["2025-05-04",1],["2025-05-06",1]]
+                    }]
+                });
+            }
+        </script>
+    
+        
+        <script>
+            if(document.getElementById('monthlyChart')){
+                const monthlyChart = echarts.init(document.getElementById('monthlyChart'));
+                monthlyChart.setOption({
+                    xAxis: {
+                        type: 'category',
+                        data: ["2025-01","2025-02","2025-03","2025-05"],
+                        axisLabel: { fontSize: 12 }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        splitLine: { lineStyle: { type: 'dashed', color: '#ccc' } }
+                    },
+                    series: [{
+                        name: 'Articles',
+                        type: 'line',
+                        data: [4,3,1,2],
+                        smooth: true,
+                        lineStyle: { color: '#5470C6', width: 2 },
+                        itemStyle: { color: '#5470C6' },
+                        areaStyle: { color: 'rgba(84, 112, 198, 0.4)' },
+                        animationDuration: 1000
+                    }]
+                });
+            }
+        </script>
+    
+        
+        <script>
+            if(document.getElementById('tagsChart')){    
+                const tagsChart = echarts.init(document.getElementById('tagsChart'));
+                tagsChart.setOption({
+                    tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
+                    series: [{
+                        type: 'pie',
+                        radius: '60%',
+                        data: [],
+                        label: {
+                            position: 'outside',
+                            formatter: '{b} {c} ({d}%)',
+                            fontSize: 12
+                        },
+                        color: ['#5470C6', '#91CC75', '#FAC858', '#EE6666', '#73C0DE', '#3BA272', '#FC8452', '#9A60B4'],
+                        animationDuration: 1000
+                    }],
+                    legend: {
+                        bottom: '0',
+                        left: 'center',
+                        data: [].map(tag => tag.name),
+                        textStyle: { fontSize: 12 }
+                    }
+                });
+            }
+        </script>
+    
+        
+        <script>
+            if(document.getElementById('categoriesChart')){
+                const categoriesChart = echarts.init(document.getElementById('categoriesChart'));
+                categoriesChart.setOption({
+                    xAxis: {
+                        type: 'value',
+                        splitLine: { lineStyle: { type: 'dashed', color: '#ccc' } }
+                    },
+                    yAxis: {
+                        type: 'category',
+                        data: [].map(category => category.name).reverse(),
+                        axisLabel: { fontSize: 12 }
+                    },
+                    series: [{
+                        name: 'Category Count',
+                        type: 'bar',
+                        data: [].map(category => category.value).reverse(),
+                        label: {
+                            show: true,
+                            position: 'right',
+                            fontSize: 12
+                        },
+                        itemStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                                { offset: 0, color: '#91CC75' },
+                                { offset: 1, color: '#73C0DE' }
+                            ])
+                        },
+                        animationDuration: 1000
+                    }]
+                });
+            }
+        </script>
+    
+    </body>
+</html>
+
+

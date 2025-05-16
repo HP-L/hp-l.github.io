@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN,zh-tw,en,default">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+  <link rel="icon" href="/images/favicon.ico">
+
+  <!-- 98.css -->
+  <link rel="stylesheet" href="https://unpkg.com/98.css" />
+  <!-- hexo win98 CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  
+
+  
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="子書承宇" type="application/rss+xml">
+</head>
+
+
+<body class="windows-desktop" data-blog-title="子書承宇">
+
+  <!-- Hexo 渲染的初始内容，默认隐藏，仅供 JS fetch 读取 -->
+  <div id="initial-content-wrapper" style="display: none;">
+    <div class="archive-list-container" id="content-main">
+    <h1>存档</h1>
+    <hr>
+    
+          <h2>2025</h2>
+        
+        <p>2025-05-06 » <a href="/2025/05/06/091156/">树莓派64位系统安装WiringPi</a></p>
+      
+        <p>2025-05-04 » <a href="/2025/05/04/103937/">老王（）</a></p>
+      
+        <p>2025-03-04 » <a href="/2025/03/04/183838/">JTAG应用简述</a></p>
+      
+        <p>2025-02-28 » <a href="/2025/02/28/104139/">解决ubuntu24频繁死机</a></p>
+      
+        <p>2025-02-22 » <a href="/2025/02/22/164406/">外围电路设计--晶振电路</a></p>
+      
+        <p>2025-02-07 » <a href="/2025/02/07/110203/">搭建简易ollama服务的PHP聊天页面</a></p>
+      
+        <p>2025-01-30 » <a href="/2025/01/30/225834/">我们的文字：漢字</a></p>
+      
+        <p>2025-01-21 » <a href="/2025/01/21/121756/">黑暗中的汽笛声</a></p>
+      
+        <p>2025-01-15 » <a href="/2025/01/15/193849/">片上SOC外围硬件设计参考指南</a></p>
+      
+        <p>2025-01-01 » <a href="/2025/01/01/004915/">将鼠标静音</a></p>
+      
+</div>
+
+
+  </div>
+
+  <!-- 桌面图标 -->
+  <div class="desktop-icons">
+      <!-- 我的电脑 (存档) -->
+      <a href="/archives/" class="desktop-icon" id="icon-mycomputer">
+        <img src="/images/icon_mycomputer.png" alt="我的电脑">
+        <span>我的电脑</span>
+      </a>
+      <!-- 我的文档 (关于) -->
+      <a href="/about/" class="desktop-icon" id="icon-mydocuments">
+        <img src="/images/icon_mydocuments.png" alt="我的文档">
+        <span>我的文档</span>
+      </a>
+      <!-- 网上邻居 (友链) -->
+      <a href="/links/" class="desktop-icon" id="icon-network">
+        <img src="/images/icon_network.png" alt="网上邻居">
+        <span>网上邻居</span>
+      </a>
+      <!-- 记事本 (留言板) -->
+      <a href="/guestbook/" class="desktop-icon" id="icon-guestbook">
+        <img src="/images/icon_notepad.png" alt="留言板">
+        <span>留言板</span>
+      </a>
+  </div>
+
+  <!-- 这个容器用来放置动态创建的窗口 -->
+  <div id="window-container"></div>
+
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+    
+    <script>
+      function initializeGitalkForWindow(targetContainerId, uniquePageId) {
+        console.log(`[Gitalk Global] Attempting init for container #${targetContainerId}, page ID: ${uniquePageId}`);
+        const containerElement = document.getElementById(targetContainerId);
+
+        if (!containerElement) {
+          console.error(`[Gitalk Global] Error: Container #${targetContainerId} not found.`);
+          return;
+        }
+        if (typeof Gitalk === 'undefined') {
+          console.error("[Gitalk Global] Error: Gitalk library not loaded.");
+          containerElement.innerHTML = '<p style="color:red;">错误：Gitalk 库未加载！</p>';
+          return;
+        }
+
+        // --- Prevent re-initialization on the same container ---
+        if (containerElement.dataset.gitalkInitialized === 'true') {
+             console.log(`[Gitalk Global] Info: Gitalk already initialized for #${targetContainerId}. Skipping.`);
+             return;
+        }
+
+
+        try {
+          const gitalkInstance = new Gitalk({
+            clientID: '0v0',
+            clientSecret: '0w0',
+            repo: 'leak.moe',
+            owner: 'moeleak',
+            admin: ["moeleak"],
+            id: uniquePageId,
+            language: 'zh-CN',
+            distractionFreeMode: false,
+            proxy: 'https://proxy-gitalk-api.netlify.app/github_access_token'
+          });
+
+          console.log(`[Gitalk Global] Instance created for #${targetContainerId}. Rendering...`);
+          gitalkInstance.render(targetContainerId);
+          containerElement.dataset.gitalkInitialized = 'true'; // Mark as initialized
+          console.log(`[Gitalk Global] Render command issued for #${targetContainerId}.`);
+
+        } catch (error) {
+          console.error(`[Gitalk Global] Error during Gitalk init/render for #${targetContainerId}:`, error);
+          containerElement.innerHTML = `<p style="color:red;">Gitalk 初始化/渲染出错: ${error.message}</p>`;
+        }
+      }
+    </script>
+  
+
+
+  <!-- 引入交互逻辑的 JS -->
+  <script src="/js/win98.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+        <!-- ECharts 图表容器 -->
+        
+        <script>
+            if(document.getElementById('heatmapChart')){
+                const heatmapChart = echarts.init(document.getElementById('heatmapChart'));
+                const containerWidth = document.getElementById('heatmapChart').offsetWidth;
+                const cellSize = Math.max(Math.floor(containerWidth / 60));
+                console.log(cellSize)
+                heatmapChart.setOption({
+                    tooltip: {
+                        position: 'top',
+                        formatter: params => `${params.value[0]}: ${params.value[1]} Articles`
+                    },
+                    visualMap: {
+                        min: 0,
+                        max: Math.max(...[["2025-01-01",1],["2025-01-15",1],["2025-01-21",1],["2025-01-30",1],["2025-02-07",1],["2025-02-22",1],["2025-02-28",1],["2025-03-04",1],["2025-05-04",1],["2025-05-06",1]].map(item => item[1])),
+                        calculable: false,
+                        orient: 'horizontal', // 横向布局
+                        right: '5%',
+                        bottom: '5%',
+                        inRange: { color: ['#FFEFD5', '#FFA07A', '#FF4500'] }
+                    },
+                    calendar: {
+                        top: '20%',
+                        left: 'center',
+                        range: new Date().getFullYear(),
+                        cellSize: cellSize, // 方格大小
+                        splitLine: { lineStyle: { color: '#E0E0E0', width: 1 } },
+                        itemStyle: { borderWidth: 1, borderColor: '#E0E0E0' },
+                        dayLabel: { firstDay: 1, fontSize: 12, color: '#333', show: false },
+                        monthLabel: { fontSize: 12, color: '#555' }
+                    },
+                    series: [{
+                        type: 'heatmap',
+                        coordinateSystem: 'calendar',
+                        data: [["2025-01-01",1],["2025-01-15",1],["2025-01-21",1],["2025-01-30",1],["2025-02-07",1],["2025-02-22",1],["2025-02-28",1],["2025-03-04",1],["2025-05-04",1],["2025-05-06",1]]
+                    }]
+                });
+            }
+        </script>
+    
+        
+        <script>
+            if(document.getElementById('monthlyChart')){
+                const monthlyChart = echarts.init(document.getElementById('monthlyChart'));
+                monthlyChart.setOption({
+                    xAxis: {
+                        type: 'category',
+                        data: ["2025-01","2025-02","2025-03","2025-05"],
+                        axisLabel: { fontSize: 12 }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        splitLine: { lineStyle: { type: 'dashed', color: '#ccc' } }
+                    },
+                    series: [{
+                        name: 'Articles',
+                        type: 'line',
+                        data: [4,3,1,2],
+                        smooth: true,
+                        lineStyle: { color: '#5470C6', width: 2 },
+                        itemStyle: { color: '#5470C6' },
+                        areaStyle: { color: 'rgba(84, 112, 198, 0.4)' },
+                        animationDuration: 1000
+                    }]
+                });
+            }
+        </script>
+    
+        
+        <script>
+            if(document.getElementById('tagsChart')){    
+                const tagsChart = echarts.init(document.getElementById('tagsChart'));
+                tagsChart.setOption({
+                    tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
+                    series: [{
+                        type: 'pie',
+                        radius: '60%',
+                        data: [],
+                        label: {
+                            position: 'outside',
+                            formatter: '{b} {c} ({d}%)',
+                            fontSize: 12
+                        },
+                        color: ['#5470C6', '#91CC75', '#FAC858', '#EE6666', '#73C0DE', '#3BA272', '#FC8452', '#9A60B4'],
+                        animationDuration: 1000
+                    }],
+                    legend: {
+                        bottom: '0',
+                        left: 'center',
+                        data: [].map(tag => tag.name),
+                        textStyle: { fontSize: 12 }
+                    }
+                });
+            }
+        </script>
+    
+        
+        <script>
+            if(document.getElementById('categoriesChart')){
+                const categoriesChart = echarts.init(document.getElementById('categoriesChart'));
+                categoriesChart.setOption({
+                    xAxis: {
+                        type: 'value',
+                        splitLine: { lineStyle: { type: 'dashed', color: '#ccc' } }
+                    },
+                    yAxis: {
+                        type: 'category',
+                        data: [].map(category => category.name).reverse(),
+                        axisLabel: { fontSize: 12 }
+                    },
+                    series: [{
+                        name: 'Category Count',
+                        type: 'bar',
+                        data: [].map(category => category.value).reverse(),
+                        label: {
+                            show: true,
+                            position: 'right',
+                            fontSize: 12
+                        },
+                        itemStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                                { offset: 0, color: '#91CC75' },
+                                { offset: 1, color: '#73C0DE' }
+                            ])
+                        },
+                        animationDuration: 1000
+                    }]
+                });
+            }
+        </script>
+    
+    </body>
+</html>
+
+
