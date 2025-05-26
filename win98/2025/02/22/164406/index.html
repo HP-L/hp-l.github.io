@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN,zh-tw,en,default">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="apple-touch-icon" href="/win98/images/apple-touch-icon.png">
+  <link rel="icon" href="/win98/images/favicon.ico">
+
+  <!-- 98.css -->
+  <link rel="stylesheet" href="https://unpkg.com/98.css" />
+  <!-- hexo win98 CSS -->
+  <link rel="stylesheet" href="/win98/css/style.css">
+
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  
+
+  
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/win98/atom.xml" title="子書承宇" type="application/rss+xml">
+</head>
+
+
+<body class="windows-desktop" data-blog-title="子書承宇">
+
+  <!-- Hexo 渲染的初始内容，默认隐藏，仅供 JS fetch 读取 -->
+  <div id="initial-content-wrapper" style="display: none;">
+    <article class="win98-content" id="content-main">
+  <h1>外围电路设计--晶振电路</h1>
+  
+    <p class="post-meta">发布于: 2025-02-22</p>
+  
+  <hr>
+  <div class="post-content">
+    <h2 id="是什么"><a class="markdownIt-Anchor" href="#是什么"></a> 是什么</h2>
+<blockquote>
+<p>什么叫做晶振</p>
+</blockquote>
+<p>晶振是石英晶体谐振器（quartz crystal oscillator）的简称。晶振原理是通过压电效应产生波形。</p>
+<h2 id="在芯片中"><a class="markdownIt-Anchor" href="#在芯片中"></a> 在芯片中</h2>
+<blockquote>
+<p>芯片如何接受外部时钟信号？</p>
+</blockquote>
+<p>这是一个<code>皮尔斯振荡器</code>，芯片内部由他接收信号，将接收到的晶振信号转换成芯片内部能够识别的方波。</p>
+<p><img src="%E6%99%B6%E4%BD%93%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%99%A8%E4%BB%B6%E5%8F%82%E6%95%B0" alt="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/02/004.png" /></p>
+<p>其中电阻以上是芯片内部电路，电阻以下（包括电阻）是晶振外部电路，也就是单片机最小系统的晶振电路部分。</p>
+<p>它实际量出来的波形是频率固定的正弦波。</p>
+<h2 id="计算"><a class="markdownIt-Anchor" href="#计算"></a> 计算</h2>
+<p>负载电容计算公式如下：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>L</mi><mo>=</mo><mi>C</mi><mn>1</mn><mo>∗</mo><mi>C</mi><mn>2</mn><mi mathvariant="normal">/</mi><mo stretchy="false">(</mo><mi>C</mi><mn>1</mn><mo>+</mo><mi>C</mi><mn>2</mn><mo stretchy="false">)</mo><mo>+</mo><mi>C</mi><mi>S</mi></mrow><annotation encoding="application/x-tex">CL = C1*C2 / (C1+C2) + CS
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">L</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord">2</span><span class="mord">/</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span></span></p>
+<p>CS为电路板的寄生电容，一般取 3~5pF，取C1 = C2，那么公式可以简化成如下：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>L</mi><mo>=</mo><mi>C</mi><mn>1</mn><mi mathvariant="normal">/</mi><mn>2</mn><mo>+</mo><mi>C</mi><mi>S</mi></mrow><annotation encoding="application/x-tex">CL = C1 / 2 + CS
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">L</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord">1</span><span class="mord">/</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span></span></p>
+<h2 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 使用</h2>
+<p>对于我们做方案来说，一般直接获取芯片厂商给的参考图按照要求。芯片厂商已经多次测试投入量产使用，所以一般直接拿图就可以了。</p>
+<!-- ## _还没写完.._ -->
+<div id="first_down"><p>
+水一篇文章，晶振其实也不多，实际应用一般拿来即用，除非你是做芯片设计的或者是其他方面需要详细计算参数，一般直接用即可。
+</p></div>
+<blockquote>
+<p>参考链接：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/420077606">「知乎」深入解析：单片机晶振脚原理是什么？</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/530018592">「知乎」皮尔斯振荡器电路工作原理图解，几分钟，立马搞定皮尔斯震荡电路</a></li>
+<li><a href="">「CSDN」</a></li>
+</ol>
+</blockquote>
+<!-- 
+Category：
+
+理论：理论知识技能，技术
+应用：应用笔记，实操
+折腾：折腾折腾折腾折腾！(其实属于应用，但就是玩！)
+方法：方法论（经验谈），如工程方法
+工具：针对具体工具的介绍、使用方法、分析适用场景等；使用工具如何如何解决具体问题，应该放在「应用」里
+作品：自己的作品（成品）、个人项目日志等
+杂谈：生活碎碎念
+自然科学：物理，化学，数学
+其他：没法分类的东西
+
+Tags
+
+细分领域：机器之脉络(硬件),机器之魂魄(嵌入式软件,机器学习，算法等),机器之骨骼(结构),
+形式：日志
+具体内容：个人作品、方法论、随笔
+语言：python C C# Java Html micropython 微信小程序
+IDE：Arduino CUBEIDE Vscode
+自然科学：代数 几何 概率 黑洞 白矮星 四维空间...
+IC OR IDE : STM32 ESP32 ESP8266 C51 树莓派 RK3399 野火开发版 MIQI
+模组：ws2812b
+系统：Linux Windows macOS openwrt Docker   termux
+游戏：MC
+博客：hexo 主题 魔改
+折腾系类：黑苹果，整服务器，termux
+
+ -->
+
+  </div>
+</article>
+
+  </div>
+
+  <!-- 桌面图标 -->
+  <div class="desktop-icons">
+      <!-- 我的电脑 (存档) -->
+      <a href="/win98/archives/" class="desktop-icon" id="icon-mycomputer">
+        <img src="/win98/images/icon_mycomputer.png" alt="我的电脑">
+        <span>我的电脑</span>
+      </a>
+      <!-- 我的文档 (关于) -->
+      <a href="/win98/about/" class="desktop-icon" id="icon-mydocuments">
+        <img src="/win98/images/icon_mydocuments.png" alt="我的文档">
+        <span>我的文档</span>
+      </a>
+      <!-- 网上邻居 (友链) -->
+      <a href="/win98/links/" class="desktop-icon" id="icon-network">
+        <img src="/win98/images/icon_network.png" alt="网上邻居">
+        <span>网上邻居</span>
+      </a>
+      <!-- 记事本 (留言板) -->
+      <a href="/win98/guestbook/" class="desktop-icon" id="icon-guestbook">
+        <img src="/win98/images/icon_notepad.png" alt="留言板">
+        <span>留言板</span>
+      </a>
+  </div>
+
+  <!-- 这个容器用来放置动态创建的窗口 -->
+  <div id="window-container"></div>
+
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+    
+    <script>
+      function initializeGitalkForWindow(targetContainerId, uniquePageId) {
+        console.log(`[Gitalk Global] Attempting init for container #${targetContainerId}, page ID: ${uniquePageId}`);
+        const containerElement = document.getElementById(targetContainerId);
+
+        if (!containerElement) {
+          console.error(`[Gitalk Global] Error: Container #${targetContainerId} not found.`);
+          return;
+        }
+        if (typeof Gitalk === 'undefined') {
+          console.error("[Gitalk Global] Error: Gitalk library not loaded.");
+          containerElement.innerHTML = '<p style="color:red;">错误：Gitalk 库未加载！</p>';
+          return;
+        }
+
+        // --- Prevent re-initialization on the same container ---
+        if (containerElement.dataset.gitalkInitialized === 'true') {
+             console.log(`[Gitalk Global] Info: Gitalk already initialized for #${targetContainerId}. Skipping.`);
+             return;
+        }
+
+
+        try {
+          const gitalkInstance = new Gitalk({
+            clientID: '0v0',
+            clientSecret: '0w0',
+            repo: 'leak.moe',
+            owner: 'moeleak',
+            admin: ["moeleak"],
+            id: uniquePageId,
+            language: 'zh-CN',
+            distractionFreeMode: false,
+            proxy: 'https://proxy-gitalk-api.netlify.app/github_access_token'
+          });
+
+          console.log(`[Gitalk Global] Instance created for #${targetContainerId}. Rendering...`);
+          gitalkInstance.render(targetContainerId);
+          containerElement.dataset.gitalkInitialized = 'true'; // Mark as initialized
+          console.log(`[Gitalk Global] Render command issued for #${targetContainerId}.`);
+
+        } catch (error) {
+          console.error(`[Gitalk Global] Error during Gitalk init/render for #${targetContainerId}:`, error);
+          containerElement.innerHTML = `<p style="color:red;">Gitalk 初始化/渲染出错: ${error.message}</p>`;
+        }
+      }
+    </script>
+  
+
+
+  <!-- 引入交互逻辑的 JS -->
+  <script src="/win98/js/win98.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+        <!-- ECharts 图表容器 -->
+        
+        <script>
+            if(document.getElementById('heatmapChart')){
+                const heatmapChart = echarts.init(document.getElementById('heatmapChart'));
+                const containerWidth = document.getElementById('heatmapChart').offsetWidth;
+                const cellSize = Math.max(Math.floor(containerWidth / 60));
+                console.log(cellSize)
+                heatmapChart.setOption({
+                    tooltip: {
+                        position: 'top',
+                        formatter: params => `${params.value[0]}: ${params.value[1]} Articles`
+                    },
+                    visualMap: {
+                        min: 0,
+                        max: Math.max(...[["2025-01-01",1],["2025-01-15",1],["2025-01-21",1],["2025-01-30",1],["2025-02-07",1],["2025-02-22",1],["2025-02-28",1],["2025-03-04",1],["2025-05-04",1],["2025-05-06",1]].map(item => item[1])),
+                        calculable: false,
+                        orient: 'horizontal', // 横向布局
+                        right: '5%',
+                        bottom: '5%',
+                        inRange: { color: ['#FFEFD5', '#FFA07A', '#FF4500'] }
+                    },
+                    calendar: {
+                        top: '20%',
+                        left: 'center',
+                        range: new Date().getFullYear(),
+                        cellSize: cellSize, // 方格大小
+                        splitLine: { lineStyle: { color: '#E0E0E0', width: 1 } },
+                        itemStyle: { borderWidth: 1, borderColor: '#E0E0E0' },
+                        dayLabel: { firstDay: 1, fontSize: 12, color: '#333', show: false },
+                        monthLabel: { fontSize: 12, color: '#555' }
+                    },
+                    series: [{
+                        type: 'heatmap',
+                        coordinateSystem: 'calendar',
+                        data: [["2025-01-01",1],["2025-01-15",1],["2025-01-21",1],["2025-01-30",1],["2025-02-07",1],["2025-02-22",1],["2025-02-28",1],["2025-03-04",1],["2025-05-04",1],["2025-05-06",1]]
+                    }]
+                });
+            }
+        </script>
+    
+        
+        <script>
+            if(document.getElementById('monthlyChart')){
+                const monthlyChart = echarts.init(document.getElementById('monthlyChart'));
+                monthlyChart.setOption({
+                    xAxis: {
+                        type: 'category',
+                        data: ["2025-01","2025-02","2025-03","2025-05"],
+                        axisLabel: { fontSize: 12 }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        splitLine: { lineStyle: { type: 'dashed', color: '#ccc' } }
+                    },
+                    series: [{
+                        name: 'Articles',
+                        type: 'line',
+                        data: [4,3,1,2],
+                        smooth: true,
+                        lineStyle: { color: '#5470C6', width: 2 },
+                        itemStyle: { color: '#5470C6' },
+                        areaStyle: { color: 'rgba(84, 112, 198, 0.4)' },
+                        animationDuration: 1000
+                    }]
+                });
+            }
+        </script>
+    
+        
+        <script>
+            if(document.getElementById('tagsChart')){    
+                const tagsChart = echarts.init(document.getElementById('tagsChart'));
+                tagsChart.setOption({
+                    tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
+                    series: [{
+                        type: 'pie',
+                        radius: '60%',
+                        data: [],
+                        label: {
+                            position: 'outside',
+                            formatter: '{b} {c} ({d}%)',
+                            fontSize: 12
+                        },
+                        color: ['#5470C6', '#91CC75', '#FAC858', '#EE6666', '#73C0DE', '#3BA272', '#FC8452', '#9A60B4'],
+                        animationDuration: 1000
+                    }],
+                    legend: {
+                        bottom: '0',
+                        left: 'center',
+                        data: [].map(tag => tag.name),
+                        textStyle: { fontSize: 12 }
+                    }
+                });
+            }
+        </script>
+    
+        
+        <script>
+            if(document.getElementById('categoriesChart')){
+                const categoriesChart = echarts.init(document.getElementById('categoriesChart'));
+                categoriesChart.setOption({
+                    xAxis: {
+                        type: 'value',
+                        splitLine: { lineStyle: { type: 'dashed', color: '#ccc' } }
+                    },
+                    yAxis: {
+                        type: 'category',
+                        data: [].map(category => category.name).reverse(),
+                        axisLabel: { fontSize: 12 }
+                    },
+                    series: [{
+                        name: 'Category Count',
+                        type: 'bar',
+                        data: [].map(category => category.value).reverse(),
+                        label: {
+                            show: true,
+                            position: 'right',
+                            fontSize: 12
+                        },
+                        itemStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                                { offset: 0, color: '#91CC75' },
+                                { offset: 1, color: '#73C0DE' }
+                            ])
+                        },
+                        animationDuration: 1000
+                    }]
+                });
+            }
+        </script>
+    
+    </body>
+</html>
+
+

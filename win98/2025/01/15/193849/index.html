@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN,zh-tw,en,default">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="apple-touch-icon" href="/win98/images/apple-touch-icon.png">
+  <link rel="icon" href="/win98/images/favicon.ico">
+
+  <!-- 98.css -->
+  <link rel="stylesheet" href="https://unpkg.com/98.css" />
+  <!-- hexo win98 CSS -->
+  <link rel="stylesheet" href="/win98/css/style.css">
+
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  
+
+  
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/win98/atom.xml" title="子書承宇" type="application/rss+xml">
+</head>
+
+
+<body class="windows-desktop" data-blog-title="子書承宇">
+
+  <!-- Hexo 渲染的初始内容，默认隐藏，仅供 JS fetch 读取 -->
+  <div id="initial-content-wrapper" style="display: none;">
+    <article class="win98-content" id="content-main">
+  <h1>片上SOC外围硬件设计参考指南</h1>
+  
+    <p class="post-meta">发布于: 2025-01-15</p>
+  
+  <hr>
+  <div class="post-content">
+    <div id="first_down"><p>
+<!-- line left -->
+本文的初衷是希望能让非电学专业的人能看明白，就像24年更新的[🔗元器件之旅](/tags/元器件之旅/)一样（但是得懂一点高数）。
+</p></div>
+<h2 id="总则"><a class="markdownIt-Anchor" href="#总则"></a> 总则</h2>
+<p>硬件设计不仅仅是原理重要，layout 也非常重要，layout是讲硬件线路变成现实的一环，这其中的原理相当的多，高压、低压、SI、EMI各不相同。</p>
+<p>本文简述片上SOC需要的硬件接口和电源部分以及功能接口，是概述，每一部分后面可以单独出一篇细讲原理，具体细致到某一种协议，某一种平台电源方案都需要具体情况具体分析，篇幅不想写太长了，后面会把所有谈到的部分逐一展开讲解，每种设备的硬件原理以及涉及到的通信协议时序逻辑。</p>
+<blockquote>
+<p>本文均参考自网友文章和CPU厂商参考设计文档。</p>
+</blockquote>
+<h2 id="最小系统设计建议"><a class="markdownIt-Anchor" href="#最小系统设计建议"></a> 最小系统设计建议</h2>
+<h3 id="晶振"><a class="markdownIt-Anchor" href="#晶振"></a> 晶振</h3>
+<p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/01/001.png" alt="晶体连接方式及器件参数 " /></p>
+<blockquote>
+<p>电容C1102、C1103的值需要根据晶体的实际标称负载电容值选择，8pF为原厂选用晶体所对应容值，不为通用值。</p>
+</blockquote>
+<p>部分芯片会说明晶振工作的作用，比如RK3399提到：芯片在待机时，会将内部时钟源切换到外接的32.768KHz时钟，通过降低工作频率以降低系统功耗。</p>
+<p>这里只举到了RK3399这种IC，对于大到intel和AMD，小到STM32等微控制器都是一样的逻辑。晶振是芯片的脉搏来源，是各种数电骚操作的根基。</p>
+<blockquote>
+<p>参考本站文章（挖个坑，稍后补）–&gt;<a href="/">晶体谐振器与负载电容及其计算方法</a></p>
+</blockquote>
+<h3 id="复位电路"><a class="markdownIt-Anchor" href="#复位电路"></a> 复位电路</h3>
+<p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/01/002.png" alt="复位线路 " /></p>
+<p>复位也是很重要的操作，当IC跑飞可以通过复位让其重新启动。这个连C51都有，不多做介绍。（多提一句，这个电容C1100是用来消抖的，开关摁下瞬间并不是理想瞬间拉低，在某一瞬间是会产生抖动的，波形不稳定，这里利用电容电压瞬间不可变的特性实现消抖，想详细了解可以量测开关摁下时的波形或者百度。）</p>
+<h3 id="debug"><a class="markdownIt-Anchor" href="#debug"></a> Debug</h3>
+<h4 id="jtag"><a class="markdownIt-Anchor" href="#jtag"></a> JTAG</h4>
+<p>协议举例：<a target="_blank" rel="noopener" href="https://www.intel.com/programmable/technical-pdfs/655055.pdf"> IEEE 1149.1 (JTAG) Boundary-Scan<br />
+Testing for MAX II Devices</a></p>
+<p>JTAG信号引脚一共有4个或者5个（其中一个可选）。这些引脚仅用于测试目的，控制JTAG完成1149.1协议的操作。引脚信息如下：</p>
+<ul>
+<li>
+<p><strong>Test clock input（TCK）</strong>：该引脚为测试逻辑提供时钟，由于受板级以及芯片pad限制，一般频率为10MHz，频率占空比一般为50%。TMS和TDI的数据在TCK的上升沿被采样。数据在时钟的下降沿输出到TDO。<strong>建议下拉</strong>。</p>
+</li>
+<li>
+<p><strong>Test mode select input（TMS）</strong>：用于控制JTAG内部状态机跳转，切换到指定，该信号在TCK上升沿时被采样。TMS用来设置JTAG口处于某种特定的测试模式，用于控制TAP状态机。<strong>必须上拉。</strong></p>
+</li>
+<li>
+<p><strong>Test data input（TDI）</strong>：输入到指令寄存器（IR）或数据寄存器（DR）的数据出现在TDI输入端，在TCK的上升沿被采样。建议上拉，<strong>上拉电阻阻值不能小于1K</strong>。</p>
+</li>
+<li>
+<p><strong>Test data output（TDO）</strong>：来自指令寄存器或数据寄存器的数据在时钟的下降沿被移出到TDO。<strong>不用上下拉</strong>，悬空时，尽量引出测试点，同时应避免将TDO作为I/O使用。</p>
+</li>
+<li>
+<p><em><em>Test reset input（TRST</em>）</em>*：JTAG 内部逻辑全局异步复位信号，<strong>一般低电平有效</strong>。TRST可以用来对TAP Controller进行复位（初始化）。因为通过TMS也可以对TAPController进行复位（初始化）。所以有四线JTAG与五线JTAG之分。</p>
+</li>
+<li>
+<p><strong>可选引脚RTCK</strong>：测试时钟返回信号。RTCK由目标端反馈给仿真器的时钟信号，用来同步TCK信号的产生，不使用时直接接地。</p>
+</li>
+<li>
+<p><strong>可选引脚nSRST</strong>：目标系统复位信号。与目标板上的系统复位信号相连，可以直接对目标系统复位。同时可以检测目标系统的复位情况，为了防止误触发应在目标端加上适当的上拉电阻。</p>
+</li>
+</ul>
+<h4 id="swd"><a class="markdownIt-Anchor" href="#swd"></a> SWD</h4>
+<ul>
+<li>
+<p><strong>VRef</strong>：目标板参考电压信号。用于检查目标板是否供电，直接与目标板VDD联，并不向外输出电压(<strong>必须</strong>)</p>
+</li>
+<li>
+<p><strong>GND</strong>：公共地信号(<strong>必须</strong>)</p>
+</li>
+<li>
+<p><strong>SWDIO</strong>：串行数据输入输出，作为仿真信号的双向数据信号线，建议上拉(<strong>高速下载时一定需要上拉</strong>，<strong>必须</strong>)</p>
+</li>
+<li>
+<p><strong>SWCLK</strong>：串行时钟输入，作为仿真信号的时钟信号线，建议下拉(<strong>高速下载时一定需要下拉</strong>，<strong>必须</strong>)</p>
+</li>
+<li>
+<p><strong>SWO</strong>：串行数据输出引脚，CPU调试接口可通过SWO引脚输出一些调试信息。该引脚是<strong>可选的</strong></p>
+</li>
+<li>
+<p><strong>RESET</strong>：仿真器输出至目标CPU的系统复位信号。该引脚<strong>可选</strong>，建议选择上，因为ULINK是一定需要该管脚的，使得仿真器能够在连接器件前对器件进行复位，以获得较理想的初始状态，便于后续连接仿真。</p>
+</li>
+</ul>
+<h3 id="ddr电路"><a class="markdownIt-Anchor" href="#ddr电路"></a> DDR电路</h3>
+<p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/01/003.png" alt="RK3399DDR3拓扑 " /></p>
+<p>对于内存来说，细节非常多，可以单独出一篇文章了，这里仅仅给出了RK3399DDR3拓扑，大概看下有哪些线需要链接上。每一代的DDR都有自己的标准DDR3和DDR4的标准就不太一样，具体情况具体分析。</p>
+<p>DDR3上电时序如下：</p>
+<p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/01/004.png" alt="DDR3上电时序 " /></p>
+<h3 id="emmc电路"><a class="markdownIt-Anchor" href="#emmc电路"></a> eMMC电路</h3>
+<p>线路上一般直接连接就可以，没有上下拉电阻要求。当然，这类存储设备在进入休眠时会有掉电上电需求，具体情况看CPU的规格书，上面会详细说明如何开关电源。</p>
+<ul>
+<li><strong>eMMC_DQ[7:0]</strong>：eMMC数据发送/接收</li>
+<li><strong>eMMC_CLK</strong>：eMMC时钟发送</li>
+<li><strong>eMMC_CMD</strong>：eMMC命令发送/接收</li>
+<li><strong>eMMC_STRB</strong>：HS400模式下，eMMC时钟接收软件配置内部下拉，无需外部下拉电阻。</li>
+</ul>
+<h3 id="spi"><a class="markdownIt-Anchor" href="#spi"></a> SPI</h3>
+<p>为什么SPI也列入最小系统设计中？许多比较复杂的芯片如FPGA、CPU等等都有从SPI启动，比如BIOS就是SPI通信（严格来说不是标准SPI）。</p>
+<ul>
+<li><strong>SPI1_TXD（MOSI）</strong>：SPI数据发送</li>
+<li><strong>SPI1_RXD（MISO）</strong>：SPI数据接收</li>
+<li><strong>SPI1_CLK</strong>：SPI时钟发送，串联22ohm电阻 （这个电阻应该是阻抗匹配时用到的）</li>
+<li><strong>SPI1_CSn0</strong>：SPI片选信号</li>
+</ul>
+<h2 id="电源系统设计简述"><a class="markdownIt-Anchor" href="#电源系统设计简述"></a> 电源系统设计简述</h2>
+<p>电源方案在这里不好讲，因为每个芯片都不一样，先举个例子。</p>
+<h3 id="x86"><a class="markdownIt-Anchor" href="#x86"></a> X86</h3>
+<p>以前的 <strong>Intel CPU</strong> 电源方案采用的是 Controller+DrMOS ，具体如下图：</p>
+<p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/01/005.png" alt="经典Controller+DrMOS模型 " /></p>
+<p>可以精准控制几路电源输出，CPU的电压很低但是电流非常大 80A+ 都是正常的（用功率计算公式反推一下就能知道，假设电压是0.9V），最新出的Lunar Lake的 DDR 部分已经和 CPU 绑定在一起了，时序自然也都有要求。</p>
+<h3 id="arm"><a class="markdownIt-Anchor" href="#arm"></a> ARM</h3>
+<p>而<strong>ARM</strong>架构如瑞芯微或者高通等，他们采用的电源方案不太一样，他们的电源分支非常细致，导致会有非常多的Buck和ldo，例如rk3399使用的RK809-3，有5路Buck和9路ldo。<s>大多是抄图的，真正做这些设计从理论到实践的都是原厂，OEM，ODM都是用着就行</s></p>
+<p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/01/006.png" alt="RK809-3简介 " /></p>
+<p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/01/007.jpg" alt="RK3399实际使用的电源数量 " /></p>
+<h2 id="功能接口设计建议"><a class="markdownIt-Anchor" href="#功能接口设计建议"></a> 功能接口设计建议</h2>
+<h3 id="存储卡电路"><a class="markdownIt-Anchor" href="#存储卡电路"></a> 存储卡电路</h3>
+<p>其实就是TF卡，CPU 中叫做 SDMMC 控制器。硬件层面没什么好说的，把桥搭上，硬件层面就没有了。</p>
+<ul>
+<li><strong>SDMMC_DQ[3:0]</strong>：SDMMC数据发送/接收，上拉，串联22ohm电阻</li>
+<li><strong>SDMMC_CLK</strong>：SDMMC时钟发送，下拉</li>
+<li><strong>SDMMC_CMD</strong>：SDMMC命令发送/接收，上拉 ，串联22ohm电阻</li>
+</ul>
+<h3 id="以太网口电路"><a class="markdownIt-Anchor" href="#以太网口电路"></a> 以太网口电路</h3>
+<p>RMII接口(MAC-to-PHY的RMII)：</p>
+<ul>
+<li><strong>MAC_TXCLK</strong>：数据发送的参考时钟【串联22ohm电阻】</li>
+<li><strong>MAC_RXCLK</strong>：数据接收的参考时钟【直连】</li>
+<li><strong>MAC_TXD[1:0]</strong>：数据发送 【串联22ohm电阻】</li>
+<li><strong>MAC_RXD[1:0]</strong>：数据接收【直连】</li>
+<li><strong>MAC_TXEN</strong>：发送数据使能 【串联22ohm电阻】</li>
+<li><strong>MAC_RXDV</strong>：接收数据有效指示 【直连】</li>
+<li><strong>MAC_MDC</strong>：配置接口时钟 【直连】</li>
+<li><strong>MAC_MDIO</strong>：配置接口I/O 【直连】</li>
+<li><strong>MAC_CLK</strong>：主时钟输出，50MHz 【串联22ohm电阻】</li>
+</ul>
+<p>这是以太网七层链路映射，对于硬件来说，主要是物理层，<strong>数据链路层</strong>主要是<strong>将</strong>不同的传输协议（UDP/TCP）加上其他的层如IP层等等形成的<strong>以太网数据包</strong>转换成<strong>电信号</strong>。</p>
+<p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/01/008.png" alt="太网七层链路 " /></p>
+<p>对于RK3399来说，MAC部分已经集成到CPU中了，不像Intel，需要从PCIE转出来（映像中只有一个平台的有，其他的CPU都没有），设计相对简单些，当然也有MAC和PHY集成方案。</p>
+<h3 id="usb电路"><a class="markdownIt-Anchor" href="#usb电路"></a> USB电路</h3>
+<h4 id="usb-20"><a class="markdownIt-Anchor" href="#usb-20"></a> USB 2.0</h4>
+<p>没什么好说的，非常简单。</p>
+<ul>
+<li>+5 VDC</li>
+<li>Data -</li>
+<li>Data +</li>
+<li>Ground</li>
+</ul>
+<h4 id="usb-30"><a class="markdownIt-Anchor" href="#usb-30"></a> USB 3.0</h4>
+<p>USB 3.0 相比 USB 2.0 多了一个差分信号，速度会快很多，属于高速信号（SI），越高速的信号layout要求越严格，例如TBT等等。</p>
+<ul>
+<li>针脚编号 1: 红色 - VBUS</li>
+<li>针脚编号 2: 白色 - D−</li>
+<li>针脚编号 3: 绿色 - D+</li>
+<li>针脚编号 4: 黑色 - GND</li>
+<li>针脚编号 5: 蓝色 - StdA_SSRX− / StdB_SSTX−</li>
+<li>针脚编号 6: 黄色 - StdA_SSRX+ / StdB_SSTX+</li>
+<li>针脚编号 7: Shield - 信号地用于降低噪声干扰</li>
+<li>针脚编号 8: 紫色 - StdA_SSTX− / StdB_SSRX−</li>
+<li>针脚编号 9: 橙色 - StdA_SSTX+ / StdB_SSRX+</li>
+</ul>
+<h3 id="音频电路"><a class="markdownIt-Anchor" href="#音频电路"></a> 音频电路</h3>
+<p>最常见的是I2S，在I2C基础上做了一点点变更。还有PCM。</p>
+<ul>
+<li><strong>I2S_SCLK</strong>          下拉   串联22ohm电阻   I2S系统时钟输出，供I2S0&amp;I2S1设备工作</li>
+<li><strong>I2S_SCLK</strong>          下拉   串联22ohm电阻   I2S位时钟输出</li>
+<li><strong>I2S_LRCK_TX/RX</strong>    下拉   串联22ohm电阻   I2S声道选择输入/输出</li>
+<li><strong>I2S_SDI0</strong>          下拉   串联22ohm电阻   I2S数据输入通道0</li>
+<li><strong>I2S_SDI1SDO3</strong>      下拉   串联22ohm电阻   I2S数据输入通道1/输出通道3</li>
+<li><strong>I2S_SDI2SDO2</strong>      下拉   串联22ohm电阻   I2S数据输入通道2/输出通道2</li>
+<li><strong>I2S_SDI3SDO1</strong>      下拉   串联22ohm电阻   I2S数据输入通道3/输出通道1</li>
+<li><strong>I2S_SDO0</strong>          下拉   串联22ohm电阻   I2S数据输出通道0</li>
+</ul>
+<p>Codec 在这里就暂时不讲了，方案很多，这里写不完。</p>
+<h3 id="视频电路"><a class="markdownIt-Anchor" href="#视频电路"></a> 视频电路</h3>
+<h4 id="edp"><a class="markdownIt-Anchor" href="#edp"></a> eDP</h4>
+<p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/01/010.png" alt="eDP " /></p>
+<p>eDP控制器参考电阻R1704需选用1%精度的电阻，该电阻会影响眼图信号质量；</p>
+<h4 id="mipi"><a class="markdownIt-Anchor" href="#mipi"></a> MIPI</h4>
+<p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/01/011.png" alt="mipi " /></p>
+<p>MIPI-DSI控制器参考电阻R1707需选用1%精度的电阻，该电阻会影响眼图信号质量；</p>
+<h4 id="hdmi"><a class="markdownIt-Anchor" href="#hdmi"></a> HDMI</h4>
+<p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/01/012.png" alt="HDMI " /></p>
+<p>HDMI 需要注意防倒灌，在 CEC 的 DDC 上需要添加电瓶转换</p>
+<p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/01/013.png" alt="HDMI " /></p>
+<h3 id="摄像头电路"><a class="markdownIt-Anchor" href="#摄像头电路"></a> 摄像头电路</h3>
+<h4 id="mipi-csi"><a class="markdownIt-Anchor" href="#mipi-csi"></a> MIPI CSI</h4>
+<p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/01/014.png" alt="MIPI-CSI " /></p>
+<p>控制器参考电阻R1602&amp;R1603请选用1%精度的电阻，该电阻会影响眼图信号质量；</p>
+<h3 id="uart电路"><a class="markdownIt-Anchor" href="#uart电路"></a> UART电路</h3>
+<ul>
+<li><strong>UART_RX</strong>      ： UART数据输入</li>
+<li><strong>UART_TX</strong>      ： UART数据输出</li>
+<li><strong>UART_CTSn</strong>    ： UART允许发送信号</li>
+<li><strong>UART_RTSn</strong>    ： UART请求发送信号</li>
+</ul>
+<h3 id="sdio电路"><a class="markdownIt-Anchor" href="#sdio电路"></a> SDIO电路</h3>
+<ul>
+<li><strong>SDIO_DQn[0:3]</strong>   ： 串联22ohm电阻  SDIO数据发送/接收</li>
+<li><strong>SDIO_CLKOUT</strong>     ： 直连          SDIO时钟发送</li>
+<li><strong>SDIO_CMD</strong>        ： 直连           SDIO命令发送/接收</li>
+</ul>
+<h3 id="spdif"><a class="markdownIt-Anchor" href="#spdif"></a> SPDIF</h3>
+<p>SPDIF全称为Sony/Philips Digital Interface Format是SONY、PHILIPS数字音频接口的简称。就传输载体而言，SPDIF又分为同轴和光纤两种，其实他们可传输的信号是相同的，只不过是载体不同，接口和连线外观也有差异。但光信号传输无需考虑接口电平及阻抗问题，接口灵活且抗干扰能力更强。</p>
+<p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/01/015.png" alt="SPDIF使用同轴接口 " /></p>
+<h3 id="pcie电路"><a class="markdownIt-Anchor" href="#pcie电路"></a> PCIe电路</h3>
+<p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/main/article/2025/01/016.png" alt="PCIE " /></p>
+<p>TX信号线的耦合电容应靠近PCIe连接座放置，RX电容由设备端提供；</p>
+<!-- ## _还没写完.._ -->
+<div id="first_down"><p>
+<!-- line left -->
+片上SOC设计有非常多细节，复杂的如FPGA和CPU，简单的就是嵌入式微控制器。在电子设计中，大多如此，至少在当前10~20年变化不大，具有科技感的AR、XR都是微型片上SOC。从外围电路设计上其实没有多少难度，核心是光机的光波导镜片以及核心SOC。乍眼一看其实硬件设计原理上基本到头了，除非材料革命。硬件创造世界，软件改变世界。现在这个时代四处充斥着软件的影子，你对手机的每一步操作，对 AI 讲的每一段语音都是软件在起作用，硬件只不过是载体而已。当然不排除芯片设计了，芯片设计是纯粹的硬件设计（可能也不准确，FPGA 之类的又有程序参与），从简单的触发器寄存器，通过复杂的级联成CPU，PC的诞生至今也不过四五十年左右。希望未来能来得更快点。
+</p></div>
+<!-- 
+Category：
+
+理论：理论知识技能，技术
+应用：应用笔记，实操
+折腾：折腾折腾折腾折腾！(其实属于应用，但就是玩！)
+方法：方法论（经验谈），如工程方法
+工具：针对具体工具的介绍、使用方法、分析适用场景等；使用工具如何如何解决具体问题，应该放在「应用」里
+作品：自己的作品（成品）、个人项目日志等
+杂谈：生活碎碎念
+自然科学：物理，化学，数学
+其他：没法分类的东西
+
+Tags
+
+细分领域：机器之脉络(硬件),机器之魂魄(嵌入式软件,机器学习，算法等),机器之骨骼(结构),
+形式：日志
+具体内容：个人作品、方法论、随笔
+语言：python C C# Java Html micropython 微信小程序
+IDE：Arduino CUBEIDE Vscode
+自然科学：代数 几何 概率 黑洞 白矮星 四维空间...
+IC OR IDE : STM32 ESP32 ESP8266 C51 树莓派 RK3399 野火开发版 MIQI
+模组：ws2812b
+系统：Linux Windows macOS openwrt Docker   termux
+游戏：MC
+博客：hexo 主题 魔改
+折腾系类：黑苹果，整服务器，termux
+
+ -->
+
+  </div>
+</article>
+
+  </div>
+
+  <!-- 桌面图标 -->
+  <div class="desktop-icons">
+      <!-- 我的电脑 (存档) -->
+      <a href="/win98/archives/" class="desktop-icon" id="icon-mycomputer">
+        <img src="/win98/images/icon_mycomputer.png" alt="我的电脑">
+        <span>我的电脑</span>
+      </a>
+      <!-- 我的文档 (关于) -->
+      <a href="/win98/about/" class="desktop-icon" id="icon-mydocuments">
+        <img src="/win98/images/icon_mydocuments.png" alt="我的文档">
+        <span>我的文档</span>
+      </a>
+      <!-- 网上邻居 (友链) -->
+      <a href="/win98/links/" class="desktop-icon" id="icon-network">
+        <img src="/win98/images/icon_network.png" alt="网上邻居">
+        <span>网上邻居</span>
+      </a>
+      <!-- 记事本 (留言板) -->
+      <a href="/win98/guestbook/" class="desktop-icon" id="icon-guestbook">
+        <img src="/win98/images/icon_notepad.png" alt="留言板">
+        <span>留言板</span>
+      </a>
+  </div>
+
+  <!-- 这个容器用来放置动态创建的窗口 -->
+  <div id="window-container"></div>
+
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+    
+    <script>
+      function initializeGitalkForWindow(targetContainerId, uniquePageId) {
+        console.log(`[Gitalk Global] Attempting init for container #${targetContainerId}, page ID: ${uniquePageId}`);
+        const containerElement = document.getElementById(targetContainerId);
+
+        if (!containerElement) {
+          console.error(`[Gitalk Global] Error: Container #${targetContainerId} not found.`);
+          return;
+        }
+        if (typeof Gitalk === 'undefined') {
+          console.error("[Gitalk Global] Error: Gitalk library not loaded.");
+          containerElement.innerHTML = '<p style="color:red;">错误：Gitalk 库未加载！</p>';
+          return;
+        }
+
+        // --- Prevent re-initialization on the same container ---
+        if (containerElement.dataset.gitalkInitialized === 'true') {
+             console.log(`[Gitalk Global] Info: Gitalk already initialized for #${targetContainerId}. Skipping.`);
+             return;
+        }
+
+
+        try {
+          const gitalkInstance = new Gitalk({
+            clientID: '0v0',
+            clientSecret: '0w0',
+            repo: 'leak.moe',
+            owner: 'moeleak',
+            admin: ["moeleak"],
+            id: uniquePageId,
+            language: 'zh-CN',
+            distractionFreeMode: false,
+            proxy: 'https://proxy-gitalk-api.netlify.app/github_access_token'
+          });
+
+          console.log(`[Gitalk Global] Instance created for #${targetContainerId}. Rendering...`);
+          gitalkInstance.render(targetContainerId);
+          containerElement.dataset.gitalkInitialized = 'true'; // Mark as initialized
+          console.log(`[Gitalk Global] Render command issued for #${targetContainerId}.`);
+
+        } catch (error) {
+          console.error(`[Gitalk Global] Error during Gitalk init/render for #${targetContainerId}:`, error);
+          containerElement.innerHTML = `<p style="color:red;">Gitalk 初始化/渲染出错: ${error.message}</p>`;
+        }
+      }
+    </script>
+  
+
+
+  <!-- 引入交互逻辑的 JS -->
+  <script src="/win98/js/win98.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+        <!-- ECharts 图表容器 -->
+        
+        <script>
+            if(document.getElementById('heatmapChart')){
+                const heatmapChart = echarts.init(document.getElementById('heatmapChart'));
+                const containerWidth = document.getElementById('heatmapChart').offsetWidth;
+                const cellSize = Math.max(Math.floor(containerWidth / 60));
+                console.log(cellSize)
+                heatmapChart.setOption({
+                    tooltip: {
+                        position: 'top',
+                        formatter: params => `${params.value[0]}: ${params.value[1]} Articles`
+                    },
+                    visualMap: {
+                        min: 0,
+                        max: Math.max(...[["2025-01-01",1],["2025-01-15",1],["2025-01-21",1],["2025-01-30",1],["2025-02-07",1],["2025-02-22",1],["2025-02-28",1],["2025-03-04",1],["2025-05-04",1],["2025-05-06",1]].map(item => item[1])),
+                        calculable: false,
+                        orient: 'horizontal', // 横向布局
+                        right: '5%',
+                        bottom: '5%',
+                        inRange: { color: ['#FFEFD5', '#FFA07A', '#FF4500'] }
+                    },
+                    calendar: {
+                        top: '20%',
+                        left: 'center',
+                        range: new Date().getFullYear(),
+                        cellSize: cellSize, // 方格大小
+                        splitLine: { lineStyle: { color: '#E0E0E0', width: 1 } },
+                        itemStyle: { borderWidth: 1, borderColor: '#E0E0E0' },
+                        dayLabel: { firstDay: 1, fontSize: 12, color: '#333', show: false },
+                        monthLabel: { fontSize: 12, color: '#555' }
+                    },
+                    series: [{
+                        type: 'heatmap',
+                        coordinateSystem: 'calendar',
+                        data: [["2025-01-01",1],["2025-01-15",1],["2025-01-21",1],["2025-01-30",1],["2025-02-07",1],["2025-02-22",1],["2025-02-28",1],["2025-03-04",1],["2025-05-04",1],["2025-05-06",1]]
+                    }]
+                });
+            }
+        </script>
+    
+        
+        <script>
+            if(document.getElementById('monthlyChart')){
+                const monthlyChart = echarts.init(document.getElementById('monthlyChart'));
+                monthlyChart.setOption({
+                    xAxis: {
+                        type: 'category',
+                        data: ["2025-01","2025-02","2025-03","2025-05"],
+                        axisLabel: { fontSize: 12 }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        splitLine: { lineStyle: { type: 'dashed', color: '#ccc' } }
+                    },
+                    series: [{
+                        name: 'Articles',
+                        type: 'line',
+                        data: [4,3,1,2],
+                        smooth: true,
+                        lineStyle: { color: '#5470C6', width: 2 },
+                        itemStyle: { color: '#5470C6' },
+                        areaStyle: { color: 'rgba(84, 112, 198, 0.4)' },
+                        animationDuration: 1000
+                    }]
+                });
+            }
+        </script>
+    
+        
+        <script>
+            if(document.getElementById('tagsChart')){    
+                const tagsChart = echarts.init(document.getElementById('tagsChart'));
+                tagsChart.setOption({
+                    tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
+                    series: [{
+                        type: 'pie',
+                        radius: '60%',
+                        data: [],
+                        label: {
+                            position: 'outside',
+                            formatter: '{b} {c} ({d}%)',
+                            fontSize: 12
+                        },
+                        color: ['#5470C6', '#91CC75', '#FAC858', '#EE6666', '#73C0DE', '#3BA272', '#FC8452', '#9A60B4'],
+                        animationDuration: 1000
+                    }],
+                    legend: {
+                        bottom: '0',
+                        left: 'center',
+                        data: [].map(tag => tag.name),
+                        textStyle: { fontSize: 12 }
+                    }
+                });
+            }
+        </script>
+    
+        
+        <script>
+            if(document.getElementById('categoriesChart')){
+                const categoriesChart = echarts.init(document.getElementById('categoriesChart'));
+                categoriesChart.setOption({
+                    xAxis: {
+                        type: 'value',
+                        splitLine: { lineStyle: { type: 'dashed', color: '#ccc' } }
+                    },
+                    yAxis: {
+                        type: 'category',
+                        data: [].map(category => category.name).reverse(),
+                        axisLabel: { fontSize: 12 }
+                    },
+                    series: [{
+                        name: 'Category Count',
+                        type: 'bar',
+                        data: [].map(category => category.value).reverse(),
+                        label: {
+                            show: true,
+                            position: 'right',
+                            fontSize: 12
+                        },
+                        itemStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                                { offset: 0, color: '#91CC75' },
+                                { offset: 1, color: '#73C0DE' }
+                            ])
+                        },
+                        animationDuration: 1000
+                    }]
+                });
+            }
+        </script>
+    
+    </body>
+</html>
+
+
