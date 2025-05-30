@@ -6902,6 +6902,13 @@ a[data-fancybox] {
   font-size: 1.25em;
   color: #fff;
 }
+:root[data-theme="dark"] .cmt-body.waline .wl-panel {
+  background: #272727;
+}
+:root[data-theme="dark"] .cmt-body.waline .wl-editor:focus,
+:root[data-theme="dark"] .cmt-body.waline .wl-input:focus {
+  background: #313131;
+}
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) .cmt-body.waline {
     --waline-white: #000;
@@ -6922,5 +6929,12 @@ a[data-fancybox] {
     font-weight: bold;
     font-size: 1.25em;
     color: #fff;
+  }
+  :root:not([data-theme]) .cmt-body.waline .wl-panel {
+    background: #272727;
+  }
+  :root:not([data-theme]) .cmt-body.waline .wl-editor:focus,
+  :root:not([data-theme]) .cmt-body.waline .wl-input:focus {
+    background: #313131;
   }
 }
