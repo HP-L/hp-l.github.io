@@ -176,7 +176,7 @@
     ap.init();
 </script>
 -->
-<span class="text">发表了 98 篇文章 · </span><span class="text">总计 101.3k 字</span><br></br><div style="height: 30px;"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://icp.gov.moe/images/ico64.png" alt="png" style="width:25px;height:25px;margin-bottom:-8px"><a href="https://icp.gov.moe/?keyword=20248051" target="_blank">萌ICP备20248051号</a></div><div style="height: 30px;"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://www.foreverblog.cn/favicon.ico" alt="png" style="width:25px;height:25px;margin-bottom:-8px"><a href="https://www.foreverblog.cn/blog/6441/cert.html" target="_blank">十年之约</a></div></div></footer>
+<span class="text">发表了 99 篇文章 · </span><span class="text">总计 101.4k 字</span><br></br><div style="height: 30px;"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://icp.gov.moe/images/ico64.png" alt="png" style="width:25px;height:25px;margin-bottom:-8px"><a href="https://icp.gov.moe/?keyword=20248051" target="_blank">萌ICP备20248051号</a></div><div style="height: 30px;"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://www.foreverblog.cn/favicon.ico" alt="png" style="width:25px;height:25px;margin-bottom:-8px"><a href="https://www.foreverblog.cn/blog/6441/cert.html" target="_blank">十年之约</a></div></div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
 </aside><div class='float-panel blur'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
@@ -695,4 +695,137 @@
         showWarningMessage("⚠️ 警告：源站提醒您，当前浏览的页面非官方页面，可能存在有害信息！您将被自动跳转至官方页面。", 6000);  
     }  
   })();
-  </script></div></body></html>
+  </script></div><script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+        <!-- ECharts 图表容器 -->
+        
+        <script>
+            if(document.getElementById('heatmapChart')){
+                const heatmapChart = echarts.init(document.getElementById('heatmapChart'));
+                const containerWidth = document.getElementById('heatmapChart').offsetWidth;
+                const cellSize = Math.max(Math.floor(containerWidth / 60));
+                console.log(cellSize)
+                heatmapChart.setOption({
+                    tooltip: {
+                        position: 'top',
+                        formatter: params => `${params.value[0]}: ${params.value[1]} Articles`
+                    },
+                    visualMap: {
+                        min: 0,
+                        max: Math.max(...[["2020-11-05",1],["2020-11-09",1],["2020-11-15",1],["2020-11-21",1],["2020-11-25",1],["2020-12-03",1],["2020-12-12",1],["2020-12-16",1],["2021-01-31",1],["2021-04-25",1],["2021-04-26",1],["2021-06-02",1],["2021-06-27",1],["2021-10-09",1],["2021-11-06",1],["2021-11-20",1],["2022-03-23",1],["2022-03-25",1],["2022-05-04",1],["2022-06-01",1],["2022-06-08",1],["2022-09-09",1],["2023-11-14",1],["2023-11-17",1],["2023-11-22",1],["2023-12-12",1],["2023-12-19",1],["2023-12-28",1],["2024-01-15",3],["2024-02-19",1],["2024-02-20",1],["2024-02-27",1],["2024-02-28",1],["2024-02-29",2],["2024-03-01",1],["2024-03-02",1],["2024-03-06",1],["2024-03-14",1],["2024-03-20",1],["2024-03-21",1],["2024-03-22",1],["2024-04-09",1],["2024-04-23",1],["2024-04-24",1],["2024-04-27",1],["2024-05-04",1],["2024-05-08",1],["2024-07-01",1],["2024-07-09",1],["2024-07-10",1],["2024-07-14",1],["2024-07-28",1],["2024-09-10",1],["2024-09-25",1],["2024-10-21",1],["2024-10-23",1],["2024-10-29",1],["2024-11-01",1],["2024-11-03",1],["2024-11-04",1],["2024-11-06",1],["2024-11-07",1],["2024-11-09",1],["2024-11-11",1],["2024-11-13",1],["2024-11-14",1],["2024-11-15",1],["2024-11-18",2],["2024-11-20",1],["2024-11-23",1],["2024-11-29",1],["2024-12-03",1],["2024-12-05",1],["2024-12-06",1],["2024-12-13",1],["2024-12-20",1],["2024-12-31",1],["2025-01-01",1],["2025-01-14",1],["2025-01-15",1],["2025-01-21",1],["2025-01-30",1],["2025-02-07",1],["2025-02-15",1],["2025-02-22",1],["2025-02-28",1],["2025-03-04",1],["2025-03-13",1],["2025-04-07",1],["2025-05-04",1],["2025-05-06",1],["2025-05-21",1],["2025-05-26",1],["2025-06-05",1],["2025-06-19",1]].map(item => item[1])),
+                        calculable: false,
+                        orient: 'horizontal', // 横向布局
+                        right: '5%',
+                        bottom: '5%',
+                        inRange: { color: ['#FFEFD5', '#FFA07A', '#FF4500'] }
+                    },
+                    calendar: {
+                        top: '20%',
+                        left: 'center',
+                        range: new Date().getFullYear(),
+                        cellSize: cellSize, // 方格大小
+                        splitLine: { lineStyle: { color: '#E0E0E0', width: 1 } },
+                        itemStyle: { borderWidth: 1, borderColor: '#E0E0E0' },
+                        dayLabel: { firstDay: 1, fontSize: 12, color: '#333', show: false },
+                        monthLabel: { fontSize: 12, color: '#555' }
+                    },
+                    series: [{
+                        type: 'heatmap',
+                        coordinateSystem: 'calendar',
+                        data: [["2020-11-05",1],["2020-11-09",1],["2020-11-15",1],["2020-11-21",1],["2020-11-25",1],["2020-12-03",1],["2020-12-12",1],["2020-12-16",1],["2021-01-31",1],["2021-04-25",1],["2021-04-26",1],["2021-06-02",1],["2021-06-27",1],["2021-10-09",1],["2021-11-06",1],["2021-11-20",1],["2022-03-23",1],["2022-03-25",1],["2022-05-04",1],["2022-06-01",1],["2022-06-08",1],["2022-09-09",1],["2023-11-14",1],["2023-11-17",1],["2023-11-22",1],["2023-12-12",1],["2023-12-19",1],["2023-12-28",1],["2024-01-15",3],["2024-02-19",1],["2024-02-20",1],["2024-02-27",1],["2024-02-28",1],["2024-02-29",2],["2024-03-01",1],["2024-03-02",1],["2024-03-06",1],["2024-03-14",1],["2024-03-20",1],["2024-03-21",1],["2024-03-22",1],["2024-04-09",1],["2024-04-23",1],["2024-04-24",1],["2024-04-27",1],["2024-05-04",1],["2024-05-08",1],["2024-07-01",1],["2024-07-09",1],["2024-07-10",1],["2024-07-14",1],["2024-07-28",1],["2024-09-10",1],["2024-09-25",1],["2024-10-21",1],["2024-10-23",1],["2024-10-29",1],["2024-11-01",1],["2024-11-03",1],["2024-11-04",1],["2024-11-06",1],["2024-11-07",1],["2024-11-09",1],["2024-11-11",1],["2024-11-13",1],["2024-11-14",1],["2024-11-15",1],["2024-11-18",2],["2024-11-20",1],["2024-11-23",1],["2024-11-29",1],["2024-12-03",1],["2024-12-05",1],["2024-12-06",1],["2024-12-13",1],["2024-12-20",1],["2024-12-31",1],["2025-01-01",1],["2025-01-14",1],["2025-01-15",1],["2025-01-21",1],["2025-01-30",1],["2025-02-07",1],["2025-02-15",1],["2025-02-22",1],["2025-02-28",1],["2025-03-04",1],["2025-03-13",1],["2025-04-07",1],["2025-05-04",1],["2025-05-06",1],["2025-05-21",1],["2025-05-26",1],["2025-06-05",1],["2025-06-19",1]]
+                    }]
+                });
+            }
+        </script>
+    
+        
+        <script>
+            if(document.getElementById('monthlyChart')){
+                const monthlyChart = echarts.init(document.getElementById('monthlyChart'));
+                monthlyChart.setOption({
+                    xAxis: {
+                        type: 'category',
+                        data: ["2020-11","2020-12","2021-01","2021-04","2021-06","2021-10","2021-11","2022-03","2022-05","2022-06","2022-09","2023-11","2023-12","2024-01","2024-02","2024-03","2024-04","2024-05","2024-07","2024-09","2024-10","2024-11","2024-12","2025-01","2025-02","2025-03","2025-04","2025-05","2025-06"],
+                        axisLabel: { fontSize: 12 }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        splitLine: { lineStyle: { type: 'dashed', color: '#ccc' } }
+                    },
+                    series: [{
+                        name: 'Articles',
+                        type: 'line',
+                        data: [5,3,1,2,2,1,2,2,1,2,1,3,3,3,6,7,4,2,5,2,3,15,6,5,4,2,1,4,2],
+                        smooth: true,
+                        lineStyle: { color: '#5470C6', width: 2 },
+                        itemStyle: { color: '#5470C6' },
+                        areaStyle: { color: 'rgba(84, 112, 198, 0.4)' },
+                        animationDuration: 1000
+                    }]
+                });
+            }
+        </script>
+    
+        
+        <script>
+            if(document.getElementById('tagsChart')){    
+                const tagsChart = echarts.init(document.getElementById('tagsChart'));
+                tagsChart.setOption({
+                    tooltip: { trigger: 'item', formatter: '{b}: {c} ({d}%)' },
+                    series: [{
+                        type: 'pie',
+                        radius: '60%',
+                        data: [{"name":"机器之脉络","value":14},{"name":"元器件之旅","value":6},{"name":"ESP8266","value":5},{"name":"arduino","value":5},{"name":"树莓派","value":4},{"name":"ESP32","value":4},{"name":"机器之魂魄","value":4},{"name":"C++","value":3}],
+                        label: {
+                            position: 'outside',
+                            formatter: '{b} {c} ({d}%)',
+                            fontSize: 12
+                        },
+                        color: ['#5470C6', '#91CC75', '#FAC858', '#EE6666', '#73C0DE', '#3BA272', '#FC8452', '#9A60B4'],
+                        animationDuration: 1000
+                    }],
+                    legend: {
+                        bottom: '0',
+                        left: 'center',
+                        data: [{"name":"机器之脉络","value":14},{"name":"元器件之旅","value":6},{"name":"ESP8266","value":5},{"name":"arduino","value":5},{"name":"树莓派","value":4},{"name":"ESP32","value":4},{"name":"机器之魂魄","value":4},{"name":"C++","value":3}].map(tag => tag.name),
+                        textStyle: { fontSize: 12 }
+                    }
+                });
+            }
+        </script>
+    
+        
+        <script>
+            if(document.getElementById('categoriesChart')){
+                const categoriesChart = echarts.init(document.getElementById('categoriesChart'));
+                categoriesChart.setOption({
+                    xAxis: {
+                        type: 'value',
+                        splitLine: { lineStyle: { type: 'dashed', color: '#ccc' } }
+                    },
+                    yAxis: {
+                        type: 'category',
+                        data: [{"name":"应用","value":31},{"name":"理论","value":17},{"name":"WeekNote","value":14},{"name":"折腾","value":12},{"name":"工具","value":8}].map(category => category.name).reverse(),
+                        axisLabel: { fontSize: 12 }
+                    },
+                    series: [{
+                        name: 'Category Count',
+                        type: 'bar',
+                        data: [{"name":"应用","value":31},{"name":"理论","value":17},{"name":"WeekNote","value":14},{"name":"折腾","value":12},{"name":"工具","value":8}].map(category => category.value).reverse(),
+                        label: {
+                            show: true,
+                            position: 'right',
+                            fontSize: 12
+                        },
+                        itemStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                                { offset: 0, color: '#91CC75' },
+                                { offset: 1, color: '#73C0DE' }
+                            ])
+                        },
+                        animationDuration: 1000
+                    }]
+                });
+            }
+        </script>
+    
+    </body></html>
