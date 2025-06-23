@@ -47,11 +47,11 @@
 :root[data-theme="light"] {
   --site-bg: #dde2e9;
   --card: rgba(255,255,255,0.53);
-  --block: rgba(254,230,237,0.53);
-  --block-border: #fdcedb;
-  --block-hover: #fed7e2;
+  --block: rgba(242,243,243,0.53);
+  --block-border: #e4e7e7;
+  --block-hover: #eaecec;
   --theme-link-opa: rgba(32,148,243,0.2);
-  --leftbar-bg: #fdcedb;
+  --leftbar-bg: #e4e7e7;
   --alpha20: rgba(255,255,255,0.2);
   --alpha50: rgba(255,255,255,0.5);
   --alpha60: rgba(255,255,255,0.6);
@@ -67,12 +67,12 @@
 }
 :root[data-theme="dark"] {
   --site-bg: #444b55;
-  --card: rgba(122,0,35,0.53);
-  --block: rgba(79,2,24,0.53);
-  --block-border: #770424;
-  --block-hover: #63031e;
+  --card: rgba(58,65,65,0.53);
+  --block: rgba(39,43,43,0.53);
+  --block-border: #3a4040;
+  --block-hover: #303636;
   --theme-link-opa: rgba(32,148,243,0.4);
-  --leftbar-bg: #770424;
+  --leftbar-bg: #3a4040;
   --alpha20: rgba(0,0,0,0.2);
   --alpha50: rgba(0,0,0,0.5);
   --alpha60: rgba(0,0,0,0.6);
@@ -94,11 +94,11 @@
 :root:not([data-theme]) {
   --site-bg: #dde2e9;
   --card: rgba(255,255,255,0.53);
-  --block: rgba(254,230,237,0.53);
-  --block-border: #fdcedb;
-  --block-hover: #fed7e2;
+  --block: rgba(242,243,243,0.53);
+  --block-border: #e4e7e7;
+  --block-hover: #eaecec;
   --theme-link-opa: rgba(32,148,243,0.2);
-  --leftbar-bg: #fdcedb;
+  --leftbar-bg: #e4e7e7;
   --alpha20: rgba(255,255,255,0.2);
   --alpha50: rgba(255,255,255,0.5);
   --alpha60: rgba(255,255,255,0.6);
@@ -115,12 +115,12 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     --site-bg: #444b55;
-    --card: rgba(122,0,35,0.53);
-    --block: rgba(79,2,24,0.53);
-    --block-border: #770424;
-    --block-hover: #63031e;
+    --card: rgba(58,65,65,0.53);
+    --block: rgba(39,43,43,0.53);
+    --block-border: #3a4040;
+    --block-hover: #303636;
     --theme-link-opa: rgba(32,148,243,0.4);
-    --leftbar-bg: #770424;
+    --leftbar-bg: #3a4040;
     --alpha20: rgba(0,0,0,0.2);
     --alpha50: rgba(0,0,0,0.5);
     --alpha60: rgba(0,0,0,0.6);
@@ -5038,7 +5038,7 @@ details.toc[open] >div.body section .header+.doc_tree {
   flex-direction: column;
   word-break: break-all;
   text-align: justify;
-  --blur-px: 3px;
+  --blur-px: 0px;
   --blur-bg: var(--alpha50);
 }
 @supports ((-webkit-backdrop-filter: blur(var(--blur-px))) or (backdrop-filter: blur(var(--blur-px)))) {
