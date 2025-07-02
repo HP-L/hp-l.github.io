@@ -200,7 +200,7 @@ Raspberry Pi Imager：link
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
 <div class="widgets">
 <widget class="widget-wrapper markdown"><div class="widget-header dis-select"><span class="name">公告</span></div><div class="widget-body fs14"><h4 style="text-align: center;">公告</h4>
-<p><strong>小站即将变更域名至 <a href="http://findingx.cc">findingx.cc</a>，原域名也会保留。</strong><br />
+<p><strong>小站即将变更域名至 <a href="http://www.findingx.cc">www.findingx.cc</a>，原域名也会保留。</strong><br />
 温馨提示：若页面卡顿，可<strong>关闭</strong>飘落特效，<em>左下角最右侧</em>。<br />
 最近给小站重新调整了下导航、更新了<a href="/about">关于</a>，对小站部分页面进行了装修。</p>
 <h5 style="text-align: center;">My QR Code</h5>
@@ -620,118 +620,6 @@ Raspberry Pi Imager：link
     selector += `, ${ctx.fancybox.selector}`
   }
   var needFancybox = document.querySelectorAll(selector).length !== 0;
-  if (!needFancybox) {
-    const els = document.getElementsByClassName('ds-memos');
-    if (els != undefined && els.length > 0) {
-      needFancybox = true;
-    }
-  }
-  if (needFancybox) {
-    utils.css(ctx.fancybox.css);
-    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
-      Fancybox.bind(selector, {
-        hideScrollbar: false,
-        Thumbs: {
-          autoStart: false,
-        },
-        caption: (fancybox, slide) => {
-          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
-        }
-      });
-    })
-  }
-</script>
-<script>
-  window.addEventListener('DOMContentLoaded', (event) => {
-    const swiper_api = document.getElementById('swiper-api');
-    if (swiper_api != undefined) {
-      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
-      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
-        const effect = swiper_api.getAttribute('effect') || '';
-        var swiper = new Swiper('.swiper#swiper-api', {
-          slidesPerView: 'auto',
-          spaceBetween: 8,
-          centeredSlides: true,
-          effect: effect,
-          rewind: true,
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-          },
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          },
-        });
-      })
-    }
-  });
-</script>
-<link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    window.codeElements = document.querySelectorAll('.code');
-    if (window.codeElements.length > 0) {
-      ctx.copycode = {
-        default_text: `Copy`,
-        success_text: `Copied`,
-        toast: `复制成功`,
-      };
-      utils.js('/js/plugins/copycode.js');
-    }
-  });
-</script>
-
-
-<!-- inject -->
-
-
-
-<script>    // https://xingwangzhe.fun/posts/56845/#more
-  (function () {
-    var encodedValidDomain = 'emlzaHUuaXMtY29vbC5kZXY='; // base64加密后的域名  
-    var encodedredirectUrl = 'aHR0cHM6Ly96aXNodS5pcy1jb29sLmRldg=='; // base64加密后的链接，包含协议头  
-    var decodedValidDomain = atob(encodedValidDomain);  
-    var redirectUrl = atob(encodedredirectUrl);  
-    var hostname = document.location.hostname;
-    console.log(hostname)
-    // setTimeout(1000);
-  
-    // 创建提示信息的div  
-    function showWarningMessage(message, delay) {  
-        var messageDiv = document.createElement('div');  
-        messageDiv.style.position = 'fixed';  
-        messageDiv.style.top = '50%';  
-        messageDiv.style.left = '50%';  
-        messageDiv.style.transform = 'translate(-50%, -50%)';  
-        messageDiv.style.padding = '20px';  
-        messageDiv.style.backgroundColor = 'red';  
-        messageDiv.style.color = 'white';  
-        messageDiv.style.zIndex = '9999';  
-        messageDiv.style.borderRadius = '10px'; // 添加这一行设置圆角，这里圆角半径为10px，可根据需要修改
-        messageDiv.style.fontWeight = 'bold'; // 添加这一行使字体加粗
-        messageDiv.style.opacity = '0.8'; // 添加这一行设置透明度，这里透明度值为0.8，可根据需要修改
-        messageDiv.innerText = message;  
-  
-        document.body.appendChild(messageDiv);  
-  
-        // 设置延时后移除提示信息并跳转  
-        setTimeout(function() {  
-            document.body.removeChild(messageDiv);  
-            window.location.replace(redirectUrl);  
-        }, delay);  
-    }  
-     if (hostname.includes('localhost') || hostname.includes('127.0.0.1')  || hostname.includes('192.168.1.113') || hostname.includes('192.168.3.18') || hostname.includes('www.findingx.cc') || hostname.includes('finding.is-cool.dev') || hostname.includes('hp-l-github-io.vercel.app')) {  
-         return; // 退出函数，不执行后续代码  
-     }  
-  
-    if (hostname !== decodedValidDomain) {  
-        // 显示提示信息，并在6秒后自动跳转  
-        showWarningMessage("⚠️ 警告：源站提醒您，当前浏览的页面非官方页面，可能存在有害信息！您将被自动跳转至官方页面。", 6000);  
-    }  
-  })();
-  </script></div></body></html>
-ength !== 0;
   if (!needFancybox) {
     const els = document.getElementsByClassName('ds-memos');
     if (els != undefined && els.length > 0) {
