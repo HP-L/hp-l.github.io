@@ -695,7 +695,7 @@
       // 设置延时后移除提示信息并跳转  
       setTimeout(function () {
         document.body.removeChild(messageDiv);
-        // window.location.replace(redirectUrl);
+        window.location.replace(redirectUrl);
       }, delay);
     }
     // 创建提示信息的div  
@@ -725,6 +725,9 @@
     if (hostname.includes('localhost') || hostname.includes('127.0.0.1') || hostname.includes('192.168.1.113') ||
       hostname.includes('192.168.3.18') || hostname.includes('www.findingx.cc') || hostname.includes(
         'finding.is-cool.dev') || hostname.includes('hp-l-github-io.vercel.app')) {
+          if (hostname.includes('finding.is-cool.dev')) {
+            showWarningMessage1("左侧公告：小站即将迁移到 https://www.findingx.cc", 3000);
+          }
       // showWarningMessage1("左侧公告：小站即将迁移到 https://www.findingx.cc", 3000);
       return; // 退出函数，不执行后续代码  
     }
