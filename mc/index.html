@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft服务器状态查询</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5EBD3E',
+                        secondary: '#FFB900',
+                        accent: '#F78200',
+                        dark: '#202020',
+                        light: '#F5F5F5',
+                    },
+                    fontFamily: {
+                        minecraft: ['Minecraft', 'Arial', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .minecraft-font {
+                font-family: 'Minecraft', Arial, sans-serif;
+                letter-spacing: 1px;
+            }
+            .server-card {
+                @apply bg-dark/90 text-light rounded-lg shadow-xl overflow-hidden transition-all duration-300 hover:shadow-2xl;
+            }
+            .server-status-indicator {
+                @apply w-3 h-3 rounded-full inline-block mr-2;
+            }
+            .player-list-item {
+                @apply flex items-center p-2 rounded-md hover:bg-primary/20 transition-colors duration-200;
+            }
+            .btn-primary {
+                @apply bg-primary hover:bg-primary/80 text-white font-bold py-2 px-4 rounded-md transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/50;
+            }
+            .btn-secondary {
+                @apply bg-dark hover:bg-dark/80 text-white font-bold py-2 px-4 rounded-md transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-dark/50;
+            }
+            .input-primary {
+                @apply bg-dark/70 border border-primary/30 text-white rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50 w-full;
+            }
+            .animate-pulse-slow {
+                animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-dark to-dark/80 min-h-screen font-sans text-light">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- 页面标题 -->
+        <header class="text-center mb-10">
+            <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-2 minecraft-font">
+                Minecraft服务器状态
+            </h1>
+            <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+                查询并查看Minecraft服务器的实时状态、在线玩家和服务器信息
+            </p>
+        </header>
+
+        <!-- 搜索区域 -->
+        <div class="bg-dark/60 rounded-xl p-6 shadow-lg mb-10 backdrop-blur-sm border border-primary/20">
+            <form id="serverForm" class="flex flex-col md:flex-row gap-4">
+                <div class="flex-grow">
+                    <label for="serverAddress" class="block text-sm font-medium text-gray-300 mb-1">服务器地址</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+                            <i class="fa fa-server"></i>
+                        </span>
+                        <input type="text" id="serverAddress" name="serverAddress" 
+                            class="input-primary pl-10" 
+                            placeholder="输入服务器地址 (例如: mc.hypixel.net 或 mc.example.com:25565)"
+                            value="mc.findingx.cc">
+                    </div>
+                    <p class="text-xs text-gray-400 mt-1">可以输入域名或IP，可选包含端口（格式：地址:端口）</p>
+                </div>
+                <div class="flex items-end">
+                    <button type="submit" class="btn-primary w-full md:w-auto flex items-center justify-center gap-2">
+                        <i class="fa fa-search"></i>
+                        <span>查询服务器</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 服务器状态结果区域 -->
+        <div id="serverResult" class="hidden">
+            <!-- 加载中状态 -->
+            <div id="loadingState" class="hidden text-center py-16">
+                <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-primary mx-auto mb-4"></div>
+                <p class="text-xl text-gray-300">正在查询服务器状态...</p>
+            </div>
+
+            <!-- 错误状态 -->
+            <div id="errorState" class="hidden">
+                <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6 text-center">
+                    <i class="fa fa-exclamation-triangle text-4xl text-red-400 mb-4"></i>
+                    <h3 class="text-xl font-bold text-red-300 mb-2">无法连接到服务器</h3>
+                    <p id="errorMessage" class="text-red-300 mb-4">服务器可能离线或地址不正确</p>
+                    <button id="retryButton" class="btn-secondary flex items-center justify-center gap-2 mx-auto">
+                        <i class="fa fa-refresh"></i>
+                        <span>重试</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 成功状态 -->
+            <div id="successState" class="hidden">
+                <!-- 服务器基本信息卡片 -->
+                <div class="server-card mb-8">
+                    <div class="p-6 flex flex-col md:flex-row gap-6 items-center">
+                        <div class="server-icon-container">
+                            <img id="serverIcon" src="" alt="服务器图标" class="w-24 h-24 rounded-lg shadow-lg border-2 border-primary/50">
+                        </div>
+                        <div class="flex-grow">
+                            <div class="flex items-center mb-2">
+                                <h2 id="serverName" class="text-2xl font-bold text-white mr-4"></h2>
+                                <span id="serverStatus" class="px-3 py-1 rounded-full text-sm font-medium"></span>
+                            </div>
+                            <p id="serverMOTD" class="text-gray-300 mb-4 break-words"></p>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="bg-dark/50 p-3 rounded-lg">
+                                    <p class="text-xs text-gray-400 mb-1">版本</p>
+                                    <p id="serverVersion" class="text-lg font-medium"></p>
+                                </div>
+                                <div class="bg-dark/50 p-3 rounded-lg">
+                                    <p class="text-xs text-gray-400 mb-1">在线玩家</p>
+                                    <p id="playerCount" class="text-lg font-medium"></p>
+                                </div>
+                                <div class="bg-dark/50 p-3 rounded-lg">
+                                    <p class="text-xs text-gray-400 mb-1">最大玩家</p>
+                                    <p id="maxPlayers" class="text-lg font-medium"></p>
+                                </div>
+                                <div class="bg-dark/50 p-3 rounded-lg">
+                                    <p class="text-xs text-gray-400 mb-1">延迟</p>
+                                    <p id="serverPing" class="text-lg font-medium"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 玩家列表卡片 -->
+                <div class="server-card mb-8">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">在线玩家</h3>
+                            <span id="playerListCount" class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm font-medium"></span>
+                        </div>
+                        <div id="playerListContainer" class="overflow-hidden">
+                            <div id="playerList" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 max-h-[400px] overflow-y-auto pr-2">
+                                <!-- 玩家列表将在这里动态生成 -->
+                                <div class="text-center text-gray-400 col-span-full py-8">
+                                    <i class="fa fa-users text-4xl mb-3"></i>
+                                    <p>没有在线玩家</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 服务器信息扩展卡片 -->
+                <div class="server-card">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-4">服务器信息</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="text-lg font-medium mb-2 flex items-center">
+                                    <i class="fa fa-info-circle text-primary mr-2"></i>
+                                    基本信息
+                                </h4>
+                                <ul class="space-y-2">
+                                    <li class="flex">
+                                        <span class="text-gray-400 w-24">服务器地址:</span>
+                                        <span id="serverAddressDisplay" class="font-medium"></span>
+                                    </li>
+                                    <li class="flex">
+                                        <span class="text-gray-400 w-24">端口:</span>
+                                        <span id="serverPortDisplay" class="font-medium"></span>
+                                    </li>
+                                    <li class="flex">
+                                        <span class="text-gray-400 w-24">查询时间:</span>
+                                        <span id="queryTime" class="font-medium"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium mb-2 flex items-center">
+                                    <i class="fa fa-code text-primary mr-2"></i>
+                                    技术信息
+                                </h4>
+                                <ul class="space-y-2">
+                                    <li class="flex">
+                                        <span class="text-gray-400 w-24">服务器软件:</span>
+                                        <span id="serverSoftware" class="font-medium"></span>
+                                    </li>
+                                    <li class="flex">
+                                        <span class="text-gray-400 w-24">协议版本:</span>
+                                        <span id="protocolVersion" class="font-medium"></span>
+                                    </li>
+                                    <li class="flex">
+                                        <span class="text-gray-400 w-24">在线模式:</span>
+                                        <span id="onlineMode" class="font-medium"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <footer class="mt-16 text-center text-gray-500">
+            <p>© 2025 Minecraft服务器状态查询工具 | 数据由Minecraft API提供</p>
+            <p class="mt-2 text-sm">本网站与Minecraft或Mojang Studios没有关联</p>
+        </footer>
+    </div>
+
+    <script>
+        // DOM元素
+        const serverForm = document.getElementById('serverForm');
+        const serverAddressInput = document.getElementById('serverAddress');
+        const serverResult = document.getElementById('serverResult');
+        const loadingState = document.getElementById('loadingState');
+        const errorState = document.getElementById('errorState');
+        const errorMessage = document.getElementById('errorMessage');
+        const retryButton = document.getElementById('retryButton');
+        const successState = document.getElementById('successState');
+        const serverIcon = document.getElementById('serverIcon');
+        const serverName = document.getElementById('serverName');
+        const serverStatus = document.getElementById('serverStatus');
+        const serverMOTD = document.getElementById('serverMOTD');
+        const serverVersion = document.getElementById('serverVersion');
+        const playerCount = document.getElementById('playerCount');
+        const maxPlayers = document.getElementById('maxPlayers');
+        const serverPing = document.getElementById('serverPing');
+        const playerListCount = document.getElementById('playerListCount');
+        const playerList = document.getElementById('playerList');
+        const serverAddressDisplay = document.getElementById('serverAddressDisplay');
+        const serverPortDisplay = document.getElementById('serverPortDisplay');
+        const queryTime = document.getElementById('queryTime');
+        const serverSoftware = document.getElementById('serverSoftware');
+        const protocolVersion = document.getElementById('protocolVersion');
+        const onlineMode = document.getElementById('onlineMode');
+
+        // 表单提交事件
+        serverForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            queryServer();
+        });
+
+        // 重试按钮事件
+        retryButton.addEventListener('click', queryServer);
+
+        // 页面加载时查询默认服务器
+        document.addEventListener('DOMContentLoaded', function() {
+            queryServer();
+        });
+
+        // 查询服务器状态的函数
+        async function queryServer() {
+            // 显示结果区域和加载状态
+            serverResult.classList.remove('hidden');
+            loadingState.classList.remove('hidden');
+            errorState.classList.add('hidden');
+            successState.classList.add('hidden');
+
+            // 获取输入值并去除首尾空格
+            const input = serverAddressInput.value.trim();
+
+            // 验证输入
+            if (!input) {
+                loadingState.classList.add('hidden');
+                errorState.classList.remove('hidden');
+                errorMessage.textContent = '请输入有效的服务器地址';
+                return;
+            }
+
+            try {
+                // 解析输入，分离地址和端口
+                const { address, port } = parseServerInput(input);
+
+                // 记录开始时间
+                const startTime = Date.now();
+
+                // 使用Minecraft API查询服务器状态
+                let apiUrl;
+                if (port) {
+                    // 如果有端口，使用带端口的API
+                    apiUrl = `https://api.mcsrvstat.us/2/${address}:${port}`;
+                } else {
+                    // 如果没有端口，使用不带端口的API（使用默认端口）
+                    apiUrl = `https://api.mcsrvstat.us/2/${address}`;
+                }
+                
+                const response = await fetch(apiUrl);
+                
+                if (!response.ok) {
+                    throw new Error(`API请求失败: ${response.status}`);
+                }
+
+                const serverData = await response.json();
+
+                // 记录结束时间并计算延迟
+                const endTime = Date.now();
+                const pingTime = endTime - startTime;
+
+                // 处理服务器数据
+                displayServerData(serverData, address, port || 25565, pingTime);
+            } catch (error) {
+                console.error('查询服务器时出错:', error);
+                loadingState.classList.add('hidden');
+                errorState.classList.remove('hidden');
+                errorMessage.textContent = `查询服务器时出错: ${error.message}`;
+            }
+        }
+
+        // 解析服务器输入，分离地址和端口
+        function parseServerInput(input) {
+            // 检查输入是否包含端口（格式：address:port）
+            const portIndex = input.lastIndexOf(':');
+            
+            // 如果没有冒号或者冒号在第一位或最后一位，认为没有端口
+            if (portIndex <= 0 || portIndex === input.length - 1) {
+                return { address: input, port: null };
+            }
+            
+            // 提取地址和端口部分
+            const addressPart = input.substring(0, portIndex);
+            const portPart = input.substring(portIndex + 1);
+            
+            // 验证端口是否为数字
+            const port = parseInt(portPart);
+            if (isNaN(port) || port < 1 || port > 65535) {
+                // 如果端口无效，将整个输入作为地址
+                return { address: input, port: null };
+            }
+            
+            return { address: addressPart, port };
+        }
+
+        // 显示服务器数据的函数
+        function displayServerData(serverData, address, port, pingTime) {
+            // 隐藏加载状态
+            loadingState.classList.add('hidden');
+
+            // 检查服务器是否在线
+            if (!serverData.online) {
+                errorState.classList.remove('hidden');
+                errorMessage.textContent = `服务器 ${address}:${port} 当前离线`;
+                return;
+            }
+
+            // 显示成功状态
+            successState.classList.remove('hidden');
+
+            // 显示服务器图标
+            serverIcon.src = serverData.icon ? serverData.icon : 'https://picsum.photos/96/96?random=1';
+            serverIcon.alt = `${address} 服务器图标`;
+
+            // 显示服务器名称
+            serverName.textContent = serverData.motd.clean[0] || address;
+
+            // 显示服务器状态
+            serverStatus.textContent = '在线';
+            serverStatus.classList.add('bg-green-500', 'text-white');
+
+            // 显示服务器MOTD
+            serverMOTD.textContent = serverData.motd.clean.join(' ');
+
+            // 显示服务器版本
+            serverVersion.textContent = serverData.version || '未知';
+
+            // 显示玩家信息
+            playerCount.textContent = serverData.players.online || 0;
+            maxPlayers.textContent = serverData.players.max || 0;
+
+            // 显示延迟
+            serverPing.textContent = `${pingTime}ms`;
+
+            // 显示服务器地址和端口
+            serverAddressDisplay.textContent = address;
+            serverPortDisplay.textContent = port;
+
+            // 显示查询时间
+            const now = new Date();
+            queryTime.textContent = now.toLocaleString();
+
+            // 显示技术信息
+            serverSoftware.textContent = serverData.server ? serverData.server.name : '未知';
+            protocolVersion.textContent = serverData.protocol || '未知';
+            onlineMode.textContent = serverData.online_mode ? '是' : '否';
+
+            // 显示玩家列表
+            displayPlayerList(serverData.players);
+        }
+
+        // 显示玩家列表的函数
+        function displayPlayerList(players) {
+            // 清空玩家列表
+            playerList.innerHTML = '';
+
+            // 检查是否有玩家在线
+            if (!players || !players.list || players.list.length === 0) {
+                playerList.innerHTML = `
+                    <div class="text-center text-gray-400 col-span-full py-8">
+                        <i class="fa fa-users text-4xl mb-3"></i>
+                        <p>没有在线玩家</p>
+                    </div>
+                `;
+                playerListCount.textContent = '0 玩家在线';
+                return;
+            }
+
+            // 更新玩家列表计数
+            playerListCount.textContent = `${players.list.length} 玩家在线`;
+
+            // 添加每个玩家到列表
+            players.list.forEach(player => {
+                const playerElement = document.createElement('div');
+                playerElement.className = 'player-list-item';
+                playerElement.innerHTML = `
+                    <img src="https://minotar.net/avatar/${player}/48" alt="${player}的头像" class="w-10 h-10 rounded-md mr-2">
+                    <span class="font-medium truncate">${player}</span>
+                `;
+                playerList.appendChild(playerElement);
+            });
+        }
+    </script>
+</body>
+</html>
+    
