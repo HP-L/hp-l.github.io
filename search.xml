@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>计算机底层原理从入门到入土（一）</title>
+      <link href="/2025/08/02/110203/"/>
+      <url>/2025/08/02/110203/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="手电筒的加密通信设计"><a class="markdownIt-Anchor" href="#手电筒的加密通信设计"></a> 手电筒的加密通信设计</h2><blockquote><p>摘要：二进制</p></blockquote><p>白天你和好基友玩耍，晚上各自回家后仍然想分享好玩的事情，但那时没有手机。直到有一天你发现了家用手电筒，于是一个新的想法诞生了。你拿着手电对着好基友家的窗户照过去，起初，你想通过这种方式互动，但没法告诉对方你要表达什么，于是第二天你和好基友约定了一张表，利用手电筒亮灭的特性，制定了一张密码表（摩斯密码），参考这张表晚上便能通过这种开关手电筒的。于是你和好基友每日夜间通过这种方式通话，直到手电筒被父母收起来才终止了通话。</p><h2 id="继电器组成的计算器"><a class="markdownIt-Anchor" href="#继电器组成的计算器"></a> 继电器组成的计算器</h2><blockquote><p>摘要：门电路，电路加法器</p></blockquote><p>多年以后，你在高中学习到法拉第电磁感应特性，电能生磁，于是你突发奇想利用电转力的方式制造一个电力开关，于是你设计了下方的图纸，成功制作了一个继电器。</p><p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/master/article/2025/08/001.png" alt="image" /></p><p>你突然意识到，这是一种手电筒的翻版，于是你用一套电路配合两种继电器设计了两个逻辑电路：缓冲器，非门。（常闭不想重新画了，直接倒过来）</p><p>常开的继电器左侧闭合之后会使得右侧灯亮起，输入=输出。</p><p>常闭的继电器左侧断开之后会使得右侧灯亮起，输入!=输出。</p><p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/master/article/2025/08/002.png" alt="image" /></p><p>但是这不能满足你的好奇心，你将两个常开继电器级联起来，你发现必须要同时闭合两个开关才能点亮灯泡，其他情况都不能。（与门）</p><p>同时你将两个常开继电器换种方式连起来，又发现任意其一闭合都能使得灯泡点亮。（或门）</p><p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/master/article/2025/08/003.png" alt="image" /></p><p>至此你已经成功制作了<strong>与门、或门、非门</strong>。</p><p>于是你又在考虑，如果将两个常闭的继电器级联会有怎样的效果。于是同样的，你将常闭继电器级联后出现如下两种<strong>与非门、或非门</strong></p><p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/master/article/2025/08/004.png" alt="image" /></p><p>你仍不满足现状，你在思考如何比较两个输入是否相同，于是你将继电器输出接到了一块，就像如下两种电路，<strong>异或门，异或非门</strong></p><p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/master/article/2025/08/005.png" alt="image" /></p><p>在研学路上你又接触到了二进制计算，联想起曾经做过的逻辑电路设计，于是你便脑洞大开，用继电器做一个能够计算的计算器。</p><p>首先你想到的是一位加法器，1+1=10，1+0=1，0+1=1，0+0=0</p><table><thead><tr><th>A</th><th>B</th><th>个位</th><th>进位</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>1</td><td>0</td></tr><tr><td>1</td><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>1</td><td>0</td><td>1</td></tr></tbody></table><p>于是你根据上面的逻辑发现，个位数输出与两个输入数据的关系正好符合<strong>异或门</strong>的逻辑。进位输出与两个输入数据的关系正好符合<strong>与门</strong>逻辑，于是你便有了已下电路（<strong>半加器</strong>）</p><p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/master/article/2025/08/006.png" alt="image" /></p><p>既然有了1+1，那就能100+100，于是你根据二进制特性继续级联，你发现规律，个位一共有三个数相加：A+B+进位=加和，此时每个二进制都是如此，一次类推，多位二进制求和中每一个位相加都符合逻辑A+B+进位=加和。</p><p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/master/article/2025/08/007.png" alt="image" /></p><p>多位加法器可以通过这种方式级联得到</p><p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/master/article/2025/08/008.png" alt="image" /></p><p>简化如下图</p><p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/master/article/2025/08/009.png" alt="image" /></p><p>级联后就是八位二进制加法器了</p><p><img src="https://hub.gitmirror.com/raw.githubusercontent.com/HP-L/blog-main-site-images/refs/heads/master/article/2025/08/010.png" alt="image" /></p><p>A和B分别是两个二进制的每一位。</p><p>至此你成功发明了一个能处理逻辑运算的电路，于是你在想能否研制一个减法功能的电路呢。你看着窗外，星辰遍布天空，此时已是午夜，月亮的光照在荧屏下，清冷的风透过纱窗，完成如此复杂的逻辑挑战后，靠在躺椅，你闭上了双眼，享受此时的片刻宁静与微风。</p><!-- ## _还没写完.._ --><!-- Category：理论：理论知识技能，技术应用：应用笔记，实操折腾：折腾折腾折腾折腾！(其实属于应用，但就是玩！)方法：方法论（经验谈），如工程方法工具：针对具体工具的介绍、使用方法、分析适用场景等；使用工具如何如何解决具体问题，应该放在「应用」里作品：自己的作品（成品）、个人项目日志等杂谈：生活碎碎念自然科学：物理，化学，数学其他：没法分类的东西Tags细分领域：机器之脉络(硬件),机器之魂魄(嵌入式软件,机器学习，算法等),机器之骨骼(结构),形式：日志具体内容：个人作品、方法论、随笔语言：python C C# Java Html micropython 微信小程序IDE：Arduino CUBEIDE Vscode自然科学：代数 几何 概率 黑洞 白矮星 四维空间...IC OR IDE : STM32 ESP32 ESP8266 C51 树莓派 RK3399 野火开发版 MIQI模组：ws2812b系统：Linux Windows macOS openwrt Docker   termux游戏：MC博客：hexo 主题 魔改折腾系类：黑苹果，整服务器，termux -->]]></content>
+      
+      
+      <categories>
+          
+          <category> 理论 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>风雨相随|NOTE</title>
       <link href="/2025/07/20/090905/"/>
       <url>/2025/07/20/090905/</url>
@@ -1143,9 +1168,9 @@
       
         <tags>
             
-            <tag> 机器之脉络 </tag>
-            
             <tag> BUCK </tag>
+            
+            <tag> 机器之脉络 </tag>
             
         </tags>
       
